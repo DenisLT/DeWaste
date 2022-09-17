@@ -1,0 +1,10 @@
+{
+	"profiles": {
+		"DeWaste.Windows (Package)": {
+			"commandName": "MsixPackage"
+		},
+		"DeWaste.Windows (Unpackaged)": {
+			"commandName": "Project"
+		}
+	}
+}

@@ -1,0 +1,14 @@
+{
+  "solution": {
+    "path": "DeWaste.sln",
+    "projects": [
+		"DeWaste.Shared\\DeWaste.Shared.shproj",
+
+		"DeWaste.Mobile\\DeWaste.Mobile.csproj",
+
+		"DeWaste.Wasm\\DeWaste.Wasm.csproj",
+
+		"DeWaste.Skia.Gtk\\DeWaste.Skia.Gtk.csproj",
+    ]
+  }
+}
