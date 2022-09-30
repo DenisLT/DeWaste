@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "fLfNvkHM4eCCkYBiuYtXEmUM7YBJLvZSd060Hy1wkeo=",
+  "Source": "DeWaste.Wasm",
+  "BasePath": "_content/DeWaste.Wasm",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "DeWaste.Wasm\\wwwroot",
+      "Source": "DeWaste.Wasm",
+      "ContentRoot": "C:\\Users\\denis\\DeWaste\\DeWaste.Wasm\\wwwroot\\",
+      "BasePath": "_content/DeWaste.Wasm",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\denis\\DeWaste\\DeWaste.Wasm\\wwwroot\\web.config",
+      "SourceId": "DeWaste.Wasm",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\denis\\DeWaste\\DeWaste.Wasm\\wwwroot\\",
+      "BasePath": "_content/DeWaste.Wasm",
+      "RelativePath": "web.config",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\web.config"
+    }
+  ]
+}
