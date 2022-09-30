@@ -5,10 +5,16 @@
     xmlns:local="using:DeWaste"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"    
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d"
+    Background="Black">
 
-    <Grid>
-      <TextBlock Text="Hello, world!!!!!!!!!" Margin="20" FontSize="30" />
-    </Grid>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment ="Center" Margin="0, -40, 0, 0">
+        <TextBlock HorizontalAlignment="Center" FontSize="40" Margin="0, 0, 0, 20">
+            DeWaste
+        </TextBlock>
+        <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20">
+            Enter a product to recycle
+        </TextBlock>
+        <AutoSuggestBox Width="300"/>
+    </StackPanel>
 </Page>
