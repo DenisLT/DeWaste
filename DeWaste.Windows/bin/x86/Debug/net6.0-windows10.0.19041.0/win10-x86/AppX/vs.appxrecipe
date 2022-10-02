@@ -29,13 +29,13 @@
     <AppXManifest Include="C:\Users\denis\DeWaste\DeWaste.Windows\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2022-09-30T23:16:37.454</Modified>
+      <Modified>2022-10-02T14:10:22.326</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\denis\DeWaste\DeWaste.Windows\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2022-09-30T23:16:37.164</Modified>
+      <Modified>2022-10-02T14:10:21.961</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\denis\DeWaste\DeWaste.Windows\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\DeWaste.Windows.runtimeconfig.json">
       <PackagePath>DeWaste.Windows.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\denis\DeWaste\DeWaste.Windows\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\DeWaste.Windows.dll">
       <PackagePath>DeWaste.Windows.dll</PackagePath>
-      <Modified>2022-09-30T23:16:36.331</Modified>
+      <Modified>2022-10-02T14:10:21.590</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\denis\DeWaste\DeWaste.Windows\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\apphost.exe">
       <PackagePath>DeWaste.Windows.exe</PackagePath>
-      <Modified>2022-09-30T23:16:36.352</Modified>
+      <Modified>2022-10-02T14:10:21.612</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\denis\DeWaste\DeWaste.Windows\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\DeWaste.Windows.deps.json">
       <PackagePath>DeWaste.Windows.deps.json</PackagePath>

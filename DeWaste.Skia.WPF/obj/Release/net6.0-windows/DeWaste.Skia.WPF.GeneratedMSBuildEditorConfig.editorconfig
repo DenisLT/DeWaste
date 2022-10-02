@@ -22,7 +22,7 @@ build_property.IsUnoHead = true
 build_property.WindowsAppSDKWinUI = 
 build_property.UnoRemoteControlPort = 
 build_property.UnoRemoteControlHost = 
-build_property.UnoRemoteControlProcessorsPath = C:\Users\denis\.nuget\packages\uno.winui.remotecontrol\4.5.9\buildTransitive\../tools/rc/processors
+build_property.UnoRemoteControlProcessorsPath = 
 build_property.TSBindingsPath = 
 build_property.UseUnoXamlParser = 
 build_property.UnoSkipUserControlsInVisualTree = 
@@ -53,20 +53,6 @@ build_metadata.AdditionalFiles.FullPath = C:\Users\denis\DeWaste\DeWaste.Skia.WP
 build_metadata.AdditionalFiles.Identity = C:\Users\denis\DeWaste\DeWaste.Skia.WPF\MainWindow.xaml
 build_metadata.AdditionalFiles.XamlRuntime = Wpf
 
-[C:/Users/denis/DeWaste/DeWaste.Skia.WPF/App.xaml]
-build_metadata.AdditionalFiles.SourceItemGroup = ApplicationDefinition
-build_metadata.AdditionalFiles.Link = 
-build_metadata.AdditionalFiles.FullPath = C:\Users\denis\DeWaste\DeWaste.Skia.WPF\App.xaml
-build_metadata.AdditionalFiles.Identity = C:\Users\denis\DeWaste\DeWaste.Skia.WPF\App.xaml
-build_metadata.AdditionalFiles.XamlRuntime = Wpf
-
-[C:/Users/denis/DeWaste/DeWaste.Shared/Strings/en/Resources.resw]
-build_metadata.AdditionalFiles.SourceItemGroup = PRIResource
-build_metadata.AdditionalFiles.Link = 
-build_metadata.AdditionalFiles.FullPath = C:\Users\denis\DeWaste\DeWaste.Shared\Strings\en\Resources.resw
-build_metadata.AdditionalFiles.Identity = C:\Users\denis\DeWaste\DeWaste.Shared\Strings\en\Resources.resw
-build_metadata.AdditionalFiles.XamlRuntime = 
-
 [C:/Users/denis/DeWaste/DeWaste.Shared/MainPage.xaml]
 build_metadata.AdditionalFiles.SourceItemGroup = Page
 build_metadata.AdditionalFiles.Link = MainPage.xaml
@@ -74,9 +60,23 @@ build_metadata.AdditionalFiles.FullPath = C:\Users\denis\DeWaste\DeWaste.Shared\
 build_metadata.AdditionalFiles.Identity = C:\Users\denis\DeWaste\DeWaste.Shared\MainPage.xaml
 build_metadata.AdditionalFiles.XamlRuntime = WinUI
 
+[C:/Users/denis/DeWaste/DeWaste.Skia.WPF/App.xaml]
+build_metadata.AdditionalFiles.SourceItemGroup = ApplicationDefinition
+build_metadata.AdditionalFiles.Link = 
+build_metadata.AdditionalFiles.FullPath = C:\Users\denis\DeWaste\DeWaste.Skia.WPF\App.xaml
+build_metadata.AdditionalFiles.Identity = C:\Users\denis\DeWaste\DeWaste.Skia.WPF\App.xaml
+build_metadata.AdditionalFiles.XamlRuntime = Wpf
+
 [C:/Users/denis/DeWaste/DeWaste.Shared/App.xaml]
 build_metadata.AdditionalFiles.SourceItemGroup = ApplicationDefinition
 build_metadata.AdditionalFiles.Link = App.xaml
 build_metadata.AdditionalFiles.FullPath = C:\Users\denis\DeWaste\DeWaste.Shared\App.xaml
 build_metadata.AdditionalFiles.Identity = C:\Users\denis\DeWaste\DeWaste.Shared\App.xaml
 build_metadata.AdditionalFiles.XamlRuntime = WinUI
+
+[C:/Users/denis/DeWaste/DeWaste.Shared/Strings/en/Resources.resw]
+build_metadata.AdditionalFiles.SourceItemGroup = PRIResource
+build_metadata.AdditionalFiles.Link = 
+build_metadata.AdditionalFiles.FullPath = C:\Users\denis\DeWaste\DeWaste.Shared\Strings\en\Resources.resw
+build_metadata.AdditionalFiles.Identity = C:\Users\denis\DeWaste\DeWaste.Shared\Strings\en\Resources.resw
+build_metadata.AdditionalFiles.XamlRuntime = 

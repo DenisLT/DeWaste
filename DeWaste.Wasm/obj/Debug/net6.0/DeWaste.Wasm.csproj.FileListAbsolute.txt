@@ -1,9 +1,3 @@
-C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\DeWaste.Wasm.csproj.AssemblyReference.cache
-C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\DeWaste.Wasm.d-bfalse.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\DeWaste.Wasm.AssemblyInfoInputs.cache
-C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\DeWaste.Wasm.AssemblyInfo.cs
-C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\DeWaste.Wasm.csproj.CoreCompileInputs.cache
-C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\DeWaste.Wasm.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\denis\DeWaste\DeWaste.Wasm\bin\Debug\net6.0\DeWaste.Wasm.staticwebassets.runtime.json
 C:\Users\denis\DeWaste\DeWaste.Wasm\bin\Debug\net6.0\DeWaste.Wasm.exe
 C:\Users\denis\DeWaste\DeWaste.Wasm\bin\Debug\net6.0\DeWaste.Wasm.runtimeconfig.json
@@ -123,6 +117,12 @@ C:\Users\denis\DeWaste\DeWaste.Wasm\bin\Debug\net6.0\runtimes\win\lib\netstandar
 C:\Users\denis\DeWaste\DeWaste.Wasm\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.ServiceProcess.ServiceController.dll
 C:\Users\denis\DeWaste\DeWaste.Wasm\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Threading.AccessControl.dll
 C:\Users\denis\DeWaste\DeWaste.Wasm\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\DeWaste.Wasm.csproj.AssemblyReference.cache
+C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\DeWaste.Wasm.d-bfalse.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\DeWaste.Wasm.AssemblyInfoInputs.cache
+C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\DeWaste.Wasm.AssemblyInfo.cs
+C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\DeWaste.Wasm.csproj.CoreCompileInputs.cache
+C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\DeWaste.Wasm.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\denis\DeWaste\DeWaste.Wasm\obj\Debug\net6.0\scopedcss\bundle\DeWaste.Wasm.styles.css
