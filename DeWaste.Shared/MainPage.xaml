@@ -6,15 +6,49 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="Black">
+    Background="#302c2c"
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment ="Center" Margin="0, -40, 0, 0">
-        <TextBlock HorizontalAlignment="Center" FontSize="40" Margin="0, 0, 0, 20">
-            DeWaste
+    xmlns:uen="using:Uno.Extensions.Navigation.UI"
+    xmlns:utu="using:Uno.Toolkit.UI"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
+
+    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment ="Top" Background="#74bc84">
+
+        <NavigationView x:Name="nvSample9"
+                        PaneDisplayMode="Top"
+                        SelectionChanged="NavigationView_SelectionChanged9"
+                        IsSettingsVisible="False"
+                        IsBackButtonVisible="0"
+                        PaneTitle="DeWaste"
+                        >
+
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Home" Tag="SamplePage1" Icon="Library"/>
+                <NavigationViewItem Content="Search" Tag="SamplePage5" Icon="Shop" />
+                <AutoSuggestBox PlaceholderText="Search" QueryIcon="Find" Width="200"
+                                TextChanged="AutoSuggestBox_TextChanged"
+                                QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                                SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
+
+                <NavigationViewItem Content="Account" Tag="SamplePage4" Icon="Contact" />
+                <NavigationViewItem Content="Help" Tag="SamplePage5" Icon="Help" />
+
+            </NavigationView.MenuItems>
+
+            <Frame x:Name="contentFrame9" />
+
+
+        </NavigationView>
+
+
+
+        <!--<TextBlock HorizontalAlignment="Center" FontSize="40" Margin="0, 0, 0, 20">
+        DeWaste
         </TextBlock>
         <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20">
-            Enter a product to recycl
+        Enter a product to recycle
         </TextBlock>
-        <AutoSuggestBox Width="300"/>
+        <AutoSuggestBox Width="300"/>-->
     </StackPanel>
 </Page>
+
