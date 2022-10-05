@@ -11,12 +11,15 @@
   <Import Project="DeWaste.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
   <ItemGroup>
-    <UpToDateCheckInput Remove="MainPage.xaml" />
+    <UpToDateCheckInput Remove="Views\ItemView.xaml" />
+    <UpToDateCheckInput Remove="Views\SearchView.xaml" />
   </ItemGroup>
   <ItemGroup>
     <_Globbed_Compile Remove="MainPage.xaml.cs" />
+    <_Globbed_Compile Remove="Views\ItemView.xaml.cs" />
+    <_Globbed_Compile Remove="Views\SearchView.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
-    <_Globbled_Page Remove="MainPage.xaml" />
+    <_Globbled_Page Remove="Views\ItemView.xaml" />
   </ItemGroup>
 </Project>
