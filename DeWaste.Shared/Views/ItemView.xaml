@@ -9,8 +9,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Center" FontSize="40" Margin="0, 0, 0, 20">
-            DeWaste
-        </TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Image Source="/Assets/Images/logo.png" Stretch="Uniform" Grid.Row="0"></Image>
+        <StackPanel Grid.Row="1">
+            <TextBlock FontSize="40" HorizontalAlignment="Center" Margin="0, 0, 0, 20" Text ="Example item"/>
+            <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20" TextWrapping="Wrap" Text ="Go to search and search for something in order to display."/>
+        </StackPanel>
     </Grid>
 </Page>

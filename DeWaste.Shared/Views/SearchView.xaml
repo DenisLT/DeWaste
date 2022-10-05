@@ -8,13 +8,17 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment ="Center" Margin="0, -40, 0, 0">
-        <TextBlock HorizontalAlignment="Center" FontSize="40" Margin="0, 0, 0, 20">
-            DeWaste
-        </TextBlock>
-        <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Image Source="/Assets/Images/logo.png" Stretch="Uniform"  Grid.Row="0"></Image>
+        <StackPanel Grid.Row="1">
+            <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20">
             Enter a product to recycle
-        </TextBlock>
-        <AutoSuggestBox Width="300"/>
-    </StackPanel>
+            </TextBlock>
+            <AutoSuggestBox Width="300"/>
+        </StackPanel>
+    </Grid>
 </Page>
