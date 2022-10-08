@@ -12,18 +12,24 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-
+using DeWaste.DataFiles;
 
 namespace DeWaste.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class SearchView : Page
     {
+        IDataProvider dataProvider;
+        List<String> suggestions;
         public SearchView()
         {
             this.InitializeComponent();
+            dataProvider = new DataProvider();
+            suggestions = dataProvider.getSuggestions();
+        }
+        
+        private void Search_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            sender.ItemsSource = suggestions;
         }
     }
 }

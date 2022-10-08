@@ -15,6 +15,7 @@
     <UpToDateCheckInput Remove="Views\SearchView.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbed_Compile Remove="DataFiles\IDataProvider.cs" />
     <_Globbed_Compile Remove="MainPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\ItemView.xaml.cs" />
     <_Globbed_Compile Remove="Views\SearchView.xaml.cs" />

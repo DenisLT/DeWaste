@@ -10,8 +10,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
         <Image Source="/Assets/Images/logo.png" Stretch="Uniform" Grid.Row="0"></Image>
         <StackPanel Grid.Row="1">
