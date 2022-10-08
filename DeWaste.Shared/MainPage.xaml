@@ -8,13 +8,29 @@
     mc:Ignorable="d"
     Background="Black">
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment ="Center" Margin="0, -40, 0, 0">
-        <TextBlock HorizontalAlignment="Center" FontSize="40" Margin="0, 0, 0, 20">
-            DeWaste
-        </TextBlock>
-        <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20">
-            Enter a product to recycl
-        </TextBlock>
-        <AutoSuggestBox Width="300"/>
-    </StackPanel>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Frame x:Name="MainContent" Grid.Row="0"/>
+        <NavigationView
+                    Background="Red"
+                    PaneDisplayMode="Top"
+                    IsSettingsVisible="False"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    IsBackButtonVisible="Collapsed"
+                    Loaded="Navigation_Loaded"
+                    ItemInvoked="Navigation_Clicked"
+                    >
+
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Content="Search" Tag="SearchPage" Icon="Zoom" />
+                <NavigationViewItem Content="Iems" Tag="ItemPage" Icon="List"/>
+            </NavigationView.FooterMenuItems>
+        </NavigationView>
+        
+    </Grid>
 </Page>

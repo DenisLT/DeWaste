@@ -4,9 +4,9 @@ using System.Text;
 
 namespace DeWaste.DataFiles
 {
-    class DataProvider
+    class DataProvider : IDataProvider
     {
-        Item get(string itemName)
+        public Item get(string itemName)
         {
             Item toothbrush;
             toothbrush = new Item();
@@ -17,7 +17,7 @@ namespace DeWaste.DataFiles
         }
 
         
-        List<string> getSuggestions()
+        public List<string> getSuggestions()
         {
             //fake suggestions
             List<string> suggestions;
@@ -29,12 +29,5 @@ namespace DeWaste.DataFiles
 
             return suggestions;
         }
-    }
-    
-    class Item
-    {
-        public string name;
-        public string description;
-        public string imageSource;
     }
 }

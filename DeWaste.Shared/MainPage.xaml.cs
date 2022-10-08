@@ -26,5 +26,24 @@ namespace DeWaste
         {
             this.InitializeComponent();
         }
+
+        private void Navigation_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainContent.Navigate(typeof(Views.SearchView));
+        }
+        
+        private void Navigation_Clicked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+                switch (args.InvokedItemContainer.Tag)
+                {
+                    case "SearchPage":
+                        MainContent.Navigate(typeof(Views.SearchView));
+                        break;
+                    case "ItemPage":
+                        MainContent.Navigate(typeof(Views.ItemView));
+                        break;
+                }
+        }
     }
 }
+
