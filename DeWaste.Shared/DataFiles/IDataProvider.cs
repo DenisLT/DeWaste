@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace DeWaste.DataFiles
 {
     interface IDataProvider
     {
-        public List<string> getSuggestions();
+        public Task<List<string>> getSuggestionsAsync();
+
+        public bool canConnectToDB();
+
+        public bool itemExists(string itemName);
         
         public Item get(string itemName);
     }
@@ -14,7 +20,11 @@ namespace DeWaste.DataFiles
 
 class Item
 {
+    [JsonPropertyName("name")]
     public string name;
-    public string description;
+    [JsonPropertyName("desc")]
+    public List<String> description;
+    [JsonPropertyName("img")]
     public string imageSource;
+    public string timestamp;
 }

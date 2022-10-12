@@ -6,17 +6,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="Black">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
             <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
-        <Image Source="/Assets/Images/logo.png" Stretch="Uniform" Grid.Row="0"></Image>
+        <Image x:Name ="itemImage" Source="/Assets/Images/logo.png" Stretch="Uniform" Grid.Row="0"></Image>
         <StackPanel Grid.Row="1">
-            <TextBlock FontSize="40" HorizontalAlignment="Center" Margin="0, 0, 0, 20" Text ="Example item"/>
-            <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20" TextWrapping="Wrap" Text ="Go to search and search for something in order to display."/>
+            <TextBlock x:Name="itemName" FontSize="40" HorizontalAlignment="Center" Margin="0, 0, 0, 20" Text ="Example item"/>
+            <TextBlock x:Name="itemDesc" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20" TextWrapping="Wrap" Text ="Go to search and search for something in order to display."/>
         </StackPanel>
     </Grid>
 </Page>

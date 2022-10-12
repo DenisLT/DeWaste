@@ -12,6 +12,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,9 +23,23 @@ namespace DeWaste.Views
     /// </summary>
     public sealed partial class ItemView : Page
     {
+        Item item = new Item { };
+
         public ItemView()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter == null)
+            {
+                return;
+            }
+            item = (Item)e.Parameter;
+            
+            this.itemName.Text = item.name;
+            this.itemDesc.Text = item.description[0];
         }
     }
 }
