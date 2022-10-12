@@ -15,7 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace DeWaste
+namespace DeWaste.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -25,11 +25,12 @@ namespace DeWaste
         public MainPage()
         {
             this.InitializeComponent();
+            
         }
 
         private void Navigation_Loaded(object sender, RoutedEventArgs e)
         {
-            MainContent.Navigate(typeof(Views.SearchView));
+            MainContent.Navigate(typeof(Views.SearchView), MainContent);
         }
         
         private void Navigation_Clicked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -37,7 +38,7 @@ namespace DeWaste
                 switch (args.InvokedItemContainer.Tag)
                 {
                     case "SearchPage":
-                        MainContent.Navigate(typeof(Views.SearchView));
+                        MainContent.Navigate(typeof(Views.SearchView), MainContent);
                         break;
                     case "ItemPage":
                         MainContent.Navigate(typeof(Views.ItemView));

@@ -1,5 +1,5 @@
 <Page
-    x:Class="DeWaste.MainPage"
+    x:Class="DeWaste.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:DeWaste"
@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <Frame x:Name="MainContent" Grid.Row="0"/>
         <NavigationView
-                    Background="Red"
+                    
                     PaneDisplayMode="Top"
                     IsSettingsVisible="False"
                     Grid.Row="1"
@@ -26,9 +26,12 @@
                     ItemInvoked="Navigation_Clicked"
                     >
 
-            <NavigationView.FooterMenuItems>
+            <NavigationView.MenuItems>
                 <NavigationViewItem Content="Search" Tag="SearchPage" Icon="Zoom" />
-                <NavigationViewItem Content="Iems" Tag="ItemPage" Icon="List"/>
+            </NavigationView.MenuItems>
+
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Content="Items" Tag="ItemPage" Icon="List"/>
             </NavigationView.FooterMenuItems>
         </NavigationView>
         
