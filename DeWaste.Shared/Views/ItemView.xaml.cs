@@ -13,21 +13,23 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Media.Imaging;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+using DeWaste.Models.DataModels;
+using DeWaste.Models.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System.ComponentModel;
 
 namespace DeWaste.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class ItemView : Page
     {
-        Item item = new Item { };
+        ItemViewModel ViewModel;
 
         public ItemView()
         {
             this.InitializeComponent();
+            var container = ((App)App.Current).Container;
+            ViewModel = ActivatorUtilities.GetServiceOrCreateInstance(container, typeof(BindableBase)) as ItemViewModel;
+            DataContext = ViewModel;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -36,10 +38,7 @@ namespace DeWaste.Views
             {
                 return;
             }
-            item = (Item)e.Parameter;
-            
-            this.itemName.Text = item.name;
-            this.itemDesc.Text = item.description[0];
+            ViewModel.SetItem((Item)e.Parameter);
         }
     }
 }

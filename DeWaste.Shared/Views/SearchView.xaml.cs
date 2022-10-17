@@ -12,22 +12,23 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using DeWaste.DataFiles;
 using System.Threading.Tasks;
+using DeWaste.Models.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DeWaste.Views
 {
     public sealed partial class SearchView : Page
     {
-        IDataProvider dataProvider;
         List<String> suggestions;
         Frame mainContent;
+        public SearchViewModel ViewModel;
         
         
         public SearchView()
         {
             this.InitializeComponent();
-            dataProvider = new DataProvider();
+            ViewModel = new SearchViewModel();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -35,21 +36,10 @@ namespace DeWaste.Views
             mainContent = (Frame)e.Parameter;
         }
 
-        private async void Load_Suggestions(object sender, RoutedEventArgs e)
-        {
-            suggestions = await dataProvider.getSuggestionsAsync();
-        }
-
-
-        private void Search_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
-            sender.ItemsSource = suggestions;
-        }
         
-        private void Item_Chosen(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        private void ItemChosen(object sender, SelectionChangedEventArgs args)
         {
-            Item item = dataProvider.get(args.QueryText);
-            mainContent.Navigate(typeof(ItemView), item);
+            mainContent.Navigate(typeof(ItemView), args.AddedItems[0]);
         }
     }
 }
