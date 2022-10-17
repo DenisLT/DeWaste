@@ -2,11 +2,14 @@
     x:Class="DeWaste.Views.SearchView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:DeWaste.Views"
+    xmlns:local="using:DeWaste"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:datamodels="using:DeWaste.Models.DataModels"
+    xmlns:toolkit="using:Uno.UI.Toolkit"
     mc:Ignorable="d"
-    Background="Black">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
 
     <Grid>
         <Grid.RowDefinitions>
@@ -14,11 +17,28 @@
             <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
         <Image Source="/Assets/Images/logo.png" Stretch="Uniform"  Grid.Row="0"></Image>
-        <StackPanel Grid.Row="1">
-            <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20">
-            Enter a product to recycle
-            </TextBlock>
-            <AutoSuggestBox TextChanged="Search_TextChanged" Loaded="Load_Suggestions" QuerySubmitted ="Item_Chosen"/>
-        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <AutoSuggestBox PlaceholderText = "Enter a product to recycle"             
+                            Grid.Row="0"
+                            Text="{x:Bind ViewModel.SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                
+            </AutoSuggestBox>
+            
+
+             <ListView ItemsSource="{x:Bind ViewModel.SearchResults, Mode=OneWay}"
+                       Grid.Row="1"
+                       SelectionChanged="ItemChosen"
+                       x:Name="ItemListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="datamodels:Item">
+                        <TextBlock Text="{x:Bind name, Mode=OneWay}"></TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </Grid>
 </Page>

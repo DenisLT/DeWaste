@@ -18,14 +18,18 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)DataFiles\DataProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataFiles\IDataProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DataModels\Item.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModels\BindableBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModels\ItemViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModels\SearchViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ItemView.xaml.cs">
       <DependentUpon>ItemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\SearchView.xaml.cs">
       <DependentUpon>SearchView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WebServices\ItemGetApi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebServices\WebApiBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Assets\SharedAssets.md" />
@@ -64,9 +68,5 @@
     <ApplicationDefinition Update="$(MSBuildThisFileDirectory)**/*.xaml" XamlRuntime="WinUI" />
     <!-- Make sure XAML files force reevaluation of up-to-date checks -->
     <UpToDateCheckInput Include="$(MSBuildThisFileDirectory)**/*.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
-    <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
   </ItemGroup>
 </Project>

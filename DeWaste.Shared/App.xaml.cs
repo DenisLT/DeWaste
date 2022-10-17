@@ -5,16 +5,18 @@ using Windows.ApplicationModel.Activation;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.Extensions.DependencyInjection;
+using DeWaste.Models.ViewModels;
 
 namespace DeWaste
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    public sealed partial class App : Application
+    public partial class App : Application
     {
-        private Window _window;
-
+        public static Window _window;
+        
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -22,8 +24,8 @@ namespace DeWaste
         public App()
         {
             InitializeLogging();
-
             this.InitializeComponent();
+            Container = ConfigureDependencyInjection();
 
 #if HAS_UNO || NETFX_CORE
             this.Suspending += OnSuspending;
@@ -34,7 +36,11 @@ namespace DeWaste
 
         IServiceProvider ConfigureDependencyInjection()
         {
-            throw new NotImplementedException();
+            var serviceCollection = new ServiceCollection();
+
+            serviceCollection.AddSingleton<BindableBase, ItemViewModel>();
+
+            return serviceCollection.BuildServiceProvider();
         }
 
         /// <summary>

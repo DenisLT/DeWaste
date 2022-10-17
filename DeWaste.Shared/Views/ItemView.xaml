@@ -13,10 +13,11 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
-        <Image x:Name ="itemImage" Source="/Assets/Images/logo.png" Stretch="Uniform" Grid.Row="0"></Image>
+        <Image x:Name ="itemImage" Source="{x:Bind ViewModel.ItemImage, Mode=OneWay}" Stretch="Uniform" Grid.Row="0"></Image>
         <StackPanel Grid.Row="1">
-            <TextBlock x:Name="itemName" FontSize="40" HorizontalAlignment="Center" Margin="0, 0, 0, 20" Text ="Example item"/>
-            <TextBlock x:Name="itemDesc" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20" TextWrapping="Wrap" Text ="Go to search and search for something in order to display."/>
+            <TextBlock x:Name="itemName" FontSize="40" HorizontalAlignment="Center" Margin="0, 0, 0, 20" Text ="{x:Bind ViewModel.ItemName, Mode=OneWay}"/>
+            <TextBlock x:Name="itemDesc" FontSize="20" HorizontalAlignment="Center" Margin="0, 0, 0, 20" 
+                       TextWrapping="Wrap" Text="{x:Bind ViewModel.ItemDescription, Mode=OneWay}"/>
         </StackPanel>
     </Grid>
 </Page>
