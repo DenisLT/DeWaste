@@ -25,10 +25,11 @@
             </Grid.RowDefinitions>
             <!--  Item details  -->
             <!--  Item image  -->
+
             <Image
                 CornerRadius="13"
                 Grid.Row="0"
-                Source="/Assets/Images/Items/{x:Bind ViewModel.ItemImage, Mode=OneWay}"
+                Source="{x:Bind '/Assets/Images/Items/'+ViewModel.ItemImage, Mode=OneWay}"
                 Stretch="Fill"
                 Width="350"
                 x:Name="itemImage" />
@@ -827,7 +828,6 @@
                 <Grid
                     Background="#ececec"
                     CornerRadius="13"
-                    Margin="0,0,0,20"
                     Padding="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
@@ -966,7 +966,6 @@
                 <Grid
                     Background="#ececec"
                     CornerRadius="13"
-                    Margin="0,0,0,20"
                     Padding="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
@@ -1035,7 +1034,7 @@
                             FontSize="28"
                             Foreground="Black"
                             Margin="0,0,0,10"
-                            Text="Metal" />
+                            Text="Wood" />
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"

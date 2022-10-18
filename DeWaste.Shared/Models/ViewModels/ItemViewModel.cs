@@ -58,7 +58,7 @@ namespace DeWaste.Models.ViewModels
             get => item.img;
             set
             {
-                var temp = item.img;
+                var temp= item.img;
                 SetProperty(ref temp, value);
                 item.img = temp;
             }
