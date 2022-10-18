@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.Extensions.DependencyInjection;
 using DeWaste.Models.ViewModels;
+using DeWaste.Services;
 
 namespace DeWaste
 {
@@ -39,6 +40,7 @@ namespace DeWaste
             var serviceCollection = new ServiceCollection();
 
             serviceCollection.AddSingleton<BindableBase, ItemViewModel>();
+            serviceCollection.AddSingleton<DataProvider>();
 
             return serviceCollection.BuildServiceProvider();
         }

@@ -34,7 +34,7 @@
                        SelectionChanged="ItemChosen"
                        x:Name="ItemListView">
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="datamodels:Item">
+                    <DataTemplate x:DataType="datamodels:Suggestion">
                         <TextBlock Text="{x:Bind name, Mode=OneWay}"></TextBlock>
                     </DataTemplate>
                 </ListView.ItemTemplate>

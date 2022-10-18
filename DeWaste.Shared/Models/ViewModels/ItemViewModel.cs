@@ -13,7 +13,7 @@ namespace DeWaste.Models.ViewModels
         public ItemViewModel()
         {
             item = new Item();
-            item.img = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg";
+            item.img = "/Assets/Images/logo.png";
             item.description = "Go to search and search for something in order to display.";
             item.name = "Example item";
             updateUI();
@@ -29,6 +29,7 @@ namespace DeWaste.Models.ViewModels
         public void SetItem(Item item)
         {
             this.item = item;
+            item.img = "/Assets/Images/Items/" + item.img; 
             updateUI();
         }
 

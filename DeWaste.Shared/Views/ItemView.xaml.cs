@@ -23,6 +23,7 @@ namespace DeWaste.Views
     public sealed partial class ItemView : Page
     {
         ItemViewModel ViewModel;
+        IServiceProvider container = ((App)App.Current).Container;
 
         public ItemView()
         {
@@ -37,7 +38,7 @@ namespace DeWaste.Views
             if (e.Parameter == null)
             {
                 return;
-            }
+            } 
             ViewModel.SetItem((Item)e.Parameter);
         }
     }
