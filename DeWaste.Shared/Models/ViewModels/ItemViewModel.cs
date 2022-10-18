@@ -29,7 +29,6 @@ namespace DeWaste.Models.ViewModels
         public void SetItem(Item item)
         {
             this.item = item;
-            item.img = "/Assets/Images/Items/" + item.img; 
             updateUI();
         }
 
