@@ -15,6 +15,8 @@ using Microsoft.UI.Xaml.Navigation;
 using System.Threading.Tasks;
 using DeWaste.Models.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
+using DeWaste.Services;
+using DeWaste.Models.DataModels;
 
 namespace DeWaste.Views
 {
@@ -23,12 +25,14 @@ namespace DeWaste.Views
         List<String> suggestions;
         Frame mainContent;
         public SearchViewModel ViewModel;
-        
-        
+        IServiceProvider container = ((App)App.Current).Container;
+        DataProvider dataprovider;
+
         public SearchView()
         {
             this.InitializeComponent();
             ViewModel = new SearchViewModel();
+            dataprovider = (DataProvider)container.GetService(typeof(DataProvider));
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -37,9 +41,11 @@ namespace DeWaste.Views
         }
 
         
-        private void ItemChosen(object sender, SelectionChangedEventArgs args)
+        private async void ItemChosen(object sender, SelectionChangedEventArgs args)
         {
-            mainContent.Navigate(typeof(ItemView), args.AddedItems[0]);
+            Suggestion suggestion = (Suggestion)args.AddedItems[0];
+            Item item = await dataprovider.GetItemById((int)suggestion.id);
+            mainContent.Navigate(typeof(ItemView), item);
         }
     }
 }

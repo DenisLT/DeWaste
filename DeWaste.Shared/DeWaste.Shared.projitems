@@ -19,16 +19,19 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\DataModels\Item.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DataModels\Suggestion.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModels\BindableBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModels\ItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModels\SearchViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\DataProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\UniqueSuggestionIDComparer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ItemView.xaml.cs">
       <DependentUpon>ItemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\SearchView.xaml.cs">
       <DependentUpon>SearchView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)WebServices\ItemGetApi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebServices\DatabaseApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WebServices\WebApiBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -45,7 +48,6 @@
 	-->
     <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\combined_bin.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\deposit_bin.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\info_icon.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\baking_tray.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\gl_70.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\hdpe_2.png" />
