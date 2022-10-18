@@ -45,6 +45,14 @@
 		 explicitly included in the projitem, so files can be added from vscode
 		 without manipulating the projitem file.
 	-->
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\combined_bin.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\deposit_bin.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\info_icon.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\baking_tray.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\gl_70.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\hdpe_2.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\ldpe_4.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\tex_60.png" />
     <Page Include="$(MSBuildThisFileDirectory)Views\ItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
