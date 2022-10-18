@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using DeWaste.Services;
 
 namespace DeWaste.Models.ViewModels
 {
@@ -15,11 +16,11 @@ namespace DeWaste.Models.ViewModels
     {
         private bool _isBusy;
         private string _searchTerm = "";
-        private ObservableCollection<Item> _searchResults = new ObservableCollection<Item>();
-        private ItemGetApi _itemGetApi = new ItemGetApi();
+        private ObservableCollection<Suggestion> _searchResults = new ObservableCollection<Suggestion>();
+        private DataProvider dataProvider = new DataProvider();
 
 
-        
+
 
         public bool IsBusy
         {
@@ -37,7 +38,7 @@ namespace DeWaste.Models.ViewModels
             }
         }
 
-        public ObservableCollection<Item> SearchResults
+        public ObservableCollection<Suggestion> SearchResults
         {
             get => _searchResults;
             set => SetProperty(ref _searchResults, value);
@@ -54,14 +55,14 @@ namespace DeWaste.Models.ViewModels
             {
                 try
                 {
-                    var result = await _itemGetApi.Search(SearchTerm);
+                    var result = await dataProvider.GetSimilar(SearchTerm);
                     
-                    SearchResults = new ObservableCollection<Item>(result);
+                    SearchResults = new ObservableCollection<Suggestion>(result);
 
 
                     if (result.Any())
                     {
-                        var res = new ObservableCollection<Item>(result);
+                        var res = new ObservableCollection<Suggestion>(result);
                         SearchResults = res;
                     }
 
