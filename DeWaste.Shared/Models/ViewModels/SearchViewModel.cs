@@ -17,7 +17,8 @@ namespace DeWaste.Models.ViewModels
         private bool _isBusy;
         private string _searchTerm = "";
         private ObservableCollection<Suggestion> _searchResults = new ObservableCollection<Suggestion>();
-        private DataProvider dataProvider = new DataProvider();
+        private DataProvider dataProvider;
+        IServiceProvider container = ((App)App.Current).Container;
 
 
 
@@ -46,7 +47,7 @@ namespace DeWaste.Models.ViewModels
         
         public SearchViewModel()
         {
-            
+            dataProvider = (DataProvider)container.GetService(typeof(DataProvider));
         }
         
         public async Task SearchItem()
@@ -55,7 +56,7 @@ namespace DeWaste.Models.ViewModels
             {
                 try
                 {
-                    var result = await dataProvider.GetSimilar(SearchTerm);
+                    var result = await dataProvider.GetSimilar(name: SearchTerm);
                     
                     SearchResults = new ObservableCollection<Suggestion>(result);
 

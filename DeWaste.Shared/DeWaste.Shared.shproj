@@ -26,6 +26,7 @@
     <_Globbed_Compile Remove="Models\ViewModels\SearchViewModel.cs" />
     <_Globbed_Compile Remove="Models\ViewModels\SearchViewModel.xaml.cs" />
     <_Globbed_Compile Remove="Services\DataProvider.cs" />
+    <_Globbed_Compile Remove="Services\UniqueSuggestionIDComparer.cs" />
     <_Globbed_Compile Remove="Views\ItemView.xaml.cs" />
     <_Globbed_Compile Remove="Views\SearchView.xaml.cs" />
     <_Globbed_Compile Remove="WebServices\GetSuggestionsApi.cs" />

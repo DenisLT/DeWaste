@@ -10,6 +10,6 @@ namespace DeWaste.Models.DataModels
         [JsonPropertyName("name")]
         public string name { get; set; }
         [JsonPropertyName("id")]
-        public int id { get; set; }
+        public long id { get; set; }
     }
 }

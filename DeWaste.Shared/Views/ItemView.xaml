@@ -10,7 +10,7 @@
     <ScrollViewer HorizontalScrollBarVisibility="Hidden">
         <Grid
             MaxWidth="1200"
-            MinWidth="370"
+            MinWidth="0"
             Padding="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*" />
@@ -26,11 +26,11 @@
             <!--  Item details  -->
             <!--  Item image  -->
             <Image
-                CornerRadius="13"
                 Grid.Row="0"
-                Source="/Assets/Images/Items/{x:Bind ViewModel.ItemImage, Mode=OneWay}"
+                Source="{x:Bind ViewModel.ItemImage, Mode=OneWay}"
                 Stretch="Fill"
                 Width="350"
+
                 x:Name="itemImage" />
             <StackPanel Grid.Row="1" Padding="20">
 
@@ -70,7 +70,7 @@
                     <Image
                         HorizontalAlignment="Right"
                         Opacity="0.7"
-                        Source="/Assets/Images/info_icon.png"
+                        
                         VerticalAlignment="Top"
                         Width="35" />
                 </StackPanel>
