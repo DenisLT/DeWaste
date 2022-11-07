@@ -28,8 +28,7 @@ namespace DeWaste.Views
         public ItemView()
         {
             this.InitializeComponent();
-            var container = ((App)App.Current).Container;
-            ViewModel = ActivatorUtilities.GetServiceOrCreateInstance(container, typeof(BindableBase)) as ItemViewModel;
+            ViewModel = ActivatorUtilities.GetServiceOrCreateInstance(container, typeof(ItemViewModel)) as ItemViewModel;
             DataContext = ViewModel;
         }
 

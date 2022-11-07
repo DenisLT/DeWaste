@@ -10,9 +10,11 @@ namespace DeWaste.WebServices
 {
     public class DatabaseApi : WebApiBase
     {
+        string url = "http://20.23.27.75:3000/";
+
         public async Task<ObservableCollection<Item>> GetSimilar(string name)
         {
-            var result = await this.GetAsync("http://20.23.27.75:3000/items?lower_name=like.*" + name.ToLower() + "*");
+            var result = await this.GetAsync(url + "items?lower_name=like.*" + name.ToLower() + "*");
 
             if (result != null)
             {
@@ -24,7 +26,7 @@ namespace DeWaste.WebServices
         
         public async Task<ObservableCollection<Suggestion>> GetSuggestions()
         {
-            var result = await this.GetAsync("http://20.23.27.75:3000/items?select=name,id");
+            var result = await this.GetAsync(url + "items?select=name,id");
             
             if(result != null)
             {
@@ -36,7 +38,7 @@ namespace DeWaste.WebServices
 
         public async Task<Item> GetItem(int id)
         {
-            var result = await GetAsync("http://20.23.27.75:3000/items?id=eq." + id);
+            var result = await GetAsync(url + "items?id=eq." + id);
             
             if(result != null)
             {
@@ -44,6 +46,18 @@ namespace DeWaste.WebServices
             }
 
             return new Item();
+        }
+
+        public async Task<List<Category>> GetCategories(int id)
+        {
+            var result = await GetAsync(url + "items_categories?item_id=eq." + id);
+
+            if (result != null)
+            {
+                return JsonSerializer.Deserialize<List<Category>>(result);
+            }
+
+            return new List<Category>();
         }
     }
 }

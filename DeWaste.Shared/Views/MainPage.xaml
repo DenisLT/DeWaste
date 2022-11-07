@@ -11,15 +11,24 @@
     
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Frame x:Name="MainContent" Grid.Row="0"/>
+
+        <StackPanel Background="#990a00"
+                    Padding="5"
+                    Visibility="{x:Bind ViewModel.FailedConnectToServer, Mode=OneWay}">
+            <TextBlock HorizontalAlignment="Center">Failed to connect to server</TextBlock>
+        </StackPanel>
+        
+        
+        <Frame x:Name="MainContent" Grid.Row="1"/>
         <NavigationView
                     
                     PaneDisplayMode="Top"
                     IsSettingsVisible="False"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     HorizontalAlignment="Center"
                     IsBackButtonVisible="Collapsed"
                     Loaded="Navigation_Loaded"
