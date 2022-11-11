@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using DeWaste.Models.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -9,11 +12,14 @@ namespace DeWaste.WebServices
     {
         // Insert variables below here
         protected static HttpClient _client;
+        protected static IServiceProvider container = ((App)App.Current).Container;
+        protected static NavigationViewModel ViewModel;
 
         // Insert static constructor below here
         static WebApiBase()
         {
             _client = new HttpClient();
+            ViewModel = ActivatorUtilities.GetServiceOrCreateInstance(container, typeof(NavigationViewModel)) as NavigationViewModel;
         }
 
         // Insert CreateRequestMessage method below here
@@ -35,12 +41,24 @@ namespace DeWaste.WebServices
         protected async Task<string> GetAsync(string url, Dictionary<string, string> headers = null)
         {
             using (var request = CreateRequestMessage(HttpMethod.Get, url, headers))
-            using (var response = await _client.SendAsync(request))
             {
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    return await response.Content.ReadAsStringAsync();
+                    var response = await _client.SendAsync(request);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ViewModel.FailedConnectToServer = false;
+                        return await response.Content.ReadAsStringAsync();
+                    }
+
+                    throw new HttpRequestException(response.ReasonPhrase);
                 }
+                catch (HttpRequestException exception)
+                {
+                    ViewModel.FailedConnectToServer = true;
+                }
+
 
                 return null;
             }

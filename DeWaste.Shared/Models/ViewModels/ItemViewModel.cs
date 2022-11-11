@@ -64,5 +64,7 @@ namespace DeWaste.Models.ViewModels
                 item.img = temp;
             }
         }
+        
+        
     }
 }

@@ -15,5 +15,11 @@ namespace DeWaste.Models.DataModels
 
         [JsonPropertyName("description")]
         public string description { get; set; }
+
+        [JsonPropertyName("id")]
+        public long id { get; set; }
+
+        [JsonPropertyName("categories")]
+        public List<Category> categories { get; set; }
     }
 }

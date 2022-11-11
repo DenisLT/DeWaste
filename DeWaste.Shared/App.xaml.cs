@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Microsoft.Extensions.DependencyInjection;
 using DeWaste.Models.ViewModels;
 using DeWaste.Services;
+using DeWaste.Logging;
 
 namespace DeWaste
 {
@@ -39,8 +40,10 @@ namespace DeWaste
         {
             var serviceCollection = new ServiceCollection();
 
-            serviceCollection.AddSingleton<BindableBase, ItemViewModel>();
+            serviceCollection.AddSingleton<NavigationViewModel>();
+            serviceCollection.AddSingleton<ItemViewModel>();
             serviceCollection.AddSingleton<DataProvider>();
+            serviceCollection.AddSingleton<Logging.ILogger, FileLogger>();
 
             return serviceCollection.BuildServiceProvider();
         }

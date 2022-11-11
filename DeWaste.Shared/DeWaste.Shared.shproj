@@ -17,15 +17,21 @@
   </ItemGroup>
   <ItemGroup>
     <_Globbed_Compile Remove="DataFiles\IDataProvider.cs" />
+    <_Globbed_Compile Remove="Logging\FileLogger.cs" />
+    <_Globbed_Compile Remove="Logging\ILogger.cs" />
     <_Globbed_Compile Remove="MainPage.xaml.cs" />
+    <_Globbed_Compile Remove="Models\DataModels\Category.cs" />
     <_Globbed_Compile Remove="Models\DataModels\Item.cs" />
     <_Globbed_Compile Remove="Models\DataModels\Suggestion.cs" />
     <_Globbed_Compile Remove="Models\ViewModels\BindableBase.cs" />
     <_Globbed_Compile Remove="Models\ViewModels\DispatchedBindableBase.cs" />
     <_Globbed_Compile Remove="Models\ViewModels\ItemViewModel.cs" />
+    <_Globbed_Compile Remove="Models\ViewModels\NavigationViewModel.cs" />
     <_Globbed_Compile Remove="Models\ViewModels\SearchViewModel.cs" />
     <_Globbed_Compile Remove="Models\ViewModels\SearchViewModel.xaml.cs" />
     <_Globbed_Compile Remove="Services\DataProvider.cs" />
+    <_Globbed_Compile Remove="Services\FileHandler.cs" />
+    <_Globbed_Compile Remove="Services\FileReader.cs" />
     <_Globbed_Compile Remove="Services\UniqueSuggestionIDComparer.cs" />
     <_Globbed_Compile Remove="Views\ItemView.xaml.cs" />
     <_Globbed_Compile Remove="Views\SearchView.xaml.cs" />

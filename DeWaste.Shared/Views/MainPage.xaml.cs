@@ -12,6 +12,8 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using DeWaste.Models.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,10 +24,14 @@ namespace DeWaste.Views
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        NavigationViewModel ViewModel;
+        IServiceProvider container = ((App)App.Current).Container;
+
         public MainPage()
         {
             this.InitializeComponent();
-            
+            ViewModel = ActivatorUtilities.GetServiceOrCreateInstance(container, typeof(NavigationViewModel)) as NavigationViewModel;
+            DataContext = ViewModel;
         }
 
         private void Navigation_Loaded(object sender, RoutedEventArgs e)

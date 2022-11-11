@@ -18,12 +18,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Logging\FileLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Logging\ILogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DataModels\Category.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\DataModels\Item.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\DataModels\Suggestion.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModels\BindableBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModels\ItemViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModels\NavigationViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModels\SearchViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\DataProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\FileHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\UniqueSuggestionIDComparer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ItemView.xaml.cs">
       <DependentUpon>ItemView.xaml</DependentUpon>
