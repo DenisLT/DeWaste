@@ -56,16 +56,8 @@ namespace DeWaste.Models.ViewModels
             {
                 try
                 {
-                    var result = await dataProvider.GetSimilar(name: SearchTerm);
                     
-                    SearchResults = new ObservableCollection<Suggestion>(result);
-
-
-                    if (result.Any())
-                    {
-                        var res = new ObservableCollection<Suggestion>(result);
-                        SearchResults = res;
-                    }
+                    SearchResults = await dataProvider.GetSimilar(name: SearchTerm);
 
                 }
                 finally

@@ -54,7 +54,7 @@ namespace DeWaste.WebServices
 
                     throw new HttpRequestException(response.ReasonPhrase);
                 }
-                catch (HttpRequestException exception)
+                catch (Exception exception)
                 {
                     ViewModel.FailedConnectToServer = true;
                 }
