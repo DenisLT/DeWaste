@@ -45,7 +45,7 @@ namespace DeWaste.WebServices
                 return JsonSerializer.Deserialize<ObservableCollection<Item>>(result)[0];
             }
 
-            return new Item();
+            return null;
         }
 
         public async Task<List<Category>> GetCategories(int id)

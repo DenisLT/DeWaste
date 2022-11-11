@@ -41,7 +41,6 @@ namespace DeWaste.Services
 
             if (!data.IsNullOrEmpty())
             {
-               
                suggestions = JsonSerializer.Deserialize<ObservableCollection<Suggestion>>(data);
             }
 
@@ -96,9 +95,9 @@ namespace DeWaste.Services
                 if (item.categories == null)
                     item.categories = await databaseApi.GetCategories(id: id);
                 items[id] = item;
+                SaveItems();
             }
         
-            SaveItems();
             return items[id];
         }
     }
