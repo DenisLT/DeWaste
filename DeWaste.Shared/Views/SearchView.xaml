@@ -24,6 +24,9 @@
             </Grid.RowDefinitions>
             <AutoSuggestBox PlaceholderText = "Enter a product to recycle"             
                             Grid.Row="0"
+                            HorizontalAlignment="Stretch"
+                            MaxWidth="350"
+                            CornerRadius="10"
                             Text="{x:Bind ViewModel.SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 
             </AutoSuggestBox>
@@ -32,6 +35,8 @@
              <ListView ItemsSource="{x:Bind ViewModel.SearchResults, Mode=OneWay}"
                        Grid.Row="1"
                        SelectionChanged="ItemChosen"
+                       HorizontalAlignment="Stretch"
+                       MaxWidth="400"
                        x:Name="ItemListView">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="datamodels:Suggestion">

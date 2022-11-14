@@ -85,7 +85,8 @@
                         CornerRadius="10"
                         Height="120"
                         Margin="0,0,10,0"
-                        Width="120">
+                        Width="120"
+                        Click="PlasticCategoryVisibility_Click">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -105,7 +106,8 @@
                         CornerRadius="10"
                         Height="120"
                         Margin="0,0,10,0"
-                        Width="120">
+                        Width="120"
+                        Click="PaperCategoryVisibility_Click">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -125,7 +127,8 @@
                         CornerRadius="10"
                         Height="120"
                         Margin="0,0,10,0"
-                        Width="120">
+                        Width="120"
+                        Click="MetalCategoryVisibility_Click">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -145,7 +148,8 @@
                         CornerRadius="10"
                         Height="120"
                         Margin="0,0,10,0"
-                        Width="120">
+                        Width="120"
+                        Click="WoodCategoryVisibility_Click">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -165,7 +169,8 @@
                         CornerRadius="10"
                         Height="120"
                         Margin="0,0,10,0"
-                        Width="120">
+                        Width="120"
+                        Visibility="Collapsed">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -185,7 +190,8 @@
                         CornerRadius="10"
                         Height="120"
                         Margin="0,0,10,0"
-                        Width="120">
+                        Width="120"
+                        Click="GlassCategoryVisibility_Click">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -205,7 +211,8 @@
                         CornerRadius="10"
                         Height="120"
                         Margin="0,0,10,0"
-                        Width="120">
+                        Width="120"
+                        Visibility="Collapsed">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -226,7 +233,8 @@
                         CornerRadius="10"
                         Height="120"
                         Margin="0,0,10,0"
-                        Width="120">
+                        Width="120"
+                        Visibility="Collapsed">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -246,7 +254,8 @@
                         CornerRadius="10"
                         Height="120"
                         Margin="0,0,10,0"
-                        Width="120">
+                        Width="120"
+                        Visibility="Collapsed">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -266,7 +275,8 @@
                         CornerRadius="10"
                         Height="120"
                         Margin="0,0,10,0"
-                        Width="120">
+                        Width="120"
+                        Visibility="Collapsed">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -286,7 +296,8 @@
                         CornerRadius="10"
                         Height="120"
                         Margin="0,0,10,0"
-                        Width="120">
+                        Width="120"
+                        Visibility="Collapsed">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -311,7 +322,8 @@
                 Grid.Row="4"
                 Margin="20"
                 MinHeight="600"
-                Padding="30">
+                Padding="30"
+                Visibility="{Binding Path=PlasticCategoryVisibility, Mode=TwoWay}">
                 <!--  Plastic Category Heading  -->
                 <StackPanel Orientation="Horizontal">
                     <Image
@@ -693,7 +705,8 @@
                 Grid.Row="5"
                 Margin="20"
                 MinHeight="600"
-                Padding="30">
+                Padding="30"
+                Visibility="{Binding Path=PaperCategoryVisibility, Mode=TwoWay}">
                 <!--  Paper Category Heading  -->
                 <StackPanel Orientation="Horizontal">
                     <Image
@@ -881,7 +894,8 @@
                 Grid.Row="6"
                 Margin="20"
                 MinHeight="600"
-                Padding="30">
+                Padding="30"
+                Visibility="{Binding Path=MetalCategoryVisibility, Mode=TwoWay}">
                 <!--  Metal Category Heading  -->
                 <StackPanel Orientation="Horizontal">
                     <Image
@@ -1021,7 +1035,8 @@
                 Grid.Row="7"
                 Margin="20"
                 MinHeight="600"
-                Padding="30">
+                Padding="30"
+                Visibility="{Binding Path=WoodCategoryVisibility, Mode=TwoWay}">
                 <!--  Wood Category Heading  -->
                 <StackPanel Orientation="Horizontal">
                     <Image
@@ -1161,7 +1176,8 @@
                 Grid.Row="8"
                 Margin="20"
                 MinHeight="600"
-                Padding="30">
+                Padding="30"
+                Visibility="{Binding Path=GlassCategoryVisibility, Mode=TwoWay}">
                 <StackPanel Orientation="Horizontal">
                     <Image
                         Margin="0,0,20,30"
