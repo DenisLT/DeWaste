@@ -56,9 +56,7 @@ namespace DeWaste.Models.ViewModels
             {
                 try
                 {
-                    
                     SearchResults = await dataProvider.GetSimilar(name: SearchTerm);
-
                 }
                 finally
                 {

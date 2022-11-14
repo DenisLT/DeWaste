@@ -86,8 +86,9 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Click="PlasticCategoryVisibility_Click"
-                        Visibility="{Binding Path=PlasticCategoryButton, Mode=TwoWay}">
+                        Visibility="{x:Bind ViewModel.PlasticVisibility, Mode=OneWay}"
+                        Tag="1"
+                        Click="Update_Toggle">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -108,8 +109,9 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Click="PaperCategoryVisibility_Click"
-                        Visibility="{Binding Path=PaperCategoryButton, Mode=TwoWay}">
+                        Visibility="{x:Bind ViewModel.PaperVisibility, Mode=OneWay}"
+                        Tag="2"
+                        Click="Update_Toggle">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -130,8 +132,9 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Click="MetalCategoryVisibility_Click"
-                        Visibility="{Binding Path=MetalCategoryButton, Mode=TwoWay}">
+                        Visibility="{x:Bind ViewModel.MetalVisibility, Mode=OneWay}"
+                        Tag="3"
+                        Click="Update_Toggle">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -152,8 +155,9 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Click="WoodCategoryVisibility_Click"
-                        Visibility="{Binding Path=WoodCategoryButton, Mode=TwoWay}">
+                        Visibility="{x:Bind ViewModel.WoodVisibility, Mode=OneWay}"
+                        Tag="4"
+                        Click="Update_Toggle">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -174,7 +178,9 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Visibility="Collapsed">
+                        Visibility="{x:Bind ViewModel.TextileVisibility, Mode=OneWay}"
+                        Tag="5"
+                        Click="Update_Toggle">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -195,8 +201,9 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Click="GlassCategoryVisibility_Click"
-                        Visibility="{Binding Path=GlassCategoryButton, Mode=TwoWay}">
+                        Visibility="{x:Bind ViewModel.GlassVisibility, Mode=OneWay}"
+                        Tag="6"
+                        Click="Update_Toggle">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -217,7 +224,9 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Visibility="Collapsed">
+                        Visibility="{x:Bind ViewModel.CombinedVisibility, Mode=OneWay}"
+                        Tag="7"
+                        Click="Update_Toggle">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -239,7 +248,9 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Visibility="Collapsed">
+                        Visibility="{x:Bind ViewModel.BulkyVisibility, Mode=OneWay}"
+                        Tag=""
+                        Click="Update_Toggle">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -260,7 +271,9 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Visibility="Collapsed">
+                        Visibility="{x:Bind ViewModel.DepositVisibility, Mode=OneWay}"
+                        Tag="9"
+                        Click="Update_Toggle">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -281,7 +294,9 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Visibility="Collapsed">
+                        Visibility="{x:Bind ViewModel.EWasteVisibility, Mode=OneWay}"
+                        Tag="10"
+                        Click="Update_Toggle">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -302,7 +317,9 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Visibility="Collapsed">
+                        Visibility="{x:Bind ViewModel.ContaminatedVisibility, Mode=OneWay}"
+                        Tag="11"
+                        Click="Update_Toggle">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -328,16 +345,23 @@
                 Margin="20"
                 MinHeight="600"
                 Padding="30"
-                Visibility="{Binding Path=PlasticCategoryVisibility, Mode=TwoWay}">
+                Visibility="{x:Bind ViewModel.PlasticToggle, Mode=OneWay}">
+                
                 <!--  Plastic Category Heading  -->
-                <StackPanel Orientation="Horizontal">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
                     <Image
                         Margin="0,0,20,30"
                         Source="/Assets/Images/bin_icons/plastic_bin.png"
                         Stretch="Fill"
                         VerticalAlignment="Center"
-                        Width="100" />
-                    <StackPanel>
+                        Width="100" 
+                        Grid.Column="0"/>
+                    <StackPanel
+                        Grid.Column="1">
                         <TextBlock
                             FontSize="28"
                             Foreground="Black"
@@ -351,7 +375,7 @@
                             To dispose of plastic waste, use containers for plastic. Plastic that is discarded must be clean and uncontaminated. Plastic packaging that can be recycled is marked with the recycling symbol.
                         </TextBlock>
                     </StackPanel>
-                </StackPanel>
+                </Grid>
                 <!--  Plastic Category Labeling meaning  -->
                 <TextBlock
                     FontSize="22"
@@ -711,16 +735,23 @@
                 Margin="20"
                 MinHeight="600"
                 Padding="30"
-                Visibility="{Binding Path=PaperCategoryVisibility, Mode=TwoWay}">
+                Visibility="{x:Bind ViewModel.PaperToggle, Mode=OneWay}">
+
                 <!--  Paper Category Heading  -->
-                <StackPanel Orientation="Horizontal">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
                     <Image
                         Margin="0,0,20,30"
                         Source="/Assets/Images/bin_icons/paper_bin.png"
                         Stretch="Fill"
                         VerticalAlignment="Center"
-                        Width="100" />
-                    <StackPanel>
+                        Width="100"
+                        Grid.Column="0"/>
+                    <StackPanel
+                        Grid.Column="1">
                         <TextBlock
                             FontSize="28"
                             Foreground="Black"
@@ -734,7 +765,7 @@
                             Containers for paper and cardboard should be used for disposing of paper and cardboard. Discarded paper, cardboard and their packaging must be clean.
                         </TextBlock>
                     </StackPanel>
-                </StackPanel>
+                </Grid>
                 <!--  Paper Category Labeling meaning  -->
                 <TextBlock
                     FontSize="22"
@@ -900,16 +931,23 @@
                 Margin="20"
                 MinHeight="600"
                 Padding="30"
-                Visibility="{Binding Path=MetalCategoryVisibility, Mode=TwoWay}">
+                Visibility="{x:Bind ViewModel.ContaminatedToggle, Mode=OneWay}">
+
                 <!--  Metal Category Heading  -->
-                <StackPanel Orientation="Horizontal">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
                     <Image
                         Margin="0,0,20,30"
                         Source="/Assets/Images/bin_icons/metal_bin.png"
                         Stretch="Fill"
                         VerticalAlignment="Center"
-                        Width="100" />
-                    <StackPanel>
+                        Width="100" 
+                        Grid.Column="0"/>
+                    <StackPanel
+                        Grid.Column="1">
                         <TextBlock
                             FontSize="28"
                             Foreground="Black"
@@ -923,7 +961,7 @@
                             Containers for plastic should be used for disposing of metal waste. However, metal has a value from certain amount of it. Check whether your metal has a value.
                         </TextBlock>
                     </StackPanel>
-                </StackPanel>
+                </Grid>
                 <!--  Metal Category Labeling meaning  -->
                 <TextBlock
                     FontSize="22"
@@ -1041,16 +1079,23 @@
                 Margin="20"
                 MinHeight="600"
                 Padding="30"
-                Visibility="{Binding Path=WoodCategoryVisibility, Mode=TwoWay}">
+                Visibility="{x:Bind ViewModel.WoodToggle, Mode=OneWay}">
+
                 <!--  Wood Category Heading  -->
-                <StackPanel Orientation="Horizontal">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
                     <Image
                         Margin="0,0,20,30"
                         Source="/Assets/Images/bin_icons/paper_bin.png"
                         Stretch="Fill"
                         VerticalAlignment="Center"
-                        Width="100" />
-                    <StackPanel>
+                        Width="100"
+                        Grid.Column="0"/>
+                    <StackPanel
+                        Grid.Column="1">
                         <TextBlock
                             FontSize="28"
                             Foreground="Black"
@@ -1064,7 +1109,7 @@
                             Lorem ipsum.
                         </TextBlock>
                     </StackPanel>
-                </StackPanel>
+                </Grid>
                 <!--  Wood Category Labeling meaning  -->
                 <TextBlock
                     FontSize="22"
@@ -1182,15 +1227,22 @@
                 Margin="20"
                 MinHeight="600"
                 Padding="30"
-                Visibility="{Binding Path=GlassCategoryVisibility, Mode=TwoWay}">
-                <StackPanel Orientation="Horizontal">
+                Visibility="{x:Bind ViewModel.GlassToggle, Mode=OneWay}">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
                     <Image
                         Margin="0,0,20,30"
                         Source="/Assets/Images/bin_icons/glass_bin.png"
                         Stretch="Fill"
                         VerticalAlignment="Center"
-                        Width="100" />
-                    <StackPanel>
+                        Width="100" 
+                        Grid.Column="0"/>
+                    <StackPanel
+                        Grid.Column="1">
                         <TextBlock
                             FontSize="28"
                             Foreground="Black"
@@ -1203,7 +1255,7 @@
                             TextAlignment="Justify"
                             TextWrapping="Wrap" />
                     </StackPanel>
-                </StackPanel>
+                </Grid>
                 <Grid
                     Background="#ececec"
                     CornerRadius="13"
