@@ -86,7 +86,8 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Click="PlasticCategoryVisibility_Click">
+                        Click="PlasticCategoryVisibility_Click"
+                        Visibility="{Binding Path=PlasticCategoryButton, Mode=TwoWay}">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -107,7 +108,8 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Click="PaperCategoryVisibility_Click">
+                        Click="PaperCategoryVisibility_Click"
+                        Visibility="{Binding Path=PaperCategoryButton, Mode=TwoWay}">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -128,7 +130,8 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Click="MetalCategoryVisibility_Click">
+                        Click="MetalCategoryVisibility_Click"
+                        Visibility="{Binding Path=MetalCategoryButton, Mode=TwoWay}">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -149,7 +152,8 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Click="WoodCategoryVisibility_Click">
+                        Click="WoodCategoryVisibility_Click"
+                        Visibility="{Binding Path=WoodCategoryButton, Mode=TwoWay}">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"
@@ -191,7 +195,8 @@
                         Height="120"
                         Margin="0,0,10,0"
                         Width="120"
-                        Click="GlassCategoryVisibility_Click">
+                        Click="GlassCategoryVisibility_Click"
+                        Visibility="{Binding Path=GlassCategoryButton, Mode=TwoWay}">
                         <StackPanel>
                             <Image
                                 Margin="0,5,0,0"

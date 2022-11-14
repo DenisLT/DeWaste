@@ -34,6 +34,13 @@ namespace DeWaste.Views
             MetalCategoryVisibility = "Collapsed";
             WoodCategoryVisibility = "Collapsed";
             GlassCategoryVisibility = "Collapsed";
+
+            PlasticCategoryButton = "Collapsed";
+            PaperCategoryButton = "Collapsed";
+            MetalCategoryButton = "Collapsed";
+            WoodCategoryButton = "Collapsed";
+            GlassCategoryButton = "Collapsed";
+
             this.InitializeComponent();
             ViewModel = ActivatorUtilities.GetServiceOrCreateInstance(container, typeof(ItemViewModel)) as ItemViewModel;
             DataContext = this;
@@ -46,6 +53,81 @@ namespace DeWaste.Views
                 return;
             } 
             ViewModel.SetItem((Item)e.Parameter);
+        }
+
+        //Plastic button
+        private string _PlasticCategoryButton;
+        public string PlasticCategoryButton
+        {
+            get { return _PlasticCategoryButton; }
+            set
+            {
+                if (_PlasticCategoryButton != value)
+                {
+                    _PlasticCategoryButton = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        //paper button
+        private string _PaperCategoryButton;
+        public string PaperCategoryButton
+        {
+            get { return _PaperCategoryButton; }
+            set
+            {
+                if (_PaperCategoryButton != value)
+                {
+                    _PaperCategoryButton = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        //metal button
+        private string _MetalCategoryButton;
+        public string MetalCategoryButton
+        {
+            get { return _MetalCategoryButton; }
+            set
+            {
+                if (_MetalCategoryButton != value)
+                {
+                    _MetalCategoryButton = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        //wood button
+        private string _WoodCategoryButton;
+        public string WoodCategoryButton
+        {
+            get { return _WoodCategoryButton; }
+            set
+            {
+                if (_WoodCategoryButton != value)
+                {
+                    _WoodCategoryButton = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        //glass button
+        private string _GlassCategoryButton;
+        public string GlassCategoryButton
+        {
+            get { return _GlassCategoryButton; }
+            set
+            {
+                if (_GlassCategoryButton != value)
+                {
+                    _GlassCategoryButton = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
 
@@ -173,8 +255,6 @@ namespace DeWaste.Views
                 }
             }
         }
-
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
