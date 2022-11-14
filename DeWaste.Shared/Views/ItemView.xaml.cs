@@ -18,6 +18,8 @@ using DeWaste.Models.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
 
+using System.Runtime.CompilerServices;
+
 namespace DeWaste.Views
 {
     public sealed partial class ItemView : Page
@@ -29,7 +31,7 @@ namespace DeWaste.Views
         {
             this.InitializeComponent();
             ViewModel = ActivatorUtilities.GetServiceOrCreateInstance(container, typeof(ItemViewModel)) as ItemViewModel;
-            DataContext = ViewModel;
+            DataContext = this;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -39,6 +41,12 @@ namespace DeWaste.Views
                 return;
             } 
             ViewModel.SetItem((Item)e.Parameter);
+        }
+
+        private void Update_Toggle(object sender, RoutedEventArgs e)
+        {
+            int buttonId = int.Parse((sender as Button).Tag.ToString());
+            ViewModel.setToggle(buttonId);
         }
     }
 }
