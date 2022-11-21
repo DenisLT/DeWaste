@@ -171,29 +171,6 @@
                                 Text="Wood" />
                         </StackPanel>
                     </Button>
-                    <!--  Textile category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.TextileVisibility, Mode=OneWay}"
-                        Tag="5"
-                        Click="Update_Toggle">
-                        <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Textile" />
-                        </StackPanel>
-                    </Button>
                     <!--  Glass category button  -->
                     <Button
                         Background="#c8c8c8"
@@ -215,6 +192,29 @@
                                 Foreground="Black"
                                 Margin="0,5,0,0"
                                 Text="Glass" />
+                        </StackPanel>
+                    </Button>
+                    <!--  Textile category button  -->
+                    <Button
+                        Background="#c8c8c8"
+                        CornerRadius="10"
+                        Height="120"
+                        Margin="0,0,10,0"
+                        Width="120"
+                        Visibility="{x:Bind ViewModel.TextileVisibility, Mode=OneWay}"
+                        Tag="5"
+                        Click="Update_Toggle">
+                        <StackPanel>
+                            <Image
+                                Margin="0,5,0,0"
+                                Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
+                                Stretch="Fill"
+                                VerticalAlignment="Center"
+                                Width="50" />
+                            <TextBlock
+                                Foreground="Black"
+                                Margin="0,5,0,0"
+                                Text="Textile" />
                         </StackPanel>
                     </Button>
                     <!--  Combined waste category button  -->
@@ -272,7 +272,7 @@
                         Margin="0,0,10,0"
                         Width="120"
                         Visibility="{x:Bind ViewModel.DepositVisibility, Mode=OneWay}"
-                        Tag="9"
+                        Tag="10"
                         Click="Update_Toggle">
                         <StackPanel>
                             <Image
@@ -295,7 +295,7 @@
                         Margin="0,0,10,0"
                         Width="120"
                         Visibility="{x:Bind ViewModel.EWasteVisibility, Mode=OneWay}"
-                        Tag="10"
+                        Tag=""
                         Click="Update_Toggle">
                         <StackPanel>
                             <Image
@@ -1302,6 +1302,62 @@
                             TextWrapping="Wrap" />
                     </Border>
                 </Grid>
+            </StackPanel>
+
+            <!--  Deposit waste category  -->
+            <StackPanel
+                Background="#c8c8c8"
+                CornerRadius="25"
+                Grid.Row="8"
+                Margin="20"
+                MinHeight="600"
+                Padding="30"
+                Visibility="{x:Bind ViewModel.DepositToggle, Mode=OneWay}">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Margin="0,0,20,30"
+                        Source="/Assets/Images/bin_icons/deposit_bin.png"
+                        Stretch="Fill"
+                        VerticalAlignment="Center"
+                        Width="100" 
+                        Grid.Column="0"/>
+                    <StackPanel
+                        Grid.Column="1">
+                        <TextBlock
+                            FontSize="28"
+                            Foreground="Black"
+                            Margin="0,0,0,10"
+                            Text="Deposit" />
+                        <TextBlock
+                            FontSize="20"
+                            Foreground="Black"
+                            Text="Bottles marked with a special deposit symbol can be thrown away into deposit points. After bottles are taken you will receive 10 cents for every single bottle."
+                            TextAlignment="Justify"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+                 
+                <!--Button needs link-->
+                <Button 
+                        Background="#ececec"
+                        Margin="0,0,10,0"
+                        HorizontalAlignment="Center"
+                        CornerRadius="13">
+                    <StackPanel>
+
+                        <TextBlock
+                                Foreground="Black"
+                                Margin="0,5,0,0"
+                                Text="To find nearest deposit point click here" 
+                            TextAlignment="Justify"
+                            TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </Grid>
     </ScrollViewer>
