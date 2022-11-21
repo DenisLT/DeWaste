@@ -14,10 +14,12 @@ namespace DeWaste.Models.ViewModels
         
         public ItemViewModel()
         {
-            item = new Item();
-            item.img = "/Assets/Images/logo.png";
-            item.description = "Go to search and search for something in order to display.";
-            item.name = "Example item";
+            item = new Item
+            {
+                img = "/Assets/Images/logo.png",
+                description = "Go to search and search for something in order to display.",
+                name = "Example item"
+            };
             updateUI();
         }
 
@@ -146,10 +148,10 @@ namespace DeWaste.Models.ViewModels
 
         public bool DirtyToggle
         {
-            get { return toggles[9]; }
+            get { return toggles[12]; }
             set
             {
-                SetProperty(ref toggles[9], value);
+                SetProperty(ref toggles[12], value);
             }
         }
 
@@ -173,10 +175,10 @@ namespace DeWaste.Models.ViewModels
 
         public bool ContaminatedToggle
         {
-            get { return toggles[12]; }
+            get { return toggles[9]; }
             set
             {
-                SetProperty(ref toggles[12], value);
+                SetProperty(ref toggles[9], value);
             }
         }
 
@@ -279,10 +281,10 @@ namespace DeWaste.Models.ViewModels
 
         public bool DirtyVisibility
         {
-            get => categories[9];
+            get => categories[12];
             set
             {
-                SetProperty(ref categories[9], value);
+                SetProperty(ref categories[12], value);
             }
         }
         
@@ -306,10 +308,10 @@ namespace DeWaste.Models.ViewModels
 
         public bool ContaminatedVisibility
         {
-            get => categories[12];
+            get => categories[9];
             set
             {
-                SetProperty(ref categories[12], value);
+                SetProperty(ref categories[9], value);
             }
         }
 

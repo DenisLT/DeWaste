@@ -79,7 +79,7 @@
             <!--  Categories navigation  -->
             <ScrollViewer Grid.Row="3" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Horizontal" Padding="20">
-                    <!--  Plastic category button  -->
+                    <!--  1 Plastic category button  -->
                     <Button
                         Background="#c8c8c8"
                         CornerRadius="10"
@@ -102,7 +102,7 @@
                                 Text="Plastic" />
                         </StackPanel>
                     </Button>
-                    <!--  Paper category button  -->
+                    <!--  2 Paper category button  -->
                     <Button
                         Background="#c8c8c8"
                         CornerRadius="10"
@@ -125,7 +125,7 @@
                                 Text="Cardboard" />
                         </StackPanel>
                     </Button>
-                    <!--  Metal category button  -->
+                    <!--  3 Metal category button  -->
                     <Button
                         Background="#c8c8c8"
                         CornerRadius="10"
@@ -148,7 +148,7 @@
                                 Text="Metal" />
                         </StackPanel>
                     </Button>
-                    <!--  Wood category button  -->
+                    <!--  4 Wood category button  -->
                     <Button
                         Background="#c8c8c8"
                         CornerRadius="10"
@@ -171,7 +171,7 @@
                                 Text="Wood" />
                         </StackPanel>
                     </Button>
-                    <!--  Glass category button  -->
+                    <!--  6 Glass category button  -->
                     <Button
                         Background="#c8c8c8"
                         CornerRadius="10"
@@ -194,7 +194,7 @@
                                 Text="Glass" />
                         </StackPanel>
                     </Button>
-                    <!--  Textile category button  -->
+                    <!--  5 Textile category button  ***-->
                     <Button
                         Background="#c8c8c8"
                         CornerRadius="10"
@@ -217,7 +217,7 @@
                                 Text="Textile" />
                         </StackPanel>
                     </Button>
-                    <!--  Combined waste category button  -->
+                    <!--  7 Combined waste category button  ***-->
                     <Button
                         Background="#c8c8c8"
                         CornerRadius="10"
@@ -241,7 +241,7 @@
                                 Text="Combined" />
                         </StackPanel>
                     </Button>
-                    <!--  Bulky waste category button  -->
+                    <!--  8 Bulky waste category button  ***-->
                     <Button
                         Background="#c8c8c8"
                         CornerRadius="10"
@@ -249,7 +249,7 @@
                         Margin="0,0,10,0"
                         Width="120"
                         Visibility="{x:Bind ViewModel.BulkyVisibility, Mode=OneWay}"
-                        Tag=""
+                        Tag="8"
                         Click="Update_Toggle">
                         <StackPanel>
                             <Image
@@ -264,7 +264,7 @@
                                 Text="Bulky waste" />
                         </StackPanel>
                     </Button>
-                    <!--  Deposit category button  -->
+                    <!--  10 Deposit category button  -->
                     <Button
                         Background="#c8c8c8"
                         CornerRadius="10"
@@ -287,7 +287,7 @@
                                 Text="Deposit" />
                         </StackPanel>
                     </Button>
-                    <!--  E-waste category button  -->
+                    <!--  11 E-waste category button  ***-->
                     <Button
                         Background="#c8c8c8"
                         CornerRadius="10"
@@ -295,7 +295,7 @@
                         Margin="0,0,10,0"
                         Width="120"
                         Visibility="{x:Bind ViewModel.EWasteVisibility, Mode=OneWay}"
-                        Tag=""
+                        Tag="11"
                         Click="Update_Toggle">
                         <StackPanel>
                             <Image
@@ -310,7 +310,7 @@
                                 Text="E-waste" />
                         </StackPanel>
                     </Button>
-                    <!--  Contaminated or Dirty category button  -->
+                    <!--  9 Contaminated or Dirty category button  ***-->
                     <Button
                         Background="#c8c8c8"
                         CornerRadius="10"
@@ -318,7 +318,7 @@
                         Margin="0,0,10,0"
                         Width="120"
                         Visibility="{x:Bind ViewModel.ContaminatedVisibility, Mode=OneWay}"
-                        Tag="11"
+                        Tag="9"
                         Click="Update_Toggle">
                         <StackPanel>
                             <Image
@@ -337,7 +337,7 @@
             </ScrollViewer>
             <!--  Categories  -->
 
-            <!--  Plastic waste category  -->
+            <!--  1 Plastic waste category  -->
             <StackPanel
                 Background="#c8c8c8"
                 CornerRadius="25"
@@ -727,7 +727,7 @@
                 </Grid>
             </StackPanel>
 
-            <!--  Paper waste category  -->
+            <!--  2 Paper waste category  -->
             <StackPanel
                 Background="#c8c8c8"
                 CornerRadius="25"
@@ -923,7 +923,7 @@
 
             </StackPanel>
 
-            <!--  Metal waste category  -->
+            <!--  3 Metal waste category  -->
             <StackPanel
                 Background="#c8c8c8"
                 CornerRadius="25"
@@ -931,7 +931,7 @@
                 Margin="20"
                 MinHeight="600"
                 Padding="30"
-                Visibility="{x:Bind ViewModel.ContaminatedToggle, Mode=OneWay}">
+                Visibility="{x:Bind ViewModel.MetalToggle, Mode=OneWay}">
 
                 <!--  Metal Category Heading  -->
                 <Grid>
@@ -1071,7 +1071,7 @@
 
             </StackPanel>
 
-            <!--  Wooden waste category  -->
+            <!--  4 Wooden waste category  -->
             <StackPanel
                 Background="#c8c8c8"
                 CornerRadius="25"
@@ -1219,7 +1219,7 @@
 
             </StackPanel>
 
-            <!--  Glass waste category  -->
+            <!--  6 Glass waste category  -->
             <StackPanel
                 Background="#c8c8c8"
                 CornerRadius="25"
@@ -1304,7 +1304,7 @@
                 </Grid>
             </StackPanel>
 
-            <!--  Deposit waste category  -->
+            <!--  10 Deposit waste category  -->
             <StackPanel
                 Background="#c8c8c8"
                 CornerRadius="25"
@@ -1341,8 +1341,179 @@
                             TextWrapping="Wrap" />
                     </StackPanel>
                 </Grid>
-                 
-                <!--Button needs link-->
+
+                <Button 
+                        Background="#ececec"
+                        Margin="0,0,10,0"
+                        HorizontalAlignment="Center"
+                        CornerRadius="13"
+                        Click="WebLauncher"
+                        Tag="https://grazintiverta.lt/kur-grazinti/14">
+                    <StackPanel>
+
+                        <TextBlock
+                                Foreground="Black"
+                                Margin="0,5,0,0"
+                                Text="To find nearest deposit point click here" 
+                            TextAlignment="Justify"
+                            TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <!--  11 E-waste waste category  !Need text!-->
+            <StackPanel
+                Background="#c8c8c8"
+                CornerRadius="25"
+                Grid.Row="8"
+                Margin="20"
+                MinHeight="600"
+                Padding="30"
+                Visibility="{x:Bind ViewModel.EWasteToggle, Mode=OneWay}">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Margin="0,0,20,30"
+                        Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
+                        Stretch="Fill"
+                        VerticalAlignment="Center"
+                        Width="100" 
+                        Grid.Column="0"/>
+                    <StackPanel
+                        Grid.Column="1">
+                        <TextBlock
+                            FontSize="28"
+                            Foreground="Black"
+                            Margin="0,0,0,10"
+                            Text="E-waste" />
+                        <TextBlock
+                            FontSize="20"
+                            Foreground="Black"
+                            Text="addText"
+                            TextAlignment="Justify"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+
+                <Button 
+                        Background="#ececec"
+                        Margin="0,0,10,0"
+                        HorizontalAlignment="Center"
+                        CornerRadius="13"
+                        Click="WebLauncher"
+                        Tag="https://atliekos.lt/miestas/vilniaus-m/paslauga/elektronikos-atliekos/">
+                    <StackPanel>
+
+                        <TextBlock
+                                Foreground="Black"
+                                Margin="0,5,0,0"
+                                Text="To find nearest E-waste collection points point click here" 
+                            TextAlignment="Justify"
+                            TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <!--  8 Bulky waste category  !Need text!-->
+            <StackPanel
+                Background="#c8c8c8"
+                CornerRadius="25"
+                Grid.Row="8"
+                Margin="20"
+                MinHeight="600"
+                Padding="30"
+                Visibility="{x:Bind ViewModel.BulkyToggle, Mode=OneWay}">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Margin="0,0,20,30"
+                        Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
+                        Stretch="Fill"
+                        VerticalAlignment="Center"
+                        Width="100" 
+                        Grid.Column="0"/>
+                    <StackPanel
+                        Grid.Column="1">
+                        <TextBlock
+                            FontSize="28"
+                            Foreground="Black"
+                            Margin="0,0,0,10"
+                            Text="Bulky" />
+                        <TextBlock
+                            FontSize="20"
+                            Foreground="Black"
+                            Text="addText"
+                            TextAlignment="Justify"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+
+                <Button 
+                        Background="#ececec"
+                        Margin="0,0,10,0"
+                        HorizontalAlignment="Center"
+                        CornerRadius="13"
+                        Click="WebLauncher"
+                        Tag="https://aaa.lrv.lt/lt/veiklos-sritys/atliekos/atlieku-tvarkytojai/dideliu-gabaritu-stambiagabariciu-atlieku-surinkimo-aiksteles-lietuvoje">
+                    <StackPanel>
+
+                        <TextBlock
+                                Foreground="Black"
+                                Margin="0,5,0,0"
+                                Text="To find nearest Bulky waste collection points point click here" 
+                            TextAlignment="Justify"
+                            TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <!--  7 Combined waste category  !Need text!-->
+            <StackPanel
+                Background="#c8c8c8"
+                CornerRadius="25"
+                Grid.Row="8"
+                Margin="20"
+                MinHeight="600"
+                Padding="30"
+                Visibility="{x:Bind ViewModel.CombinedToggle, Mode=OneWay}">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Margin="0,0,20,30"
+                        Source="/Assets/Images/bin_icons/combined_bin.png"
+                        Stretch="Fill"
+                        VerticalAlignment="Center"
+                        Width="100" 
+                        Grid.Column="0"/>
+                    <StackPanel
+                        Grid.Column="1">
+                        <TextBlock
+                            FontSize="28"
+                            Foreground="Black"
+                            Margin="0,0,0,10"
+                            Text="Combined" />
+                        <TextBlock
+                            FontSize="20"
+                            Foreground="Black"
+                            Text="addText"
+                            TextAlignment="Justify"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+
+                <!--Button is not functional!  Link:  -->
                 <Button 
                         Background="#ececec"
                         Margin="0,0,10,0"
@@ -1353,7 +1524,119 @@
                         <TextBlock
                                 Foreground="Black"
                                 Margin="0,5,0,0"
-                                Text="To find nearest deposit point click here" 
+                                Text="To find nearest Combined waste collection points point click here" 
+                            TextAlignment="Justify"
+                            TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <!--  5 Textile waste category  !Need text!-->
+            <StackPanel
+                Background="#c8c8c8"
+                CornerRadius="25"
+                Grid.Row="8"
+                Margin="20"
+                MinHeight="600"
+                Padding="30"
+                Visibility="{x:Bind ViewModel.TextileToggle, Mode=OneWay}">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Margin="0,0,20,30"
+                        Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
+                        Stretch="Fill"
+                        VerticalAlignment="Center"
+                        Width="100" 
+                        Grid.Column="0"/>
+                    <StackPanel
+                        Grid.Column="1">
+                        <TextBlock
+                            FontSize="28"
+                            Foreground="Black"
+                            Margin="0,0,0,10"
+                            Text="Textile" />
+                        <TextBlock
+                            FontSize="20"
+                            Foreground="Black"
+                            Text="addText"
+                            TextAlignment="Justify"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+
+                <Button 
+                        Background="#ececec"
+                        Margin="0,0,10,0"
+                        HorizontalAlignment="Center"
+                        CornerRadius="13"
+                        Click="WebLauncher"
+                        Tag="https://storymaps.arcgis.com/stories/766e436df8eb4d38bbddf55fab308d82">
+                    <StackPanel>
+
+                        <TextBlock
+                                Foreground="Black"
+                                Margin="0,5,0,0"
+                                Text="To find nearest Textile waste collection points point click here" 
+                            TextAlignment="Justify"
+                            TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <!--  9 Contaminated waste category  !Need text!-->
+            <StackPanel
+                Background="#c8c8c8"
+                CornerRadius="25"
+                Grid.Row="8"
+                Margin="20"
+                MinHeight="600"
+                Padding="30"
+                Visibility="{x:Bind ViewModel.ContaminatedToggle, Mode=OneWay}">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Margin="0,0,20,30"
+                        Source="/Assets/Images/bin_icons/general_waste_bin.png"
+                        Stretch="Fill"
+                        VerticalAlignment="Center"
+                        Width="100" 
+                        Grid.Column="0"/>
+                    <StackPanel
+                        Grid.Column="1">
+                        <TextBlock
+                            FontSize="28"
+                            Foreground="Black"
+                            Margin="0,0,0,10"
+                            Text="Contaminated" />
+                        <TextBlock
+                            FontSize="20"
+                            Foreground="Black"
+                            Text="addText"
+                            TextAlignment="Justify"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </Grid>
+
+                <Button 
+                        Background="#ececec"
+                        Margin="0,0,10,0"
+                        HorizontalAlignment="Center"
+                        CornerRadius="13">
+                    <StackPanel>
+
+                        <TextBlock
+                                Foreground="Black"
+                                Margin="0,5,0,0"
+                                Text="addText" 
                             TextAlignment="Justify"
                             TextWrapping="Wrap"/>
                     </StackPanel>

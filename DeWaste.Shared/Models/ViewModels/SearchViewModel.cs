@@ -21,8 +21,6 @@ namespace DeWaste.Models.ViewModels
         IServiceProvider container = ((App)App.Current).Container;
 
 
-
-
         public bool IsBusy
         {
             get => _isBusy;
