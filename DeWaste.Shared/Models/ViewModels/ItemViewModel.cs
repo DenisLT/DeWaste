@@ -11,6 +11,8 @@ namespace DeWaste.Models.ViewModels
 
         private bool[] categories = new bool[13];
         private bool[] toggles = new bool[13];
+
+        public delegate void uiChange();
         
         public ItemViewModel()
         {
@@ -20,7 +22,8 @@ namespace DeWaste.Models.ViewModels
                 description = "Go to search and search for something in order to display.",
                 name = "Example item"
             };
-            updateUI();
+            uiChange obj = new uiChange(updateUI);
+            obj.Invoke();
         }
 
         private void updateUI()
