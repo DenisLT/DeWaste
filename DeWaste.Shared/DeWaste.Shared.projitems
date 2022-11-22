@@ -29,6 +29,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModels\SearchViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\DataProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\FileHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IDataProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IFileHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\UniqueSuggestionIDComparer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ItemView.xaml.cs">
       <DependentUpon>ItemView.xaml</DependentUpon>

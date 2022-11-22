@@ -1,4 +1,5 @@
-﻿using DeWaste.Models.ViewModels;
+﻿using DeWaste.Logging;
+using DeWaste.Models.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,14 @@ namespace DeWaste.WebServices
         protected static HttpClient _client;
         protected static IServiceProvider container = ((App)App.Current).Container;
         protected static NavigationViewModel ViewModel;
+        protected static ILogger logger;
 
         // Insert static constructor below here
         static WebApiBase()
         {
             _client = new HttpClient();
-            ViewModel = ActivatorUtilities.GetServiceOrCreateInstance(container, typeof(NavigationViewModel)) as NavigationViewModel;
+            ViewModel = container.GetService(typeof(NavigationViewModel)) as NavigationViewModel;
+            logger = container.GetService(typeof(ILogger)) as ILogger;
         }
 
         // Insert CreateRequestMessage method below here
@@ -57,9 +60,8 @@ namespace DeWaste.WebServices
                 catch (Exception exception)
                 {
                     ViewModel.FailedConnectToServer = true;
+                    logger.Log(exception.ToString());
                 }
-
-
                 return null;
             }
         }

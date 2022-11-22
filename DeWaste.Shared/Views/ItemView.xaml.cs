@@ -28,7 +28,7 @@ namespace DeWaste.Views
         public ItemView()
         {
             this.InitializeComponent();
-            ViewModel = ActivatorUtilities.GetServiceOrCreateInstance(container, typeof(ItemViewModel)) as ItemViewModel;
+            ViewModel = container.GetService(typeof(ItemViewModel)) as ItemViewModel;
             DataContext = this;
         }
 

@@ -12,21 +12,27 @@ namespace DeWaste.Models.ViewModels
         private bool[] categories = new bool[13];
         private bool[] toggles = new bool[13];
 
-        public delegate void uiChange();
+        EventHandler toggleChanged;
+        
+        
+        delegate void UIEvent();
+        //Action itemChanged;
+        UIEvent itemChanged;
+
         
         public ItemViewModel()
         {
+            toggleChanged += updateTogglesUI;
+            itemChanged += () => updateItemUI();
             item = new Item
             {
                 img = "/Assets/Images/logo.png",
                 description = "Go to search and search for something in order to display.",
                 name = "Example item"
             };
-            uiChange obj = new uiChange(updateUI);
-            obj.Invoke();
         }
 
-        private void updateUI()
+        private void updateItemUI()
         {
             OnPropertyChanged("ItemDescription");
             OnPropertyChanged("ItemName");
@@ -54,7 +60,7 @@ namespace DeWaste.Models.ViewModels
             }
         }
 
-        private void updateToggles()
+        private void updateTogglesUI(object sender, EventArgs args)
         {
             OnPropertyChanged("PlasticToggle");
             OnPropertyChanged("PaperToggle");
@@ -74,7 +80,7 @@ namespace DeWaste.Models.ViewModels
         {
             clearToggles();
             toggles[id] = true;
-            updateToggles();
+            toggleChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public bool PlasticToggle
@@ -205,9 +211,9 @@ namespace DeWaste.Models.ViewModels
             this.item = item;
             item.img = "/Assets/Images/Items/" + item.img; 
             updateCategories();
-            updateUI();
             clearToggles();
-            updateToggles();
+            itemChanged?.Invoke();
+            toggleChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public bool PlasticVisibility

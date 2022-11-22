@@ -34,6 +34,8 @@
     <_Globbed_Compile Remove="Services\DataProvider.cs" />
     <_Globbed_Compile Remove="Services\FileHandler.cs" />
     <_Globbed_Compile Remove="Services\FileReader.cs" />
+    <_Globbed_Compile Remove="Services\IDataProvider.cs" />
+    <_Globbed_Compile Remove="Services\IFileHandler.cs" />
     <_Globbed_Compile Remove="Services\UniqueSuggestionIDComparer.cs" />
     <_Globbed_Compile Remove="Views\BlankPage1.xaml.cs" />
     <_Globbed_Compile Remove="Views\ItemView.xaml.cs" />

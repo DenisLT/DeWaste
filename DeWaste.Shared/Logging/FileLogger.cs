@@ -8,15 +8,18 @@ namespace DeWaste.Logging
     internal class FileLogger : ILogger
     {
         string logFileName = "log.txt";
+        IFileHandler fileHandler;
+        IServiceProvider container = ((App)App.Current).Container;
 
         public FileLogger()
         {
-            FileHandler.ClearFile(logFileName);
+            fileHandler = (IFileHandler)container.GetService(typeof(IFileHandler));
+            fileHandler.ClearFile(logFileName);
         }
         
         public void Log(string message)
         {
-            FileHandler.AppendDataToFileAsync(logFileName, message);
+            fileHandler.AppendDataToFileAsync(logFileName, message);
         }
     }
 }

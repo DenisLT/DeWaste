@@ -13,10 +13,11 @@ using System.Text.Json;
 using Windows.Storage;
 using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics;
+using DeWaste.Logging;
 
 namespace DeWaste.Services
 {
-    public class DataProvider
+    public class DataProvider : IDataProvider
     {
         DatabaseApi databaseApi = new DatabaseApi();
 
@@ -27,44 +28,77 @@ namespace DeWaste.Services
 
         private string suggestionsPath = "suggestions.json";
         private string itemsPath = "items.json";
-        
+
+        IServiceProvider container = ((App)App.Current).Container;
+        IFileHandler fileHandler;
+        ILogger logger;
+
+
 
         private async void SaveSuggestions()
         {
-            string data = JsonSerializer.Serialize<ObservableCollection<Suggestion>>(suggestions);
-            await FileHandler.WriteDataToFileAsync(suggestionsPath, data);
+            try
+            {
+                string data = JsonSerializer.Serialize<ObservableCollection<Suggestion>>(suggestions);
+                await fileHandler.WriteDataToFileAsync(suggestionsPath, data);
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+            }
         }
         
         private async void LoadSavedSuggestions()
         {
-            string data = await FileHandler.ReadFileContentsAsync(suggestionsPath);
-
-            if (!data.IsNullOrEmpty())
+            try
             {
-               suggestions = JsonSerializer.Deserialize<ObservableCollection<Suggestion>>(data);
+                string data = await fileHandler.ReadFileContentsAsync(suggestionsPath);
+                if (!data.IsNullOrEmpty())
+                {
+                    suggestions = JsonSerializer.Deserialize<ObservableCollection<Suggestion>>(data);
+                }
             }
-
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+            }
         }
 
         private async void LoadSavedItems()
         {
-            string data = await FileHandler.ReadFileContentsAsync(itemsPath);
-
-            if (!data.IsNullOrEmpty())
+            try
             {
-                items = JsonSerializer.Deserialize<Dictionary<int, Item>>(data);
+                string data = await fileHandler.ReadFileContentsAsync(itemsPath);
+
+                if (!data.IsNullOrEmpty())
+                {
+                    items = JsonSerializer.Deserialize<Dictionary<int, Item>>(data);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
             }
         }
 
         private async void SaveItems()
         {
-            string data = JsonSerializer.Serialize<Dictionary<int, Item>>(items);
-            await FileHandler.WriteDataToFileAsync(itemsPath, data);
+            try
+            {
+                string data = JsonSerializer.Serialize<Dictionary<int, Item>>(items);
+                await fileHandler.WriteDataToFileAsync(itemsPath, data);
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+            }
         }
 
 
         public DataProvider()
         {
+            logger = container.GetService(typeof(ILogger)) as ILogger;
+            fileHandler = (IFileHandler)container.GetService(typeof(IFileHandler));
             LoadSavedSuggestions();
             LoadSavedItems();
         }
@@ -72,33 +106,48 @@ namespace DeWaste.Services
 
         public async Task<ObservableCollection<Suggestion>> GetSimilar(string name)
         {
-            
-            ObservableCollection<Suggestion> res = await databaseApi.GetSuggestions();
-            suggestions = new ObservableCollection<Suggestion>(suggestions.Union(res, new UniqueSuggestionIDComparer()));
+            try
+            {
+                ObservableCollection<Suggestion> res = await databaseApi.GetSuggestions();
+                suggestions = new ObservableCollection<Suggestion>(suggestions.Union(res, new UniqueSuggestionIDComparer()));
 
-            Regex similarStrings = new Regex(name, RegexOptions.IgnoreCase);
-            var filteredRes = new ObservableCollection<Suggestion>(suggestions.Where(sug => similarStrings.IsMatch(sug.name)));
+                Regex similarStrings = new Regex(name, RegexOptions.IgnoreCase);
+                var filteredRes = new ObservableCollection<Suggestion>(suggestions.Where(sug => similarStrings.IsMatch(sug.name)));
 
-            SaveSuggestions();
-            
+                SaveSuggestions();
 
-            return filteredRes;
+
+                return filteredRes;
+            }
+ 
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+                return new ObservableCollection<Suggestion>();
+            }
         }
 
         public async Task<Item> GetItemById(int id)
         {
-           
-            Item item = await databaseApi.GetItem(id: id);
-
-            if (item != null)
+            try
             {
-                if (item.categories == null)
-                    item.categories = await databaseApi.GetCategories(id: id);
-                items[id] = item;
-                SaveItems();
+                Item item = await databaseApi.GetItem(id: id);
+
+                if (item != null)
+                {
+                    if (item.categories == null)
+                        item.categories = await databaseApi.GetCategories(id: id);
+                    items[id] = item;
+                    SaveItems();
+                }
+
+                return items[id];
             }
-        
-            return items[id];
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+                return null;
+            }
         }
     }
 }

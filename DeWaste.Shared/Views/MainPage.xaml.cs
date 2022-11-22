@@ -30,7 +30,7 @@ namespace DeWaste.Views
         public MainPage()
         {
             this.InitializeComponent();
-            ViewModel = ActivatorUtilities.GetServiceOrCreateInstance(container, typeof(NavigationViewModel)) as NavigationViewModel;
+            ViewModel = container.GetService(typeof(NavigationViewModel)) as NavigationViewModel;
             DataContext = ViewModel;
         }
 

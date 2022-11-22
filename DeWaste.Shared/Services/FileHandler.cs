@@ -9,11 +9,11 @@ using Windows.Storage.Streams;
 
 namespace DeWaste.Services
 {
-    public static class FileHandler
+    public class FileHandler : IFileHandler
     {
-        static SemaphoreSlim mutex = new SemaphoreSlim(1, 1);
-
-        private static async Task<Stream> OpenFileAsync(string fileName)
+        SemaphoreSlim mutex = new SemaphoreSlim(1, 1);
+        
+        private async Task<Stream> OpenFileAsync(string fileName)
         {
             StorageFolder folder = ApplicationData.Current.LocalFolder;
             var file = await folder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
@@ -21,18 +21,18 @@ namespace DeWaste.Services
             return stream.AsStream();
         }
 
-        private static async Task<Stream> GetStreamAsync(string fileName)
+        private async Task<Stream> GetStreamAsync(string fileName)
         {
             var stream = await OpenFileAsync(fileName);
             return stream;
         }
         
-        public static async Task ClearStream(Stream stream)
+        public async Task ClearStream(Stream stream)
         {
             stream.SetLength(0);
         }
 
-        public static async Task ClearFile(string fileName)
+        public async Task ClearFile(string fileName)
         {
             await mutex.WaitAsync();
             using (var stream = await GetStreamAsync(fileName))
@@ -44,7 +44,7 @@ namespace DeWaste.Services
          
 
 
-        public static async Task<string> ReadFileContentsAsync(string fileName)
+        public async Task<string> ReadFileContentsAsync(string fileName)
         {
             await mutex.WaitAsync();
             using (var stream = await GetStreamAsync(fileName))
@@ -58,7 +58,7 @@ namespace DeWaste.Services
             }
         }
 
-        public static async Task WriteDataToFileAsync(string fileName, string content)
+        public async Task WriteDataToFileAsync(string fileName, string content)
         {
             await mutex.WaitAsync();
             byte[] data = Encoding.UTF8.GetBytes(content);
@@ -71,7 +71,7 @@ namespace DeWaste.Services
             mutex.Release();
         }
         
-        public static async Task AppendDataToFileAsync(string fileName, string content)
+        public async Task AppendDataToFileAsync(string fileName, string content)
         {
             await mutex.WaitAsync();
             byte[] data = Encoding.UTF8.GetBytes(content);
