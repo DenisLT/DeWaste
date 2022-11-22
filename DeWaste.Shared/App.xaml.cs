@@ -42,7 +42,10 @@ namespace DeWaste
 
             serviceCollection.AddSingleton<NavigationViewModel>();
             serviceCollection.AddSingleton<ItemViewModel>();
-            serviceCollection.AddSingleton<DataProvider>();
+            serviceCollection.AddSingleton<SearchViewModel>();
+            
+            serviceCollection.AddSingleton<IFileHandler, FileHandler>();
+            serviceCollection.AddSingleton<Lazy<DataProvider>>();
             serviceCollection.AddSingleton<Logging.ILogger, FileLogger>();
 
             return serviceCollection.BuildServiceProvider();

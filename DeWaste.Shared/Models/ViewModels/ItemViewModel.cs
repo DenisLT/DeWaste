@@ -11,17 +11,28 @@ namespace DeWaste.Models.ViewModels
 
         private bool[] categories = new bool[13];
         private bool[] toggles = new bool[13];
+
+        EventHandler toggleChanged;
+        
+        
+        delegate void UIEvent();
+        //Action itemChanged;
+        UIEvent itemChanged;
+
         
         public ItemViewModel()
         {
-            item = new Item();
-            item.img = "/Assets/Images/logo.png";
-            item.description = "Go to search and search for something in order to display.";
-            item.name = "Example item";
-            updateUI();
+            toggleChanged += updateTogglesUI;
+            itemChanged += () => updateItemUI();
+            item = new Item
+            {
+                img = "/Assets/Images/logo.png",
+                description = "Go to search and search for something in order to display.",
+                name = "Example item"
+            };
         }
 
-        private void updateUI()
+        private void updateItemUI()
         {
             OnPropertyChanged("ItemDescription");
             OnPropertyChanged("ItemName");
@@ -49,7 +60,7 @@ namespace DeWaste.Models.ViewModels
             }
         }
 
-        private void updateToggles()
+        private void updateTogglesUI(object sender, EventArgs args)
         {
             OnPropertyChanged("PlasticToggle");
             OnPropertyChanged("PaperToggle");
@@ -69,7 +80,7 @@ namespace DeWaste.Models.ViewModels
         {
             clearToggles();
             toggles[id] = true;
-            updateToggles();
+            toggleChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public bool PlasticToggle
@@ -146,10 +157,10 @@ namespace DeWaste.Models.ViewModels
 
         public bool DirtyToggle
         {
-            get { return toggles[9]; }
+            get { return toggles[12]; }
             set
             {
-                SetProperty(ref toggles[9], value);
+                SetProperty(ref toggles[12], value);
             }
         }
 
@@ -173,10 +184,10 @@ namespace DeWaste.Models.ViewModels
 
         public bool ContaminatedToggle
         {
-            get { return toggles[12]; }
+            get { return toggles[9]; }
             set
             {
-                SetProperty(ref toggles[12], value);
+                SetProperty(ref toggles[9], value);
             }
         }
 
@@ -200,9 +211,9 @@ namespace DeWaste.Models.ViewModels
             this.item = item;
             item.img = "/Assets/Images/Items/" + item.img; 
             updateCategories();
-            updateUI();
             clearToggles();
-            updateToggles();
+            itemChanged?.Invoke();
+            toggleChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public bool PlasticVisibility
@@ -279,10 +290,10 @@ namespace DeWaste.Models.ViewModels
 
         public bool DirtyVisibility
         {
-            get => categories[9];
+            get => categories[12];
             set
             {
-                SetProperty(ref categories[9], value);
+                SetProperty(ref categories[12], value);
             }
         }
         
@@ -306,10 +317,10 @@ namespace DeWaste.Models.ViewModels
 
         public bool ContaminatedVisibility
         {
-            get => categories[12];
+            get => categories[9];
             set
             {
-                SetProperty(ref categories[12], value);
+                SetProperty(ref categories[9], value);
             }
         }
 

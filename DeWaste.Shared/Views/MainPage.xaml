@@ -21,8 +21,8 @@
                     Visibility="{x:Bind ViewModel.FailedConnectToServer, Mode=OneWay}">
             <TextBlock HorizontalAlignment="Center">Failed to connect to server</TextBlock>
         </StackPanel>
-        
-        
+
+
         <Frame x:Name="MainContent" Grid.Row="1"/>
         <NavigationView
                     
@@ -36,7 +36,7 @@
                     >
 
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Search" Tag="SearchPage" Icon="Zoom" />
+                <NavigationViewItem Content="Search" Tag="SearchPage" Icon="Zoom"/>
             </NavigationView.MenuItems>
 
             <NavigationView.FooterMenuItems>

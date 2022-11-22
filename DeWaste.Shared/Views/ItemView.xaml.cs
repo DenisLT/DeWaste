@@ -16,9 +16,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using DeWaste.Models.DataModels;
 using DeWaste.Models.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
-using System.ComponentModel;
-
-using System.Runtime.CompilerServices;
+using Windows.System;
 
 namespace DeWaste.Views
 {
@@ -30,7 +28,7 @@ namespace DeWaste.Views
         public ItemView()
         {
             this.InitializeComponent();
-            ViewModel = ActivatorUtilities.GetServiceOrCreateInstance(container, typeof(ItemViewModel)) as ItemViewModel;
+            ViewModel = container.GetService(typeof(ItemViewModel)) as ItemViewModel;
             DataContext = this;
         }
 
@@ -43,10 +41,17 @@ namespace DeWaste.Views
             ViewModel.SetItem((Item)e.Parameter);
         }
 
+        //when clicked on diferent waste cateries
         private void Update_Toggle(object sender, RoutedEventArgs e)
-        {
+        {            
             int buttonId = int.Parse((sender as Button).Tag.ToString());
             ViewModel.setToggle(buttonId);
+        }
+
+        private void WebLauncher(object sender, RoutedEventArgs e)
+        {
+            string link = (sender as Button).Tag.ToString();
+            Launcher.LaunchUriAsync(new Uri(link));
         }
     }
 }
