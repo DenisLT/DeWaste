@@ -9,7 +9,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ScrollViewer>
         <Grid
-            
+            MaxWidth="1200"
             MinWidth="0"
             Padding="20">
             <Grid.RowDefinitions>
@@ -287,7 +287,7 @@
                                 Text="Deposit" />
                         </StackPanel>
                     </Button>
-                    <!--  11 E-waste category button  ***-->
+                    <!--  11 E-waste category button  -->
                     <Button
                         Background="#c8c8c8"
                         CornerRadius="10"
@@ -343,10 +343,9 @@
                 CornerRadius="25"
                 Grid.Row="4"
                 Margin="20"
-                MinHeight="600"
                 Padding="30"
                 Visibility="{x:Bind ViewModel.PlasticToggle, Mode=OneWay}">
-                
+
                 <!--  Plastic Category Heading  -->
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -362,11 +361,32 @@
                         Grid.Column="0"/>
                     <StackPanel
                         Grid.Column="1">
-                        <TextBlock
-                            FontSize="28"
-                            Foreground="Black"
-                            Margin="0,0,0,10"
-                            Text="Plastic" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" FontSize="28" Foreground="Black" Margin="0,0,0,10" Text="Plastic"/>
+                            <Button Grid.Column="1"
+                        Background="#ececec"
+                        Margin="0,0,10,0"
+                        HorizontalAlignment="Right"
+                        CornerRadius="13"
+                        Click="WebLauncher"
+                        Tag="https://en.wikipedia.org/wiki/Plastic">
+                                <StackPanel>
+
+                                    <TextBlock
+                                Foreground="Black"
+                                Margin="0,5,0,0"
+                                Text="Read More" 
+                            TextAlignment="Justify"
+                            TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"
@@ -374,6 +394,7 @@
                             TextWrapping="Wrap">
                             To dispose of plastic waste, use containers for plastic. Plastic that is discarded must be clean and uncontaminated. Plastic packaging that can be recycled is marked with the recycling symbol.
                         </TextBlock>
+
                     </StackPanel>
                 </Grid>
                 <!--  Plastic Category Labeling meaning  -->
@@ -733,7 +754,6 @@
                 CornerRadius="25"
                 Grid.Row="5"
                 Margin="20"
-                MinHeight="600"
                 Padding="30"
                 Visibility="{x:Bind ViewModel.PaperToggle, Mode=OneWay}">
 
@@ -929,7 +949,6 @@
                 CornerRadius="25"
                 Grid.Row="6"
                 Margin="20"
-                MinHeight="600"
                 Padding="30"
                 Visibility="{x:Bind ViewModel.MetalToggle, Mode=OneWay}">
 
@@ -1077,7 +1096,6 @@
                 CornerRadius="25"
                 Grid.Row="7"
                 Margin="20"
-                MinHeight="600"
                 Padding="30"
                 Visibility="{x:Bind ViewModel.WoodToggle, Mode=OneWay}">
 
@@ -1225,7 +1243,6 @@
                 CornerRadius="25"
                 Grid.Row="8"
                 Margin="20"
-                MinHeight="600"
                 Padding="30"
                 Visibility="{x:Bind ViewModel.GlassToggle, Mode=OneWay}">
 
@@ -1310,7 +1327,6 @@
                 CornerRadius="25"
                 Grid.Row="8"
                 Margin="20"
-                MinHeight="600"
                 Padding="30"
                 Visibility="{x:Bind ViewModel.DepositToggle, Mode=OneWay}">
 
@@ -1361,13 +1377,12 @@
                 </Button>
             </StackPanel>
 
-            <!--  11 E-waste waste category  !Need text!-->
+            <!--  11 E-waste waste category  -->
             <StackPanel
                 Background="#c8c8c8"
                 CornerRadius="25"
                 Grid.Row="8"
                 Margin="20"
-                MinHeight="600"
                 Padding="30"
                 Visibility="{x:Bind ViewModel.EWasteToggle, Mode=OneWay}">
 
@@ -1393,7 +1408,7 @@
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"
-                            Text="addText"
+                            Text="Electronic waste or e-waste describes discarded electrical or electronic devices. Used electronics which are destined for refurbishment, reuse, resale, salvage recycling through material recovery, or disposal are also considered e-waste. Informal processing of e-waste in developing countries can lead to adverse human health effects and environmental pollution. Every piece of technology should be delivered to dedicated collection points."
                             TextAlignment="Justify"
                             TextWrapping="Wrap" />
                     </StackPanel>
@@ -1424,7 +1439,6 @@
                 CornerRadius="25"
                 Grid.Row="8"
                 Margin="20"
-                MinHeight="600"
                 Padding="30"
                 Visibility="{x:Bind ViewModel.BulkyToggle, Mode=OneWay}">
 
@@ -1481,7 +1495,6 @@
                 CornerRadius="25"
                 Grid.Row="8"
                 Margin="20"
-                MinHeight="600"
                 Padding="30"
                 Visibility="{x:Bind ViewModel.CombinedToggle, Mode=OneWay}">
 
@@ -1537,7 +1550,6 @@
                 CornerRadius="25"
                 Grid.Row="8"
                 Margin="20"
-                MinHeight="600"
                 Padding="30"
                 Visibility="{x:Bind ViewModel.TextileToggle, Mode=OneWay}">
 
@@ -1594,7 +1606,6 @@
                 CornerRadius="25"
                 Grid.Row="8"
                 Margin="20"
-                MinHeight="600"
                 Padding="30"
                 Visibility="{x:Bind ViewModel.ContaminatedToggle, Mode=OneWay}">
 
