@@ -7,6 +7,29 @@
     xmlns:local="using:DeWaste.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="CatButton">
+            <Setter Property="Background" Value="#c8c8c8"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Height" Value="120"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="Width" Value="120"/>
+        </Style>
+        <Style TargetType="Image" x:Key="CatImage">
+            <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="Stretch" Value="Fill"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="StackPanel" x:Key="CatStack">
+            <Setter Property="Background" Value="#c8c8c8"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="Grid.Row" Value="8"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Padding" Value="30"/>
+        </Style>
+    </Page.Resources>
+  
     <ScrollViewer>
         <Grid
             MaxWidth="1200"
@@ -23,6 +46,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+
             <!--  Item details  -->
             <!--  Item image  -->
             <Image
@@ -76,275 +100,128 @@
                 </StackPanel>
             </Grid>
 
-            <!--  Categories navigation  -->
+            <!--  Category Buttons  -->
             <ScrollViewer Grid.Row="3" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto">
+               
                 <StackPanel Orientation="Horizontal" Padding="20">
+                    
                     <!--  1 Plastic category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.PlasticVisibility, Mode=OneWay}"
-                        Tag="1"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}" 
+                            Tag="1" Visibility="{x:Bind ViewModel.PlasticVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/plastic_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Plastic" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/plastic_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Plastic"/>
                         </StackPanel>
                     </Button>
+                    
                     <!--  2 Paper category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.PaperVisibility, Mode=OneWay}"
-                        Tag="2"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}" 
+                            Tag="2" Visibility="{x:Bind ViewModel.PaperVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/paper_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Cardboard" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/paper_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Cardboard"/>
                         </StackPanel>
                     </Button>
+                    
                     <!--  3 Metal category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.MetalVisibility, Mode=OneWay}"
-                        Tag="3"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}" 
+                            Tag="3" Visibility="{x:Bind ViewModel.MetalVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/metal_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Metal" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/metal_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Metal"/>
                         </StackPanel>
                     </Button>
+                    
                     <!--  4 Wood category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.WoodVisibility, Mode=OneWay}"
-                        Tag="4"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}" 
+                            Tag="4" Visibility="{x:Bind ViewModel.WoodVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/paper_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Wood" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/paper_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Wood"/>
                         </StackPanel>
                     </Button>
+                    
                     <!--  6 Glass category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.GlassVisibility, Mode=OneWay}"
-                        Tag="6"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                            Tag="6"  Visibility="{x:Bind ViewModel.GlassVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/glass_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Glass" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/glass_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Glass"/>
                         </StackPanel>
                     </Button>
+                    
                     <!--  5 Textile category button  ***-->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.TextileVisibility, Mode=OneWay}"
-                        Tag="5"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                            Tag="5"  Visibility="{x:Bind ViewModel.TextileVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Textile" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Textile"/>
                         </StackPanel>
                     </Button>
+                    
                     <!--  7 Combined waste category button  ***-->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.CombinedVisibility, Mode=OneWay}"
-                        Tag="7"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                             Tag="7" Visibility="{x:Bind ViewModel.CombinedVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/combined_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="90" />
-                            <TextBlock
-                                Foreground="Black"
-                                HorizontalAlignment="Center"
-                                Margin="0,5,0,0"
-                                Text="Combined" />
+                            <Image Style="{StaticResource CatImage}" Width="90" 
+                                   Source="/Assets/Images/bin_icons/combined_bin.png"/>
+                            <TextBlock Foreground="Black" HorizontalAlignment="Center" Margin="0,5,0,0" Text="Combined"/>
                         </StackPanel>
                     </Button>
+                    
                     <!--  8 Bulky waste category button  ***-->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.BulkyVisibility, Mode=OneWay}"
-                        Tag="8"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                            Tag="8" Visibility="{x:Bind ViewModel.BulkyVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Bulky waste" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Bulky waste"/>
                         </StackPanel>
                     </Button>
+                    
                     <!--  10 Deposit category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.DepositVisibility, Mode=OneWay}"
-                        Tag="10"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                            Tag="10" Visibility="{x:Bind ViewModel.DepositVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/deposit_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Deposit" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/deposit_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Deposit"/>
                         </StackPanel>
                     </Button>
+                    
                     <!--  11 E-waste category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.EWasteVisibility, Mode=OneWay}"
-                        Tag="11"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                            Tag="11" Visibility="{x:Bind ViewModel.EWasteVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="E-waste" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="E-waste"/>
                         </StackPanel>
                     </Button>
+                    
                     <!--  9 Contaminated or Dirty category button  ***-->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.ContaminatedVisibility, Mode=OneWay}"
-                        Tag="9"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                            Tag="9" Visibility="{x:Bind ViewModel.ContaminatedVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/general_waste_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Contaminated" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/general_waste_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" FontSize="12" Text="Contaminated"/>
                         </StackPanel>
                     </Button>
+                    
                 </StackPanel>
             </ScrollViewer>
+            
             <!--  Categories  -->
 
             <!--  1 Plastic waste category  -->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="4"
-                Margin="20"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.PlasticToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.PlasticToggle, Mode=OneWay}">
 
                 <!--  Plastic Category Heading  -->
                 <Grid>
@@ -352,13 +229,8 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/plastic_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/plastic_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <Grid>
@@ -368,11 +240,10 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0" FontSize="28" Foreground="Black" Margin="0,0,0,10" Text="Plastic"/>
-                            <Button Grid.Column="1"
+                            <Button Width="Auto" Height="Auto" Grid.Column="1"
                         Background="#ececec"
                         Margin="0,0,10,0"
                         HorizontalAlignment="Right"
-                        CornerRadius="13"
                         Click="WebLauncher"
                         Tag="https://en.wikipedia.org/wiki/Plastic">
                                 <StackPanel>
@@ -749,13 +620,7 @@
             </StackPanel>
 
             <!--  2 Paper waste category  -->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="5"
-                Margin="20"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.PaperToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.PaperToggle, Mode=OneWay}">
 
                 <!--  Paper Category Heading  -->
                 <Grid>
@@ -763,13 +628,8 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/paper_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100"
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/paper_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -944,13 +804,7 @@
             </StackPanel>
 
             <!--  3 Metal waste category  -->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="6"
-                Margin="20"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.MetalToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.MetalToggle, Mode=OneWay}">
 
                 <!--  Metal Category Heading  -->
                 <Grid>
@@ -958,13 +812,8 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/metal_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/metal_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1091,13 +940,7 @@
             </StackPanel>
 
             <!--  4 Wooden waste category  -->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="7"
-                Margin="20"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.WoodToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.WoodToggle, Mode=OneWay}">
 
                 <!--  Wood Category Heading  -->
                 <Grid>
@@ -1105,13 +948,8 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/paper_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100"
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/paper_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1238,26 +1076,15 @@
             </StackPanel>
 
             <!--  6 Glass waste category  -->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.GlassToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.GlassToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/glass_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/glass_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1322,26 +1149,15 @@
             </StackPanel>
 
             <!--  10 Deposit waste category  -->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.DepositToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.DepositToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/deposit_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/deposit_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1378,26 +1194,15 @@
             </StackPanel>
 
             <!--  11 E-waste waste category  -->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.EWasteToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.EWasteToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1434,26 +1239,15 @@
             </StackPanel>
 
             <!--  8 Bulky waste category  !Need text!-->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.BulkyToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.BulkyToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1490,26 +1284,15 @@
             </StackPanel>
 
             <!--  7 Combined waste category  !Need text!-->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.CombinedToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.CombinedToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/combined_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/combined_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1545,26 +1328,15 @@
             </StackPanel>
 
             <!--  5 Textile waste category  !Need text!-->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.TextileToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.TextileToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1601,26 +1373,15 @@
             </StackPanel>
 
             <!--  9 Contaminated waste category  !Need text!-->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.ContaminatedToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.ContaminatedToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/general_waste_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/general_waste_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
