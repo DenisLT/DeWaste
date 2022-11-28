@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Source\\Repos\\DeWaste 11-25 8h\\DeWasteTests\\DeWasteTests.csproj": {}
+    "C:\\Users\\User\\Source\\Repos\\DeWaste\\DeWasteTests\\DeWasteTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Source\\Repos\\DeWaste 11-25 8h\\DeWasteTests\\DeWasteTests.csproj": {
+    "C:\\Users\\User\\Source\\Repos\\DeWaste\\DeWasteTests\\DeWasteTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\DeWaste 11-25 8h\\DeWasteTests\\DeWasteTests.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\DeWaste\\DeWasteTests\\DeWasteTests.csproj",
         "projectName": "DeWasteTests",
-        "projectPath": "C:\\Users\\User\\Source\\Repos\\DeWaste 11-25 8h\\DeWasteTests\\DeWasteTests.csproj",
+        "projectPath": "C:\\Users\\User\\Source\\Repos\\DeWaste\\DeWasteTests\\DeWasteTests.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Source\\Repos\\DeWaste 11-25 8h\\DeWasteTests\\obj\\",
+        "outputPath": "C:\\Users\\User\\Source\\Repos\\DeWaste\\DeWasteTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
