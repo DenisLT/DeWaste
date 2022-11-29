@@ -7,7 +7,7 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="C0952748-F1D7-4E7B-AC7F-FC2BD0274579"
+    Name="E35154A6-9E71-4ECC-9F53-753E1831CCDB"
     Publisher="O=DeWaste"
     Version="1.0.0.0" />
 
@@ -38,7 +38,6 @@
         Square44x44Logo="Images\Square44x44Logo.png">
         <uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png" />
         <uap:SplashScreen Image="Images\SplashScreen.png" />
-        <uap:LockScreen BadgeLogo="Images\BadgeLogo.png" Notification="badge"/>
       </uap:VisualElements>
     </Application>
   </Applications>

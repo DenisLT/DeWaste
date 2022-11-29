@@ -32,12 +32,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDataProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IFileHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\UniqueSuggestionIDComparer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ItemView.xaml.cs">
-      <DependentUpon>ItemView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SearchView.xaml.cs">
-      <DependentUpon>SearchView.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ItemView.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SearchView.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WebServices\DatabaseApi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WebServices\WebApiBase.cs" />
   </ItemGroup>
@@ -48,42 +45,69 @@
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
-    <!--
-		 Add files present in the shared project folder, excluding the ones
-		 explicitly included in the projitem, so files can be added from vscode
-		 without manipulating the projitem file.
-	-->
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\combined_bin.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\deposit_bin.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\baking_tray.jpg" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\gl_70.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\hdpe_2.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\ldpe_4.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\tex_60.png" />
     <Page Include="$(MSBuildThisFileDirectory)Views\ItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <_Globbled_Page Include="$(MSBuildThisFileDirectory)**/*.xaml" Exclude="@(Page);@(ApplicationDefinition)">
+    <Page Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </_Globbled_Page>
-    <Page Include="@(_Globbled_Page)">
-      <SubType>Designer</SubType>
     </Page>
-    <_Globbed_Compile Include="$(MSBuildThisFileDirectory)**/*.xaml.cs" Exclude="@(Compile)">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </_Globbed_Compile>
-    <_Globbed_Compile Include="$(MSBuildThisFileDirectory)**/*.cs" Exclude="@(Compile);@(_Globbed_Compile)" />
-    <Compile Include="@(_Globbed_Compile)" />
-    <_Globbed_PRIResource Include="$(MSBuildThisFileDirectory)**/*.resw" Exclude="@(PRIResource)" />
-    <PRIResource Include="@(_Globbed_PRIResource)" />
-    <_Globbed_Content Include="$(MSBuildThisFileDirectory)Assets/**/*.*" Exclude="@(Content)" />
-    <Content Include="@(_Globbed_Content)" />
-    <!-- Mark the files from this folder as being part of WinUI -->
-    <Page Update="$(MSBuildThisFileDirectory)**/*.xaml" XamlRuntime="WinUI" />
-    <ApplicationDefinition Update="$(MSBuildThisFileDirectory)**/*.xaml" XamlRuntime="WinUI" />
-    <!-- Make sure XAML files force reevaluation of up-to-date checks -->
-    <UpToDateCheckInput Include="$(MSBuildThisFileDirectory)**/*.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)Views\SearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\combined_bin.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\deposit_bin.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\ewaste_bulky_bin.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\general_waste_bin.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\glass_bin.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\metal_bin.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\paper_bin.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\bin_icons\plastic_bin.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\baking_tray.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\can.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\canned_food_container.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\envelope.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\flyer.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\food_plastic_packaging.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\household_appliance.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\magazine.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\metal_lid.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\newspaper.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\other_plastic_packaging.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\plastic_bag.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\plastic_bottle.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\plastic_wrap.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\Items\postcard.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\logo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\alu_41.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\c_80.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\c_81.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\c_82.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\c_83.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\c_84.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\c_85.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\fe_40.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\for_50.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\for_51.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\gl_70.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\gl_71.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\gl_72.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\hdpe_2.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\ldpe_4.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\other_7.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\pap_20.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\pap_21.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\pap_22.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\pet_1.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\pp_5.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\ps_6.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\pvc_3.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\tex_60.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Images\recycling_s_icons\tex_61.png" />
+  </ItemGroup>
+  <Import Project="DeWaste.Shared.globs.props" Condition="'$(IsCodeSharingProject)'!='true'" />
 </Project>

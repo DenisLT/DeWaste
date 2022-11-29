@@ -5,6 +5,7 @@ using Windows.ApplicationModel.Activation;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using System.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
 using DeWaste.Models.ViewModels;
 using DeWaste.Services;
@@ -15,10 +16,10 @@ namespace DeWaste
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    public partial class App : Application
+    public sealed partial class App : Application
     {
-        public static Window _window;
-        
+        private Window _window;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -26,6 +27,7 @@ namespace DeWaste
         public App()
         {
             InitializeLogging();
+
             this.InitializeComponent();
             Container = ConfigureDependencyInjection();
 
@@ -43,7 +45,7 @@ namespace DeWaste
             serviceCollection.AddSingleton<NavigationViewModel>();
             serviceCollection.AddSingleton<ItemViewModel>();
             serviceCollection.AddSingleton<SearchViewModel>();
-            
+
             serviceCollection.AddSingleton<IFileHandler, FileHandler>();
             serviceCollection.AddSingleton<Lazy<DataProvider>>();
             serviceCollection.AddSingleton<Logging.ILogger, FileLogger>();
@@ -69,7 +71,7 @@ namespace DeWaste
             _window = new Window();
             _window.Activate();
 #else
-			_window = Microsoft.UI.Xaml.Window.Current;
+            _window = Microsoft.UI.Xaml.Window.Current;
 #endif
 
             var rootFrame = _window.Content as Frame;
@@ -101,7 +103,7 @@ namespace DeWaste
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(Views.MainPage), args.Arguments);
+                    rootFrame.Navigate(typeof(MainPage), args.Arguments);
                 }
                 // Ensure the current window is active
                 _window.Activate();
@@ -138,14 +140,14 @@ namespace DeWaste
         private static void InitializeLogging()
         {
 #if DEBUG
-			// Logging is disabled by default for release builds, as it incurs a significant
-			// initialization cost from Microsoft.Extensions.Logging setup. If startup performance
-			// is a concern for your application, keep this disabled. If you're running on web or 
-			// desktop targets, you can use url or command line parameters to enable it.
-			//
-			// For more performance documentation: https://platform.uno/docs/articles/Uno-UI-Performance.html
+            // Logging is disabled by default for release builds, as it incurs a significant
+            // initialization cost from Microsoft.Extensions.Logging setup. If startup performance
+            // is a concern for your application, keep this disabled. If you're running on web or 
+            // desktop targets, you can use url or command line parameters to enable it.
+            //
+            // For more performance documentation: https://platform.uno/docs/articles/Uno-UI-Performance.html
 
-			var factory = LoggerFactory.Create(builder =>
+            var factory = LoggerFactory.Create(builder =>
             {
 #if __WASM__
                 builder.AddProvider(new global::Uno.Extensions.Logging.WebAssembly.WebAssemblyConsoleLoggerProvider());
@@ -196,9 +198,9 @@ namespace DeWaste
             global::Uno.Extensions.LogExtensionPoint.AmbientLoggerFactory = factory;
 
 #if HAS_UNO
-			global::Uno.UI.Adapter.Microsoft.Extensions.Logging.LoggingAdapter.Initialize();
+            global::Uno.UI.Adapter.Microsoft.Extensions.Logging.LoggingAdapter.Initialize();
 #endif
 #endif
-	}
+    }
 }
 }
