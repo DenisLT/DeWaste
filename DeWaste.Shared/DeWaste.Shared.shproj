@@ -1,50 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup Label="Globals">
-    <ProjectGuid>6279c845-92f8-4333-ab99-3d213163593c</ProjectGuid>
-    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
-  </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.Common.Default.props" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.Common.props" />
-  <PropertyGroup />
-  <Import Project="DeWaste.Shared.projitems" Label="Shared" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Category Views\BlankPage1.xaml" />
-    <UpToDateCheckInput Remove="Models\ViewModels\SearchViewModel.xaml" />
-    <UpToDateCheckInput Remove="Views\ItemView.xaml" />
-    <UpToDateCheckInput Remove="Views\SearchView.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <_Globbed_Compile Remove="Category Views\BlankPage1.xaml.cs" />
-    <_Globbed_Compile Remove="DataFiles\IDataProvider.cs" />
-    <_Globbed_Compile Remove="Logging\FileLogger.cs" />
-    <_Globbed_Compile Remove="Logging\ILogger.cs" />
-    <_Globbed_Compile Remove="MainPage.xaml.cs" />
-    <_Globbed_Compile Remove="Models\DataModels\Category.cs" />
-    <_Globbed_Compile Remove="Models\DataModels\Item.cs" />
-    <_Globbed_Compile Remove="Models\DataModels\Suggestion.cs" />
-    <_Globbed_Compile Remove="Models\ViewModels\BindableBase.cs" />
-    <_Globbed_Compile Remove="Models\ViewModels\DispatchedBindableBase.cs" />
-    <_Globbed_Compile Remove="Models\ViewModels\ItemViewModel.cs" />
-    <_Globbed_Compile Remove="Models\ViewModels\NavigationViewModel.cs" />
-    <_Globbed_Compile Remove="Models\ViewModels\SearchViewModel.cs" />
-    <_Globbed_Compile Remove="Models\ViewModels\SearchViewModel.xaml.cs" />
-    <_Globbed_Compile Remove="Services\DataProvider.cs" />
-    <_Globbed_Compile Remove="Services\FileHandler.cs" />
-    <_Globbed_Compile Remove="Services\FileReader.cs" />
-    <_Globbed_Compile Remove="Services\IDataProvider.cs" />
-    <_Globbed_Compile Remove="Services\IFileHandler.cs" />
-    <_Globbed_Compile Remove="Services\UniqueSuggestionIDComparer.cs" />
-    <_Globbed_Compile Remove="Views\BlankPage1.xaml.cs" />
-    <_Globbed_Compile Remove="Views\ItemView.xaml.cs" />
-    <_Globbed_Compile Remove="Views\SearchView.xaml.cs" />
-    <_Globbed_Compile Remove="WebServices\GetSuggestionsApi.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <_Globbled_Page Remove="Category Views\BlankPage1.xaml" />
-    <_Globbled_Page Remove="Models\ViewModels\SearchViewModel.xaml" />
-    <_Globbled_Page Remove="Views\ItemView.xaml" />
-  </ItemGroup>
+	<PropertyGroup Label="Globals">
+		<ProjectGuid>6279c845-92f8-4333-ab99-3d213163593c</ProjectGuid>
+		<MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+	</PropertyGroup>
+	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+	<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.Common.Default.props" />
+	<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.Common.props" />
+	<PropertyGroup />
+	<Import Project="DeWaste.Shared.projitems" Label="Shared" />
+	<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
 </Project>
