@@ -7,9 +7,74 @@
     xmlns:local="using:DeWaste.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="CatButton">
+            <Setter Property="Background" Value="#c8c8c8"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Height" Value="120"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="Width" Value="120"/>
+        </Style>
+        <Style TargetType="Image" x:Key="CatImage">
+            <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="Stretch" Value="Fill"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="StackPanel" x:Key="CatStack">
+            <Setter Property="Background" Value="#c8c8c8"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="Grid.Row" Value="8"/>
+            <Setter Property="Padding" Value="30"/>
+        </Style>
+        <Style TargetType="Button" x:Key="MoreInfoButton">
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Height" Value="Auto"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Background" Value="#ececec"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="TextStyle">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="TextAlignment" Value="Justify"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Border" x:Key="PlasticBorderStyle">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0,1,0,0"/>
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Grid.ColumnSpan" Value="2"/>
+            <Setter Property="Grid.Row" Value="1"/>
+        </Style>
+        <Style x:Key="GridItemsStyle" TargetType="ItemsControl">
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <Grid
+                            Background="#ececec"
+                            CornerRadius="13"
+                            Margin="0,0,0,20"
+                            Padding="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="8*" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <ScrollViewer>
         <Grid
-            
+            MaxWidth="1200"
             MinWidth="0"
             Padding="20">
             <Grid.RowDefinitions>
@@ -23,6 +88,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+
             <!--  Item details  -->
             <!--  Item image  -->
             <Image
@@ -51,691 +117,225 @@
                     TextWrapping="Wrap"
                     x:Name="itemDesc" />
             </StackPanel>
-            <!--  Item categories details  -->
-            <!--  Categories label  -->
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="6*" />
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock
-                        FontSize="35"
-                        Grid.Column="0"
-                        Margin="20,0,0,0"
-                        Text="Waste categories"
-                        TextWrapping="Wrap" />
-                </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <Image
-                        HorizontalAlignment="Right"
-                        Opacity="0.7"
-                        
-                        VerticalAlignment="Top"
-                        Width="35" />
-                </StackPanel>
-            </Grid>
+            <!--  Item categories details  -->       
 
-            <!--  Categories navigation  -->
+            <!--  Category Buttons  -->
+            <TextBlock Style="{StaticResource TextStyle}" Foreground="White" FontSize="35" Grid.Row="2" Margin="20,0,0,0" Text="Waste categories"/>
             <ScrollViewer Grid.Row="3" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto">
+
                 <StackPanel Orientation="Horizontal" Padding="20">
+
                     <!--  1 Plastic category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.PlasticVisibility, Mode=OneWay}"
-                        Tag="1"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}" 
+                            Tag="1" Visibility="{x:Bind ViewModel.PlasticVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/plastic_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Plastic" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/plastic_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Plastic"/>
                         </StackPanel>
                     </Button>
+
                     <!--  2 Paper category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.PaperVisibility, Mode=OneWay}"
-                        Tag="2"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}" 
+                            Tag="2" Visibility="{x:Bind ViewModel.PaperVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/paper_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Cardboard" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/paper_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Cardboard"/>
                         </StackPanel>
                     </Button>
+
                     <!--  3 Metal category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.MetalVisibility, Mode=OneWay}"
-                        Tag="3"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}" 
+                            Tag="3" Visibility="{x:Bind ViewModel.MetalVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/metal_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Metal" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/metal_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Metal"/>
                         </StackPanel>
                     </Button>
+
                     <!--  4 Wood category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.WoodVisibility, Mode=OneWay}"
-                        Tag="4"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}" 
+                            Tag="4" Visibility="{x:Bind ViewModel.WoodVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/paper_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Wood" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/paper_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Wood"/>
                         </StackPanel>
                     </Button>
+
                     <!--  6 Glass category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.GlassVisibility, Mode=OneWay}"
-                        Tag="6"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                            Tag="6"  Visibility="{x:Bind ViewModel.GlassVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/glass_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Glass" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/glass_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Glass"/>
                         </StackPanel>
                     </Button>
-                    <!--  5 Textile category button  ***-->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.TextileVisibility, Mode=OneWay}"
-                        Tag="5"
-                        Click="Update_Toggle">
+
+                    <!--  5 Textile category button  -->
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                            Tag="5"  Visibility="{x:Bind ViewModel.TextileVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Textile" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Textile"/>
                         </StackPanel>
                     </Button>
-                    <!--  7 Combined waste category button  ***-->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.CombinedVisibility, Mode=OneWay}"
-                        Tag="7"
-                        Click="Update_Toggle">
+
+                    <!--  7 Combined waste category button  -->
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                             Tag="7" Visibility="{x:Bind ViewModel.CombinedVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/combined_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="90" />
-                            <TextBlock
-                                Foreground="Black"
-                                HorizontalAlignment="Center"
-                                Margin="0,5,0,0"
-                                Text="Combined" />
+                            <Image Style="{StaticResource CatImage}" Width="90" 
+                                   Source="/Assets/Images/bin_icons/combined_bin.png"/>
+                            <TextBlock Foreground="Black" HorizontalAlignment="Center" Margin="0,5,0,0" Text="Combined"/>
                         </StackPanel>
                     </Button>
-                    <!--  8 Bulky waste category button  ***-->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.BulkyVisibility, Mode=OneWay}"
-                        Tag="8"
-                        Click="Update_Toggle">
+
+                    <!--  8 Bulky waste category button  -->
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                            Tag="8" Visibility="{x:Bind ViewModel.BulkyVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Bulky waste" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Bulky waste"/>
                         </StackPanel>
                     </Button>
+
                     <!--  10 Deposit category button  -->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.DepositVisibility, Mode=OneWay}"
-                        Tag="10"
-                        Click="Update_Toggle">
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                            Tag="10" Visibility="{x:Bind ViewModel.DepositVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/deposit_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Deposit" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/deposit_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="Deposit"/>
                         </StackPanel>
                     </Button>
-                    <!--  11 E-waste category button  ***-->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.EWasteVisibility, Mode=OneWay}"
-                        Tag="11"
-                        Click="Update_Toggle">
+
+                    <!--  11 E-waste category button  -->
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                            Tag="11" Visibility="{x:Bind ViewModel.EWasteVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="E-waste" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" Text="E-waste"/>
                         </StackPanel>
                     </Button>
-                    <!--  9 Contaminated or Dirty category button  ***-->
-                    <Button
-                        Background="#c8c8c8"
-                        CornerRadius="10"
-                        Height="120"
-                        Margin="0,0,10,0"
-                        Width="120"
-                        Visibility="{x:Bind ViewModel.ContaminatedVisibility, Mode=OneWay}"
-                        Tag="9"
-                        Click="Update_Toggle">
+
+                    <!--  9 Contaminated or Dirty category button  -->
+                    <Button Click="Update_Toggle" Style="{StaticResource CatButton}"
+                            Tag="9" Visibility="{x:Bind ViewModel.ContaminatedVisibility, Mode=OneWay}">
                         <StackPanel>
-                            <Image
-                                Margin="0,5,0,0"
-                                Source="/Assets/Images/bin_icons/general_waste_bin.png"
-                                Stretch="Fill"
-                                VerticalAlignment="Center"
-                                Width="50" />
-                            <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="Contaminated" />
+                            <Image Style="{StaticResource CatImage}" Width="50" 
+                                   Source="/Assets/Images/bin_icons/general_waste_bin.png"/>
+                            <TextBlock Foreground="Black" Margin="0,5,0,0" FontSize="12" Text="Contaminated"/>
                         </StackPanel>
                     </Button>
+
                 </StackPanel>
             </ScrollViewer>
+
             <!--  Categories  -->
 
             <!--  1 Plastic waste category  -->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="4"
-                Margin="20"
-                MinHeight="600"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.PlasticToggle, Mode=OneWay}">
-                
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.PlasticToggle, Mode=OneWay}">
+
                 <!--  Plastic Category Heading  -->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/plastic_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
-                    <StackPanel
-                        Grid.Column="1">
-                        <TextBlock
-                            FontSize="28"
-                            Foreground="Black"
-                            Margin="0,0,0,10"
-                            Text="Plastic" />
-                        <TextBlock
-                            FontSize="20"
-                            Foreground="Black"
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap">
-                            To dispose of plastic waste, use containers for plastic. Plastic that is discarded must be clean and uncontaminated. Plastic packaging that can be recycled is marked with the recycling symbol.
-                        </TextBlock>
+
+                    <Image Style="{StaticResource CatImage}" Width="100" Margin="0,0,20,30" Grid.Column="0" Source="/Assets/Images/bin_icons/plastic_bin.png"/>
+                    <StackPanel Grid.Column="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" FontSize="28" Foreground="Black" Margin="0,0,0,10" Text="Plastic"/>
+                            <Button Style="{StaticResource MoreInfoButton}" Click="WebLauncher" Tag="https://en.wikipedia.org/wiki/Plastic">
+                                <TextBlock Style="{StaticResource TextStyle}" Text="Read More"/>
+                            </Button>
+                        </Grid>
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="20" Text="To dispose of plastic waste, use containers for plastic. Plastic that is discarded must be clean and uncontaminated. Plastic packaging that can be recycled is marked with the recycling symbol."/>
                     </StackPanel>
                 </Grid>
+
                 <!--  Plastic Category Labeling meaning  -->
-                <TextBlock
-                    FontSize="22"
-                    FontWeight="Bold"
-                    Foreground="Black"
-                    Margin="20"
-                    Text="Plastic labeling meaning" />
+                <TextBlock Style="{StaticResource TextStyle}" FontSize="22" Margin="20" FontWeight="Bold" Text="Plastic labeling meaning"/>
 
                 <!--  1 Labeling PET  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Margin="0,0,0,20"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/pet_1.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/pet_1.png" Width="35" />
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="PET"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Margin="10" Text="Polyethylene phthalate, abbreviated as polyester. This material is widely used to make soft drinks, mineral water bottles and various other consumer goods containers. It is a popular packaging material for food and non-food products because it is inexpensive, lightweight, durable and recyclable. PET is a colorless, strong, material with a clean and optically smooth surface, it has excellent oxygen, water and carbon dioxide shielding properties, heats up quickly and is easy to form. Recycled PET granules are used in the production of synthetic fibers and geo-textiles."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="PET"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="Polyethylene phthalate, abbreviated as polyester. This material is widely used to make soft drinks, mineral water bottles and various other consumer goods containers. It is a popular packaging material for food and non-food products because it is inexpensive, lightweight, durable and recyclable. PET is a colorless, strong, material with a clean and optically smooth surface, it has excellent oxygen, water and carbon dioxide shielding properties, heats up quickly and is easy to form. Recycled PET granules are used in the production of synthetic fibers and geo-textiles."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
-
+                </ItemsControl>
+                
                 <!--  2 Labeling HDPE  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Margin="0,0,0,20"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/hdpe_2.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/hdpe_2.png" Width="35"/>
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="HDPE"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Indicates that the package contains high density polyethylene. HDPE has good protective properties and rigidity, it is perfect for packaging short shelf life products, which is why it is often used for the production of milk containers, juice, water packages. Because HDPE has good chemical resistance, it is also used in the production of shampoo bottles, trash bags, grocery and retail bags, motor oil bottles, butter and margarine containers, household cleaner bottles, and yogurt containers. Possible products after recycling: drainage pipes, liquid laundry detergents, oil bottles, pens, benches, wardrobes, floor tiles, outdoor furniture, fences."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="HDPE"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="Indicates that the package contains high density polyethylene. HDPE has good protective properties and rigidity, it is perfect for packaging short shelf life products, which is why it is often used for the production of milk containers, juice, water packages. Because HDPE has good chemical resistance, it is also used in the production of shampoo bottles, trash bags, grocery and retail bags, motor oil bottles, butter and margarine containers, household cleaner bottles, and yogurt containers. Possible products after recycling: drainage pipes, liquid laundry detergents, oil bottles, pens, benches, wardrobes, floor tiles, outdoor furniture, fences."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
+                </ItemsControl>
 
                 <!--  3 Labeling PVC  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Margin="0,0,0,20"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/pvc_3.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5"  Source="/Assets/Images/recycling_s_icons/pvc_3.png" Width="35"/>
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="PVC"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Products marked with this mark are made of polyvinyl chloride, also sometimes called vinyl. PVC releases phthalates and other toxic chemicals in contact with products, liquid and air (eg the smell of a new shower curtain). It is mainly used in the production of bottles, cooking oil bottles, detergent bottles, shampoo bottles, food packaging, wire and cable coils, medical tubes, tiles, pipelines and windows. After processing, possible products: binders, decks, paneling, gutters, floors, cables."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="PVC"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="Products marked with this mark are made of polyvinyl chloride, also sometimes called vinyl. PVC releases phthalates and other toxic chemicals in contact with products, liquid and air (eg the smell of a new shower curtain). It is mainly used in the production of bottles, cooking oil bottles, detergent bottles, shampoo bottles, food packaging, wire and cable coils, medical tubes, tiles, pipelines and windows. After processing, possible products: binders, decks, paneling, gutters, floors, cables."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
+                </ItemsControl>
 
                 <!--  4 Labeling LDPE  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Margin="0,0,0,20"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/ldpe_4.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/ldpe_4.png" Width="35"/>
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="LDPE"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Indicates that the product contains low density polyethylene. Due to its hardness, flexibility and transparency, LDPE is used as a heat sealing material, as well as in the production of wire and cable insulation, bottles, frozen food bags, clothing, furniture, dry cleaning bags. Plastic shopping bags and garbage cans are also usually labeled this way. Possible products after recycling: films and sheets, furniture, compost bins, garbage containers, siding, garbage bins."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="LDPE"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="Indicates that the product contains low density polyethylene. Due to its hardness, flexibility and transparency, LDPE is used as a heat sealing material, as well as in the production of wire and cable insulation, bottles, frozen food bags, clothing, furniture, dry cleaning bags. Plastic shopping bags and garbage cans are also usually labeled this way. Possible products after recycling: films and sheets, furniture, compost bins, garbage containers, siding, garbage bins."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
+                </ItemsControl>
 
                 <!--  5 Labeling PP  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Margin="0,0,0,20"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/pp_5.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/pp_5.png" Width="35"/>
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="PP"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Indicates that the product contains polypropylene. Polypropylene has the lowest density. It is very strong and resistant to chemicals and can be used to make heat-resistant containers. Bottle caps, cutlery, containers for product storage, margarine, yogurt packaging, microwave-resistant trays, dishes, syrup, ketchup bottles, lids, straws, medicine bottles are made from PP. Polypropylene fibers are used in carpets, wall coverings, vehicle seats. This type of plastic can be used for hot food and drinks, it maintains a sufficiently high temperature - 100 degrees Celsius. Products available after recycling: signal lights, brooms, brushes, car battery cases, ice scrapers, bicycle racks, rakes, containers, trays."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="PP"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="Indicates that the product contains polypropylene. Polypropylene has the lowest density. It is very strong and resistant to chemicals and can be used to make heat-resistant containers. Bottle caps, cutlery, containers for product storage, margarine, yogurt packaging, microwave-resistant trays, dishes, syrup, ketchup bottles, lids, straws, medicine bottles are made from PP. Polypropylene fibers are used in carpets, wall coverings, vehicle seats. This type of plastic can be used for hot food and drinks, it maintains a sufficiently high temperature - 100 degrees Celsius. Products available after recycling: signal lights, brooms, brushes, car battery cases, ice scrapers, bicycle racks, rakes, containers, trays."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
+                </ItemsControl>
 
                 <!--  6 Labeling P.S  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Margin="0,0,0,20"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/ps_6.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/ps_6.png" Width="35"/>
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="P.S"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Indicates that the product contains polystyrene, also known as styrofoam. This material is very light, fluffy, resembles frozen foam. Trays for packaging meat, containers for storing hot liquids or food products, honeycomb packaging for eggs, disposable plates, protective packaging for electronic goods and toys are made of foam. Packaging made of PP can only be used for cold food. Polystyrene insulating materials are used in construction. Also, PP material can be used in the production of packaging for cups, knives, acetylsalicylic acid bottles, CDs. Possible products after processing: thermal insulation panels, light switches, egg packaging, ventilation holes."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="P.S"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="Indicates that the product contains polystyrene, also known as styrofoam. This material is very light, fluffy, resembles frozen foam. Trays for packaging meat, containers for storing hot liquids or food products, honeycomb packaging for eggs, disposable plates, protective packaging for electronic goods and toys are made of foam. Packaging made of PP can only be used for cold food. Polystyrene insulating materials are used in construction. Also, PP material can be used in the production of packaging for cups, knives, acetylsalicylic acid bottles, CDs. Possible products after processing: thermal insulation panels, light switches, egg packaging, ventilation holes."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
+                </ItemsControl>
 
                 <!--  7 Labeling Other  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/other_7.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/other_7.png" Width="35"/>
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="Other"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="All other plastics (No. 7-19) are labeled with this symbol, often plastics that are composed of more than one material. For example: PC - polycarbonate, ABS - acrylonitrile butadiene styrene, SAN - styrene acrylonitrile; acrylic and polyamide, PLA – polylactic acid."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="Other"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="All other plastics (No. 7-19) are labeled with this symbol, often plastics that are composed of more than one material. For example: PC - polycarbonate, ABS - acrylonitrile butadiene styrene, SAN - styrene acrylonitrile; acrylic and polyamide, PLA – polylactic acid."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
+                </ItemsControl>
             </StackPanel>
 
             <!--  2 Paper waste category  -->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="5"
-                Margin="20"
-                MinHeight="600"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.PaperToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.PaperToggle, Mode=OneWay}">
 
                 <!--  Paper Category Heading  -->
                 <Grid>
@@ -743,20 +343,21 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/paper_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100"
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/paper_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
-                        <TextBlock
-                            FontSize="28"
-                            Foreground="Black"
-                            Margin="0,0,0,10"
-                            Text="Paper or Cardboard" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" FontSize="28" Foreground="Black" Margin="0,0,0,10" Text="Paper or Cardboard"/>
+                            <Button Style="{StaticResource MoreInfoButton}" Click="WebLauncher" Tag="https://en.wikipedia.org/wiki/Paper">
+                                <TextBlock Style="{StaticResource TextStyle}" Text="Read More"/>
+                            </Button>
+                        </Grid>
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"
@@ -767,171 +368,39 @@
                     </StackPanel>
                 </Grid>
                 <!--  Paper Category Labeling meaning  -->
-                <TextBlock
-                    FontSize="22"
-                    FontWeight="Bold"
-                    Foreground="Black"
-                    Margin="20"
-                    Text="Paper / Cardboard labeling meaning" />
+                <TextBlock Style="{StaticResource TextStyle}" FontSize="22" Margin="20" FontWeight="Bold" Text="Paper / Cardboard labeling meaning" />
 
                 <!--  20 Labeling PAP  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Margin="0,0,0,20"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/pap_20.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/pap_20.png" Width="35"/>
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="20 PAP"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Indicates that the packaging is made of corrugated cardboard. Corrugated cardboard consists of one or two outer layers and a layer of corrugated paper or, multi-layered, of several intermediate layers. Cardboard boxes for packaging and parcels are made from it."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="20 PAP"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="Indicates that the packaging is made of corrugated cardboard. Corrugated cardboard consists of one or two outer layers and a layer of corrugated paper or, multi-layered, of several intermediate layers. Cardboard boxes for packaging and parcels are made from it."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
+                </ItemsControl>
 
                 <!--  21 Labeling PAP  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Margin="0,0,0,20"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/pap_21.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/pap_21.png" Width="35"/>
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="21 PAP"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Other paper category, which includes mixed paper used for magazines, mail, bulk boxes, cookie boxes, etc."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="21 PAP"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="Other paper category, which includes mixed paper used for magazines, mail, bulk boxes, cookie boxes, etc."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
+                </ItemsControl>
 
                 <!--  22 Labeling PAP  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Margin="0,0,0,20"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/pap_22.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/pap_22.png" Width="35" />
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="22 PAP"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="It is a plain paper used for letters, copying, books, postcards."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="22 PAP"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="It is a plain paper used for letters, copying, books, postcards."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
+                </ItemsControl>
 
             </StackPanel>
 
             <!--  3 Metal waste category  -->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="6"
-                Margin="20"
-                MinHeight="600"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.MetalToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.MetalToggle, Mode=OneWay}">
 
                 <!--  Metal Category Heading  -->
                 <Grid>
@@ -939,13 +408,8 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/metal_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/metal_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -963,123 +427,30 @@
                     </StackPanel>
                 </Grid>
                 <!--  Metal Category Labeling meaning  -->
-                <TextBlock
-                    FontSize="22"
-                    FontWeight="Bold"
-                    Foreground="Black"
-                    Margin="20"
-                    Text="Metal labeling meaning" />
+                <TextBlock Style="{StaticResource TextStyle}" FontSize="22" Margin="20" FontWeight="Bold" Text="Metal labeling meaning" />
 
                 <!--  40 Labeling FE  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Margin="0,0,0,20"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/fe_40.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/fe_40.png" Width="35" />
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="40 FE"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Indicates that the package contains steel. This material is used to make metal boxes used for canning, tea, paint, varnish packaging, as well as aerosol cans."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="40 FE"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="Indicates that the package contains steel. This material is used to make metal boxes used for canning, tea, paint, varnish packaging, as well as aerosol cans."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
+                </ItemsControl>
 
                 <!--  41 Labeling ALU  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Margin="0,0,0,20"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/alu_41.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/alu_41.png" Width="35" />
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="41 ALU"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Indicates that the package is made of aluminum. These are usually beverage or cans."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="41 ALU"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="Indicates that the package is made of aluminum. These are usually beverage or cans."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
-
+                </ItemsControl>
 
             </StackPanel>
 
             <!--  4 Wooden waste category  -->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="7"
-                Margin="20"
-                MinHeight="600"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.WoodToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.WoodToggle, Mode=OneWay}">
 
                 <!--  Wood Category Heading  -->
                 <Grid>
@@ -1087,13 +458,8 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/paper_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100"
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/paper_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1111,136 +477,38 @@
                     </StackPanel>
                 </Grid>
                 <!--  Wood Category Labeling meaning  -->
-                <TextBlock
-                    FontSize="22"
-                    FontWeight="Bold"
-                    Foreground="Black"
-                    Margin="20"
-                    Text="Wood labeling meaning" />
+                <TextBlock Style="{StaticResource TextStyle}" FontSize="22" Margin="20" FontWeight="Bold" Text="Wood labeling meaning" />
 
                 <!--  50 Labeling FOR  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Margin="0,0,0,20"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/for_50.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/for_50.png" Width="35" />
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="50 FOR"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Wood (boxes, pallets)."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="50 FOR"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="Wood (boxes, pallets)."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
+                </ItemsControl>
 
                 <!--  51 Labeling FOR  -->
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Margin="0,0,0,20"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/for_51.png"
-                            Width="35" />
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/for_51.png" Width="35" />
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="51 FOR"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Cork (bottle stoppers, coasters)."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="51 FOR"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="Cork (bottle stoppers, coasters)."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
-
+                </ItemsControl>
 
             </StackPanel>
 
             <!--  6 Glass waste category  -->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                MinHeight="600"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.GlassToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.GlassToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/glass_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/glass_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1256,76 +524,27 @@
                             TextWrapping="Wrap" />
                     </StackPanel>
                 </Grid>
-                <Grid
-                    Background="#ececec"
-                    CornerRadius="13"
-                    Padding="20">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="8*" />
-                    </Grid.ColumnDefinitions>
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,0,1,0"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <Image
-                            Margin="0,0,0,5"
-                            Source="/Assets/Images/recycling_s_icons/gl_70.png"
-                            Width="35" />
+
+                <!--  70 GL Labeling FOR  -->
+                <ItemsControl Style="{StaticResource GridItemsStyle}">
+                    <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/gl_70.png" Width="35" />
+                    <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="70 GL"/>
+                    <Border Style="{StaticResource PlasticBorderStyle}">
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Colorless glass (water and beverage bottles, jars)."/>
                     </Border>
-                    <TextBlock
-                        FontSize="24"
-                        Foreground="Black"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        HorizontalAlignment="Left"
-                        Margin="20,0,0,5"
-                        Text="70 GL"
-                        VerticalAlignment="Center" />
-                    <Border
-                        BorderBrush="#202020"
-                        BorderThickness="0,1,0,0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1">
-                        <TextBlock
-                            FontSize="15"
-                            Foreground="Black"
-                            Margin="10"
-                            Text="Colorless glass (water and beverage bottles, jars)."
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap" />
-                    </Border>
-                </Grid>
+                </ItemsControl>
             </StackPanel>
 
             <!--  10 Deposit waste category  -->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                MinHeight="600"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.DepositToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.DepositToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/deposit_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/deposit_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1341,48 +560,21 @@
                             TextWrapping="Wrap" />
                     </StackPanel>
                 </Grid>
-
-                <Button 
-                        Background="#ececec"
-                        Margin="0,0,10,0"
-                        HorizontalAlignment="Center"
-                        CornerRadius="13"
-                        Click="WebLauncher"
-                        Tag="https://grazintiverta.lt/kur-grazinti/14">
-                    <StackPanel>
-
-                        <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="To find nearest deposit point click here" 
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Button>
+                <Button Style="{StaticResource MoreInfoButton}" Click="WebLauncher" Tag="https://grazintiverta.lt/kur-grazinti/14" HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource TextStyle}" Text="To find nearest deposit point click here"/>
+                </Button>                
             </StackPanel>
 
-            <!--  11 E-waste waste category  !Need text!-->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                MinHeight="600"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.EWasteToggle, Mode=OneWay}">
+            <!--  11 E-waste waste category  -->
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.EWasteToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1393,7 +585,7 @@
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"
-                            Text="addText"
+                            Text="Electronic waste or e-waste describes discarded electrical or electronic devices. Used electronics which are destined for refurbishment, reuse, resale, salvage recycling through material recovery, or disposal are also considered e-waste. Informal processing of e-waste in developing countries can lead to adverse human health effects and environmental pollution. Every piece of technology should be delivered to dedicated collection points."
                             TextAlignment="Justify"
                             TextWrapping="Wrap" />
                     </StackPanel>
@@ -1419,27 +611,15 @@
             </StackPanel>
 
             <!--  8 Bulky waste category  !Need text!-->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                MinHeight="600"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.BulkyToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.BulkyToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1476,27 +656,15 @@
             </StackPanel>
 
             <!--  7 Combined waste category  !Need text!-->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                MinHeight="600"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.CombinedToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.CombinedToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/combined_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/combined_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1532,27 +700,15 @@
             </StackPanel>
 
             <!--  5 Textile waste category  !Need text!-->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                MinHeight="600"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.TextileToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.TextileToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
@@ -1589,27 +745,15 @@
             </StackPanel>
 
             <!--  9 Contaminated waste category  !Need text!-->
-            <StackPanel
-                Background="#c8c8c8"
-                CornerRadius="25"
-                Grid.Row="8"
-                Margin="20"
-                MinHeight="600"
-                Padding="30"
-                Visibility="{x:Bind ViewModel.ContaminatedToggle, Mode=OneWay}">
+            <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.ContaminatedToggle, Mode=OneWay}">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image
-                        Margin="0,0,20,30"
-                        Source="/Assets/Images/bin_icons/general_waste_bin.png"
-                        Stretch="Fill"
-                        VerticalAlignment="Center"
-                        Width="100" 
-                        Grid.Column="0"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Margin="0,0,20,30" Grid.Column="0"
+                           Source="/Assets/Images/bin_icons/general_waste_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
                         <TextBlock
