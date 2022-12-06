@@ -23,22 +23,21 @@ namespace DeWaste.Views
     public sealed partial class ItemView : Page
     {
         ItemViewModel ViewModel;
-        IServiceProvider container = ((App)App.Current).Container;
+        IServiceProvider container;
 
         public ItemView()
         {
             this.InitializeComponent();
-            ViewModel = container.GetService(typeof(ItemViewModel)) as ItemViewModel;
-            DataContext = this;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (e.Parameter == null)
-            {
-                return;
-            } 
-            ViewModel.SetItem((Item)e.Parameter);
+            ItemViewParameters parameters = (ItemViewParameters)e.Parameter;
+            container = parameters.container;
+            DataContext = this;
+            ViewModel = container.GetService(typeof(ItemViewModel)) as ItemViewModel;
+            if (parameters.item != null)
+                ViewModel.SetItem(parameters.item);
         }
 
         //when clicked on diferent waste cateries

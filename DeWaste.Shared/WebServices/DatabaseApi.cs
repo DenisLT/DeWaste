@@ -11,13 +11,20 @@ namespace DeWaste.WebServices
 {
     public class DatabaseApi : WebApiBase
     {
-        string url = "http://20.23.27.75:3000/";
+        IServiceProvider container;
+        ILogger logger;
+
+        public DatabaseApi(IServiceProvider container)
+        {
+            this.container = container;
+            logger = container?.GetService(typeof(ILogger)) as ILogger;
+        }
 
         public async Task<ObservableCollection<Item>> GetSimilar(string name)
         {
             try
             {
-                var result = await this.GetAsync(url + "items?lower_name=like.*" + name.ToLower() + "*");
+                var result = await this.GetAsync("http://20.23.27.75:3000/" + "items?lower_name=like.*" + name.ToLower() + "*");
 
                 if (result != null)
                 {
@@ -35,7 +42,7 @@ namespace DeWaste.WebServices
         {
             try
             {
-                var result = await this.GetAsync(url + "items?select=name,id");
+                var result = await this.GetAsync("http://20.23.27.75:3000/" + "items?select=name,id");
 
                 if (result != null)
                 {
@@ -53,7 +60,7 @@ namespace DeWaste.WebServices
         {
             try
             {
-                var result = await GetAsync(url + "items?id=eq." + id);
+                var result = await GetAsync("http://20.23.27.75:3000/" + "items?id=eq." + id);
 
                 if (result != null)
                 {
@@ -72,7 +79,7 @@ namespace DeWaste.WebServices
         {
             try
             {
-                var result = await GetAsync(url + "items_categories?item_id=eq." + id);
+                var result = await GetAsync("http://20.23.27.75:3000/" + "items_categories?item_id=eq." + id);
 
                 if (result != null)
                 {

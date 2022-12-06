@@ -9,14 +9,16 @@ namespace DeWaste.Logging
     {
         string logFileName = "log.txt";
         IFileHandler fileHandler;
-        IServiceProvider container = ((App)App.Current).Container;
+        IServiceProvider container = App.Container;
 
-        public FileLogger()
+        public FileLogger(IServiceProvider container)
         {
+            this.container = container;
             fileHandler = (IFileHandler)container.GetService(typeof(IFileHandler));
             fileHandler.ClearFile(logFileName);
         }
-        
+
+
         public void Log(string message)
         {
             fileHandler.AppendDataToFileAsync(logFileName, message);

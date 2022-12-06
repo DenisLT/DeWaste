@@ -19,7 +19,7 @@ namespace DeWaste.Services
 {
     public class DataProvider : IDataProvider
     {
-        DatabaseApi databaseApi = new DatabaseApi();
+        DatabaseApi databaseApi = null;
 
         private ObservableCollection<Suggestion> suggestions = new ObservableCollection<Suggestion>();
 
@@ -29,7 +29,7 @@ namespace DeWaste.Services
         private string suggestionsPath = "suggestions.json";
         private string itemsPath = "items.json";
 
-        IServiceProvider container = ((App)App.Current).Container;
+        IServiceProvider container;
         IFileHandler fileHandler;
         ILogger logger;
 
@@ -95,8 +95,10 @@ namespace DeWaste.Services
         }
 
 
-        public DataProvider()
+        public DataProvider(IServiceProvider container)
         {
+            this.container = container;
+            databaseApi = new DatabaseApi(container);
             logger = container.GetService(typeof(ILogger)) as ILogger;
             fileHandler = (IFileHandler)container.GetService(typeof(IFileHandler));
             LoadSavedSuggestions();

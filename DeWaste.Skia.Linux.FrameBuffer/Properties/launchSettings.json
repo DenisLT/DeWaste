@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "DeWaste.Skia.Linux.FrameBuffer": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:32691;http://localhost:32692"
+    }
+  }
+}

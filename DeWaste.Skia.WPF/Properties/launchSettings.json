@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "DeWaste.Skia.WPF": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:32687;http://localhost:32688"
+    }
+  }
+}

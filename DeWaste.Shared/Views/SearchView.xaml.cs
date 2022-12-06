@@ -25,20 +25,21 @@ namespace DeWaste.Views
         List<String> suggestions;
         Frame mainContent;
         SearchViewModel ViewModel;
-        IServiceProvider container = ((App)App.Current).Container;
+        IServiceProvider container;
         IDataProvider dataprovider;
 
         public SearchView()
         {
             this.InitializeComponent();
-            ViewModel = container.GetService(typeof(SearchViewModel)) as SearchViewModel;
-            var dataproviderLazy = (Lazy<DataProvider>)container.GetService(typeof(Lazy<DataProvider>));
-            dataprovider = dataproviderLazy.Value;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            mainContent = (Frame)e.Parameter;
+            NavigationParameters parameters = (NavigationParameters)e.Parameter;
+            container = parameters.container;
+            mainContent = parameters.mainContent;
+            ViewModel = container.GetService(typeof(SearchViewModel)) as SearchViewModel;
+            dataprovider = container.GetService(typeof(IDataProvider)) as IDataProvider;
         }
 
         
@@ -48,7 +49,11 @@ namespace DeWaste.Views
             {
                 Suggestion suggestion = (Suggestion)args.AddedItems[0];
                 Item item = await dataprovider.GetItemById((int)suggestion.id);
-                mainContent.Navigate(typeof(ItemView), item);
+                ItemViewParameters parameters = new ItemViewParameters();
+                parameters.item = item;
+                parameters.mainContent = mainContent;
+                parameters.container = container;
+                mainContent.Navigate(typeof(ItemView), parameters);
             }
         }
     }

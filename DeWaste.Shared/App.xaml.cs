@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using DeWaste.Models.ViewModels;
 using DeWaste.Services;
 using DeWaste.Logging;
+using DeWaste.Models.DataModels;
 
 namespace DeWaste
 {
@@ -26,29 +27,29 @@ namespace DeWaste
         /// </summary>
         public App()
         {
+            Container = ConfigureDependencyInjection();
             InitializeLogging();
 
             this.InitializeComponent();
-            Container = ConfigureDependencyInjection();
 
 #if HAS_UNO || NETFX_CORE
             this.Suspending += OnSuspending;
 #endif
         }
 
-        public IServiceProvider Container { get; }
+        public static IServiceProvider Container { get; set; }
 
-        IServiceProvider ConfigureDependencyInjection()
+        public static IServiceProvider ConfigureDependencyInjection()
         {
             var serviceCollection = new ServiceCollection();
 
-            serviceCollection.AddSingleton<NavigationViewModel>();
-            serviceCollection.AddSingleton<ItemViewModel>();
-            serviceCollection.AddSingleton<SearchViewModel>();
-
             serviceCollection.AddSingleton<IFileHandler, FileHandler>();
-            serviceCollection.AddSingleton<Lazy<DataProvider>>();
-            serviceCollection.AddSingleton<Logging.ILogger, FileLogger>();
+            serviceCollection.AddSingleton<IDataProvider>((a) => new DataProvider(a));
+            serviceCollection.AddSingleton<Logging.ILogger, FileLogger>((a) => new FileLogger(a));
+
+            serviceCollection.AddSingleton<NavigationViewModel>((a) => new NavigationViewModel(a));
+            serviceCollection.AddSingleton<ItemViewModel>();
+            serviceCollection.AddSingleton<SearchViewModel>((a) => new SearchViewModel(a));
 
             return serviceCollection.BuildServiceProvider();
         }
@@ -103,7 +104,8 @@ namespace DeWaste
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(MainPage), args.Arguments);
+                    
+                    rootFrame.Navigate(typeof(MainPage), Container);
                 }
                 // Ensure the current window is active
                 _window.Activate();
