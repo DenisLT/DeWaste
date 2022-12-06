@@ -13,6 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using DeWaste.Models.ViewModels;
+using DeWaste.Models.DataModels;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -24,18 +25,19 @@ namespace DeWaste
     public sealed partial class MainPage : Page
     {
         NavigationViewModel ViewModel;
-        IServiceProvider container = ((App)App.Current).Container;
+        IServiceProvider container;
 
         public MainPage()
         {
             this.InitializeComponent();
-            ViewModel = container.GetService(typeof(NavigationViewModel)) as NavigationViewModel;
-            DataContext = ViewModel;
         }
-
+        
         private void Navigation_Loaded(object sender, RoutedEventArgs e)
         {
-            MainContent.Navigate(typeof(Views.SearchView), MainContent);
+            NavigationParameters parameters = new NavigationParameters();
+            parameters.container = container;
+            parameters.mainContent = MainContent;
+            MainContent.Navigate(typeof(Views.SearchView), parameters);
         }
 
         private void Navigation_Clicked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -43,12 +45,26 @@ namespace DeWaste
             switch (args.InvokedItemContainer.Tag)
             {
                 case "SearchPage":
-                    MainContent.Navigate(typeof(Views.SearchView), MainContent);
+                    NavigationParameters parameters = new NavigationParameters();
+                    parameters.container = container;
+                    parameters.mainContent = MainContent;
+                    MainContent.Navigate(typeof(Views.SearchView), parameters);
                     break;
                 case "ItemPage":
-                    MainContent.Navigate(typeof(Views.ItemView));
+                    ItemViewParameters parametersItem = new ItemViewParameters();
+                    parametersItem.mainContent = MainContent;
+                    parametersItem.container = container;
+                   
+                    MainContent.Navigate(typeof(Views.ItemView), parametersItem);
                     break;
             }
+        }
+
+        override protected void OnNavigatedTo(NavigationEventArgs e)
+        {
+            container = (IServiceProvider)e.Parameter;
+            ViewModel = container.GetService(typeof(NavigationViewModel)) as NavigationViewModel;
+            DataContext = ViewModel;
         }
     }
 }

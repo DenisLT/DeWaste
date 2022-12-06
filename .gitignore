@@ -19,3 +19,6 @@ DeWaste.Skia.Linux.FrameBuffer/bin/
 DeWaste.Skia.Linux.FrameBuffer/obj/
 
 DeWaste.Server/
+
+Testing/obj/
+Testing/bin/
