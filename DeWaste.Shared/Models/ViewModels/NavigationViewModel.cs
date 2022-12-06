@@ -6,6 +6,13 @@ namespace DeWaste.Models.ViewModels
 {    
     public class NavigationViewModel : BindableBase
     {
+        IServiceProvider container;
+
+        public NavigationViewModel(IServiceProvider container)
+        {
+            this.container = container;
+        }
+
         private bool _requestFailed = false;
 
         public bool FailedConnectToServer

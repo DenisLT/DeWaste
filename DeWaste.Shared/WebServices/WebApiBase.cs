@@ -13,7 +13,7 @@ namespace DeWaste.WebServices
     {
         // Insert variables below here
         protected static HttpClient _client;
-        protected static IServiceProvider container = ((App)App.Current).Container;
+        protected static IServiceProvider container = App.Container;
         protected static NavigationViewModel ViewModel;
         protected static ILogger logger;
 
@@ -21,8 +21,8 @@ namespace DeWaste.WebServices
         static WebApiBase()
         {
             _client = new HttpClient();
-            ViewModel = container.GetService(typeof(NavigationViewModel)) as NavigationViewModel;
-            logger = container.GetService(typeof(ILogger)) as ILogger;
+            ViewModel = container?.GetService(typeof(NavigationViewModel)) as NavigationViewModel;
+            logger = container?.GetService(typeof(ILogger)) as ILogger;
         }
 
         // Insert CreateRequestMessage method below here
@@ -51,7 +51,8 @@ namespace DeWaste.WebServices
 
                     if (response.IsSuccessStatusCode)
                     {
-                        ViewModel.FailedConnectToServer = false;
+                        if(ViewModel != null)
+                            ViewModel.FailedConnectToServer = false;
                         return await response.Content.ReadAsStringAsync();
                     }
 
@@ -59,7 +60,8 @@ namespace DeWaste.WebServices
                 }
                 catch (Exception exception)
                 {
-                    ViewModel.FailedConnectToServer = true;
+                    if (ViewModel != null)
+                        ViewModel.FailedConnectToServer = true;
                     logger.Log(exception.ToString());
                 }
                 return null;
