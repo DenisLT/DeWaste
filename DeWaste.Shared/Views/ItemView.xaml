@@ -117,7 +117,7 @@
                     TextWrapping="Wrap"
                     x:Name="itemDesc" />
             </StackPanel>
-            <!--  Item categories details  -->       
+            <!--  Item categories details  -->
 
             <!--  Category Buttons  -->
             <TextBlock Style="{StaticResource TextStyle}" Foreground="White" FontSize="35" Grid.Row="2" Margin="20,0,0,0" Text="Waste categories"/>
@@ -278,7 +278,7 @@
                         <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Margin="10" Text="Polyethylene phthalate, abbreviated as polyester. This material is widely used to make soft drinks, mineral water bottles and various other consumer goods containers. It is a popular packaging material for food and non-food products because it is inexpensive, lightweight, durable and recyclable. PET is a colorless, strong, material with a clean and optically smooth surface, it has excellent oxygen, water and carbon dioxide shielding properties, heats up quickly and is easy to form. Recycled PET granules are used in the production of synthetic fibers and geo-textiles."/>
                     </Border>
                 </ItemsControl>
-                
+
                 <!--  2 Labeling HDPE  -->
                 <ItemsControl Style="{StaticResource GridItemsStyle}">
                     <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/hdpe_2.png" Width="35"/>
@@ -412,11 +412,17 @@
                            Source="/Assets/Images/bin_icons/metal_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
-                        <TextBlock
-                            FontSize="28"
-                            Foreground="Black"
-                            Margin="0,0,0,10"
-                            Text="Metal" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" FontSize="28" Foreground="Black" Margin="0,0,0,10" Text="Metal"/>
+                            <Button Style="{StaticResource MoreInfoButton}" Click="WebLauncher" Tag="https://en.wikipedia.org/wiki/Scrap">
+                                <TextBlock Style="{StaticResource TextStyle}" Text="Read More"/>
+                            </Button>
+                        </Grid>
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"
@@ -426,6 +432,7 @@
                         </TextBlock>
                     </StackPanel>
                 </Grid>
+
                 <!--  Metal Category Labeling meaning  -->
                 <TextBlock Style="{StaticResource TextStyle}" FontSize="22" Margin="20" FontWeight="Bold" Text="Metal labeling meaning" />
 
@@ -434,7 +441,7 @@
                     <Image Margin="0,0,0,5" Source="/Assets/Images/recycling_s_icons/fe_40.png" Width="35" />
                     <TextBlock Style="{StaticResource TextStyle}" FontSize="24" Grid.Column="1" Grid.Row="0" Text="40 FE"/>
                     <Border Style="{StaticResource PlasticBorderStyle}">
-                    <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Indicates that the package contains steel. This material is used to make metal boxes used for canning, tea, paint, varnish packaging, as well as aerosol cans."/>
+                        <TextBlock Style="{StaticResource TextStyle}" FontSize="15" Text="Indicates that the package contains steel. This material is used to make metal boxes used for canning, tea, paint, varnish packaging, as well as aerosol cans."/>
                     </Border>
                 </ItemsControl>
 
@@ -452,7 +459,7 @@
             <!--  4 Wooden waste category  -->
             <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.WoodToggle, Mode=OneWay}">
 
-                <!--  Wood Category Heading  -->
+                <!--  Wood Category Heading  https://en.wikipedia.org/wiki/Timber_recycling-->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -462,20 +469,27 @@
                            Source="/Assets/Images/bin_icons/paper_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
-                        <TextBlock
-                            FontSize="28"
-                            Foreground="Black"
-                            Margin="0,0,0,10"
-                            Text="Metal" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" FontSize="28" Foreground="Black" Margin="0,0,0,10" Text="Wood"/>
+                            <Button Style="{StaticResource MoreInfoButton}" Click="WebLauncher" Tag="https://en.wikipedia.org/wiki/Timber_recycling">
+                                <TextBlock Style="{StaticResource TextStyle}" Text="Read More"/>
+                            </Button>
+                        </Grid>
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"
                             TextAlignment="Justify"
                             TextWrapping="Wrap">
-                            Lorem ipsum.
+                            Getting rid of wooden waste usually is simple. It can be burned in a house fireplace and used for heating. Be careful to not burn wood mixed with other materials like plastic - This is a very harmful act for the environment and can cause illnesses for humans too. Wooden waste can also be delivered to dedicated collection points.
                         </TextBlock>
                     </StackPanel>
                 </Grid>
+
                 <!--  Wood Category Labeling meaning  -->
                 <TextBlock Style="{StaticResource TextStyle}" FontSize="22" Margin="20" FontWeight="Bold" Text="Wood labeling meaning" />
 
@@ -499,9 +513,8 @@
 
             </StackPanel>
 
-            <!--  6 Glass waste category  -->
+            <!--  6 Glass waste category  https://en.wikipedia.org/wiki/Glass_recycling-->
             <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.GlassToggle, Mode=OneWay}">
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -511,17 +524,24 @@
                            Source="/Assets/Images/bin_icons/glass_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
-                        <TextBlock
-                            FontSize="28"
-                            Foreground="Black"
-                            Margin="0,0,0,10"
-                            Text="Glass" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" FontSize="28" Foreground="Black" Margin="0,0,0,10" Text="Glass"/>
+                            <Button Style="{StaticResource MoreInfoButton}" Click="WebLauncher" Tag="https://en.wikipedia.org/wiki/Glass_recycling">
+                                <TextBlock Style="{StaticResource TextStyle}" Text="Read More"/>
+                            </Button>
+                        </Grid>
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"
-                            Text="Throw glass, glass packaging and shards into a glass container. Throwable glass and glass packaging must be clean."
                             TextAlignment="Justify"
-                            TextWrapping="Wrap" />
+                            TextWrapping="Wrap">
+                            Throw glass, glass packaging and shards into a glass container. Throwable glass and glass packaging must be clean.
+                        </TextBlock>
                     </StackPanel>
                 </Grid>
 
@@ -537,7 +557,6 @@
 
             <!--  10 Deposit waste category  -->
             <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.DepositToggle, Mode=OneWay}">
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -547,27 +566,34 @@
                            Source="/Assets/Images/bin_icons/deposit_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
-                        <TextBlock
-                            FontSize="28"
-                            Foreground="Black"
-                            Margin="0,0,0,10"
-                            Text="Deposit" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" FontSize="28" Foreground="Black" Margin="0,0,0,10" Text="Deposit"/>
+                            <Button Style="{StaticResource MoreInfoButton}" Click="WebLauncher" Tag="https://en.wikipedia.org/wiki/Deposit-refund_system">
+                                <TextBlock Style="{StaticResource TextStyle}" Text="Read More"/>
+                            </Button>
+                        </Grid>
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"
-                            Text="Bottles marked with a special deposit symbol can be thrown away into deposit points. After bottles are taken you will receive 10 cents for every single bottle."
                             TextAlignment="Justify"
-                            TextWrapping="Wrap" />
+                            TextWrapping="Wrap">
+                            Bottles marked with a special deposit symbol can be thrown away into deposit points. After bottles are taken you will receive 10 cents for every single bottle.
+                        </TextBlock>
                     </StackPanel>
                 </Grid>
+
                 <Button Style="{StaticResource MoreInfoButton}" Click="WebLauncher" Tag="https://grazintiverta.lt/kur-grazinti/14" HorizontalAlignment="Center">
                     <TextBlock Style="{StaticResource TextStyle}" Text="To find nearest deposit point click here"/>
-                </Button>                
+                </Button>
             </StackPanel>
 
             <!--  11 E-waste waste category  -->
             <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.EWasteToggle, Mode=OneWay}">
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -577,17 +603,24 @@
                            Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
-                        <TextBlock
-                            FontSize="28"
-                            Foreground="Black"
-                            Margin="0,0,0,10"
-                            Text="E-waste" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" FontSize="28" Foreground="Black" Margin="0,0,0,10" Text="E-waste"/>
+                            <Button Style="{StaticResource MoreInfoButton}" Click="WebLauncher" Tag="https://en.wikipedia.org/wiki/Electronic_waste">
+                                <TextBlock Style="{StaticResource TextStyle}" Text="Read More"/>
+                            </Button>
+                        </Grid>
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"
-                            Text="Electronic waste or e-waste describes discarded electrical or electronic devices. Used electronics which are destined for refurbishment, reuse, resale, salvage recycling through material recovery, or disposal are also considered e-waste. Informal processing of e-waste in developing countries can lead to adverse human health effects and environmental pollution. Every piece of technology should be delivered to dedicated collection points."
                             TextAlignment="Justify"
-                            TextWrapping="Wrap" />
+                            TextWrapping="Wrap">
+                            Electronic waste or e-waste describes discarded electrical or electronic devices. Used electronics which are destined for refurbishment, reuse, resale, salvage recycling through material recovery, or disposal are also considered e-waste. Informal processing of e-waste in developing countries can lead to adverse human health effects and environmental pollution. Every piece of technology should be delivered to dedicated collection points.
+                        </TextBlock>
                     </StackPanel>
                 </Grid>
 
@@ -610,9 +643,8 @@
                 </Button>
             </StackPanel>
 
-            <!--  8 Bulky waste category  !Need text!-->
+            <!--  8 Bulky waste category   -->
             <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.BulkyToggle, Mode=OneWay}">
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -622,17 +654,24 @@
                            Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
-                        <TextBlock
-                            FontSize="28"
-                            Foreground="Black"
-                            Margin="0,0,0,10"
-                            Text="Bulky" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" FontSize="28" Foreground="Black" Margin="0,0,0,10" Text="Bulky"/>
+                            <Button Style="{StaticResource MoreInfoButton}" Click="WebLauncher" Tag="https://en.wikipedia.org/wiki/Bulky_waste">
+                                <TextBlock Style="{StaticResource TextStyle}" Text="Read More"/>
+                            </Button>
+                        </Grid>
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"
-                            Text="addText"
                             TextAlignment="Justify"
-                            TextWrapping="Wrap" />
+                            TextWrapping="Wrap">
+                            Bulky waste is usually room furniture or construction waste. It is best to get rid of them by delivering them to dedicated recycling points. Often it is possible to order a pick-up from home.
+                        </TextBlock>
                     </StackPanel>
                 </Grid>
 
@@ -657,7 +696,6 @@
 
             <!--  7 Combined waste category  !Need text!-->
             <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.CombinedToggle, Mode=OneWay}">
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -667,41 +705,27 @@
                            Source="/Assets/Images/bin_icons/combined_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
-                        <TextBlock
-                            FontSize="28"
-                            Foreground="Black"
-                            Margin="0,0,0,10"
-                            Text="Combined" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" FontSize="28" Foreground="Black" Margin="0,0,0,10" Text="Combined"/>
+                        </Grid>
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"
-                            Text="addText"
                             TextAlignment="Justify"
-                            TextWrapping="Wrap" />
+                            TextWrapping="Wrap">
+                            Combined waste items are made out of multiple materials and are hard to recycle and reuse. Because of that, it is best to just throw them into regular bins.
+                        </TextBlock>
                     </StackPanel>
                 </Grid>
-
-                <!--Button is not functional!  Link:  -->
-                <Button 
-                        Background="#ececec"
-                        Margin="0,0,10,0"
-                        HorizontalAlignment="Center"
-                        CornerRadius="13">
-                    <StackPanel>
-
-                        <TextBlock
-                                Foreground="Black"
-                                Margin="0,5,0,0"
-                                Text="To find nearest Combined waste collection points point click here" 
-                            TextAlignment="Justify"
-                            TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Button>
             </StackPanel>
 
-            <!--  5 Textile waste category  !Need text!-->
+            <!--  5 Textile waste category  -->
             <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.TextileToggle, Mode=OneWay}">
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -711,17 +735,24 @@
                            Source="/Assets/Images/bin_icons/ewaste_bulky_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
-                        <TextBlock
-                            FontSize="28"
-                            Foreground="Black"
-                            Margin="0,0,0,10"
-                            Text="Textile" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" FontSize="28" Foreground="Black" Margin="0,0,0,10" Text="Textile"/>
+                            <Button Style="{StaticResource MoreInfoButton}" Click="WebLauncher" Tag="https://en.wikipedia.org/wiki/Textile_recycling">
+                                <TextBlock Style="{StaticResource TextStyle}" Text="Read More"/>
+                            </Button>
+                        </Grid>
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"
-                            Text="addText"
                             TextAlignment="Justify"
-                            TextWrapping="Wrap" />
+                            TextWrapping="Wrap">
+                            Put textile waste into dedicated containers to help easily recycle or reuse the waste. Often textile waste like clothes is given away to those who need it at the time.
+                        </TextBlock>
                     </StackPanel>
                 </Grid>
 
@@ -744,9 +775,8 @@
                 </Button>
             </StackPanel>
 
-            <!--  9 Contaminated waste category  !Need text!-->
+            <!--  9 Contaminated waste category  -->
             <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.ContaminatedToggle, Mode=OneWay}">
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -756,17 +786,24 @@
                            Source="/Assets/Images/bin_icons/general_waste_bin.png"/>
                     <StackPanel
                         Grid.Column="1">
-                        <TextBlock
-                            FontSize="28"
-                            Foreground="Black"
-                            Margin="0,0,0,10"
-                            Text="Contaminated" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" FontSize="28" Foreground="Black" Margin="0,0,0,10" Text="Contaminated"/>
+                            <Button Style="{StaticResource MoreInfoButton}" Click="WebLauncher" Tag="https://en.wikipedia.org/wiki/Hazardous_waste">
+                                <TextBlock Style="{StaticResource TextStyle}" Text="Read More"/>
+                            </Button>
+                        </Grid>
                         <TextBlock
                             FontSize="20"
                             Foreground="Black"
-                            Text="addText"
                             TextAlignment="Justify"
-                            TextWrapping="Wrap" />
+                            TextWrapping="Wrap">
+                            Contaminated waste is usually dangerous to humans and the environment. It should be handled carefully and given away to dedicated collection points.
+                        </TextBlock>
                     </StackPanel>
                 </Grid>
 
@@ -774,13 +811,15 @@
                         Background="#ececec"
                         Margin="0,0,10,0"
                         HorizontalAlignment="Center"
-                        CornerRadius="13">
+                        CornerRadius="13"
+                        Click="WebLauncher"
+                        Tag="https://atliekos.lt/miestas/vilniaus-m/paslauga/kitos-pavojingos-atliekos-2/">
                     <StackPanel>
 
                         <TextBlock
                                 Foreground="Black"
                                 Margin="0,5,0,0"
-                                Text="addText" 
+                                Text="To find nearest Contamined waste collection points point click here" 
                             TextAlignment="Justify"
                             TextWrapping="Wrap"/>
                     </StackPanel>
