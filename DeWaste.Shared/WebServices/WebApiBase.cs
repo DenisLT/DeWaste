@@ -20,7 +20,11 @@ namespace DeWaste.WebServices
         // Insert static constructor below here
         static WebApiBase()
         {
-            _client = new HttpClient();
+            //bypass SSL certificate validation
+            HttpClientHandler clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+            _client = new HttpClient(clientHandler);
             ViewModel = container?.GetService(typeof(NavigationViewModel)) as NavigationViewModel;
             logger = container?.GetService(typeof(ILogger)) as ILogger;
         }
