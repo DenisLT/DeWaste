@@ -78,8 +78,9 @@ namespace DeWaste.Models.ViewModels
 
         public void setToggle(int id)
         {
+            bool prevToggle = toggles[id];
             clearToggles();
-            toggles[id] = true;
+            toggles[id] = !prevToggle;
             toggleChanged?.Invoke(this, EventArgs.Empty);
         }
 

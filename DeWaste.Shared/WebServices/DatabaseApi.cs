@@ -14,6 +14,8 @@ namespace DeWaste.WebServices
         IServiceProvider container;
         ILogger logger;
 
+        string url = "http://localhost:5000/";
+
         public DatabaseApi(IServiceProvider container)
         {
             this.container = container;
@@ -24,7 +26,7 @@ namespace DeWaste.WebServices
         {
             try
             {
-                var result = await this.GetAsync("http://20.23.27.75:3000/" + "items?lower_name=like.*" + name.ToLower() + "*");
+                var result = await this.GetAsync(url + "SimilarItems/" + name.ToLower());
 
                 if (result != null)
                 {
@@ -42,7 +44,7 @@ namespace DeWaste.WebServices
         {
             try
             {
-                var result = await this.GetAsync("http://20.23.27.75:3000/" + "items?select=name,id");
+                var result = await this.GetAsync(url + "SimilarItems");
 
                 if (result != null)
                 {
@@ -60,11 +62,11 @@ namespace DeWaste.WebServices
         {
             try
             {
-                var result = await GetAsync("http://20.23.27.75:3000/" + "items?id=eq." + id);
+                var result = await GetAsync(url + "Items/" + id);
 
                 if (result != null)
                 {
-                    return JsonSerializer.Deserialize<ObservableCollection<Item>>(result)[0];
+                    return JsonSerializer.Deserialize<Item>(result);
                 }
             }
             catch (Exception ex)
@@ -79,10 +81,11 @@ namespace DeWaste.WebServices
         {
             try
             {
-                var result = await GetAsync("http://20.23.27.75:3000/" + "items_categories?item_id=eq." + id);
+                var result = await GetAsync(url + "Categories/" + id);
 
                 if (result != null)
                 {
+                    Guid.NewGuid();
                     return JsonSerializer.Deserialize<List<Category>>(result);
                 }
             }

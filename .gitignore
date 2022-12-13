@@ -22,3 +22,6 @@ DeWaste.Server/
 
 Testing/obj/
 Testing/bin/
+
+DeWasteApi/bin/
+DeWasteApi/obj/

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DeWaste.Services
 {
-    interface IDataProvider
+    public interface IDataProvider
     {
         Task<Item> GetItemById(int id);
         Task<ObservableCollection<Suggestion>> GetSimilar(string name);

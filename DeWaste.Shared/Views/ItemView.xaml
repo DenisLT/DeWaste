@@ -74,6 +74,7 @@
 
     <ScrollViewer>
         <Grid
+            HorizontalAlignment="Center"
             MaxWidth="1200"
             MinWidth="0"
             Padding="20">
@@ -95,7 +96,7 @@
                 Grid.Row="0"
                 Source="{x:Bind ViewModel.ItemImage, Mode=OneWay}"
                 Stretch="Fill"
-                Width="350"
+                MaxWidth="350"
 
                 x:Name="itemImage" />
             <StackPanel Grid.Row="1" Padding="20">
@@ -107,7 +108,8 @@
                     HorizontalAlignment="Center"
                     Margin="0,0,0,20"
                     Text="{x:Bind ViewModel.ItemName, Mode=OneWay}"
-                    x:Name="itemName" />
+                    x:Name="itemName"
+                    TextWrapping="Wrap"/>
                 <!--  Item Description  -->
                 <TextBlock
                     FontSize="20"
@@ -250,7 +252,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Image Style="{StaticResource CatImage}" Width="100" Margin="0,0,20,30" Grid.Column="0" Source="/Assets/Images/bin_icons/plastic_bin.png"/>
+                    <Image Style="{StaticResource CatImage}" Width="100"  Grid.Column="0" Source="/Assets/Images/bin_icons/plastic_bin.png"/>
                     <StackPanel Grid.Column="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
