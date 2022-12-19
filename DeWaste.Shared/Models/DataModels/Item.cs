@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -17,9 +18,9 @@ namespace DeWaste.Models.DataModels
         public string description { get; set; }
 
         [JsonPropertyName("id")]
-        public long id { get; set; }
+        public int id { get; set; }
 
         [JsonPropertyName("categories")]
-        public List<Category> categories { get; set; }
+        public ObservableCollection<Category> categories { get; set; }
     }
 }

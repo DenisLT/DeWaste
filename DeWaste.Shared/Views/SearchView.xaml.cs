@@ -26,7 +26,7 @@ namespace DeWaste.Views
         Frame mainContent;
         SearchViewModel ViewModel;
         IServiceProvider container;
-        IDataProvider dataprovider;
+        IDataHandler dataprovider;
 
         public SearchView()
         {
@@ -39,7 +39,7 @@ namespace DeWaste.Views
             container = parameters.container;
             mainContent = parameters.mainContent;
             ViewModel = container.GetService(typeof(SearchViewModel)) as SearchViewModel;
-            dataprovider = container.GetService(typeof(IDataProvider)) as IDataProvider;
+            dataprovider = container.GetService(typeof(IDataHandler)) as IDataHandler;
         }
 
         

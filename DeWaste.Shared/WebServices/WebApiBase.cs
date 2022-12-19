@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DeWaste.WebServices
@@ -74,8 +75,95 @@ namespace DeWaste.WebServices
 
         // Insert DeleteAsync method below here
 
+        protected async Task<string> DeleteAsync(string url, Dictionary<string, string> headers = null)
+        {
+            using (var request = CreateRequestMessage(HttpMethod.Delete, url, headers))
+            {
+                try
+                {
+                    var response = await _client.SendAsync(request);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (ViewModel != null)
+                            ViewModel.FailedConnectToServer = false;
+                        return await response.Content.ReadAsStringAsync();
+                    }
+
+                    throw new HttpRequestException(response.ReasonPhrase);
+                }
+                catch (Exception exception)
+                {
+                    if (ViewModel != null)
+                        ViewModel.FailedConnectToServer = true;
+                    logger.Log(exception.ToString());
+                }
+                return null;
+            }
+        }
+
         // Insert PostAsync method below here
 
-        // Insert PutAsync method below here      
+        protected async Task<string> PostAsync(string url, string content, Dictionary<string, string> headers = null)
+        {
+            using (var request = CreateRequestMessage(HttpMethod.Post, url, headers))
+            {
+                try
+                {
+                    request.Content = new StringContent(content, Encoding.UTF8, "application/json");
+
+                    var response = await _client.SendAsync(request);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (ViewModel != null)
+                            ViewModel.FailedConnectToServer = false;
+                        return await response.Content.ReadAsStringAsync();
+                    }
+
+                    throw new HttpRequestException(response.ReasonPhrase);
+                }
+                catch (Exception exception)
+                {
+                    if (ViewModel != null)
+                        ViewModel.FailedConnectToServer = true;
+                    logger.Log(exception.ToString());
+                }
+                return null;
+            }
+        }
+
+        // Insert PutAsync method below here
+
+        protected async Task<string> PutAsync(string url, string content, Dictionary<string, string> headers = null)
+        {
+            using (var request = CreateRequestMessage(HttpMethod.Put, url, headers))
+            {
+                try
+                {
+                    request.Content = new StringContent(content, Encoding.UTF8, "application/json");
+
+                    var response = await _client.SendAsync(request);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (ViewModel != null)
+                            ViewModel.FailedConnectToServer = false;
+                        return await response.Content.ReadAsStringAsync();
+                    }
+
+                    throw new HttpRequestException(response.ReasonPhrase);
+                }
+                catch (Exception exception)
+                {
+                    if (ViewModel != null)
+                        ViewModel.FailedConnectToServer = true;
+                    logger.Log(exception.ToString());
+                }
+                return null;
+            }
+        }
+
+
     }
 }

@@ -1,0 +1,59 @@
+﻿@model DeWasteApi.Models.Comment
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Comment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="user_id" class="control-label"></label>
+                <input asp-for="user_id" class="form-control" />
+                <span asp-validation-for="user_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="item_id" class="control-label"></label>
+                <input asp-for="item_id" class="form-control" />
+                <span asp-validation-for="item_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="timestamp" class="control-label"></label>
+                <input asp-for="timestamp" class="form-control" />
+                <span asp-validation-for="timestamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="content" class="control-label"></label>
+                <input asp-for="content" class="form-control" />
+                <span asp-validation-for="content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="likes" class="control-label"></label>
+                <input asp-for="likes" class="form-control" />
+                <span asp-validation-for="likes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dislikes" class="control-label"></label>
+                <input asp-for="dislikes" class="form-control" />
+                <span asp-validation-for="dislikes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

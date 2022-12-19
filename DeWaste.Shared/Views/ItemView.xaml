@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:DeWaste.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:datamodels="using:DeWaste.Models.DataModels">
 
     <Page.Resources>
         <Style TargetType="Button" x:Key="CatButton">
@@ -85,9 +86,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <!--  Item details  -->
@@ -96,7 +94,12 @@
                 Grid.Row="0"
                 Source="{x:Bind ViewModel.ItemImage, Mode=OneWay}"
                 Stretch="Fill"
+<<<<<<< Updated upstream
                 MaxWidth="350"
+=======
+                Width="350"
+
+>>>>>>> Stashed changes
                 x:Name="itemImage" />
             <StackPanel Grid.Row="1" Padding="20">
 
@@ -107,8 +110,7 @@
                     HorizontalAlignment="Center"
                     Margin="0,0,0,20"
                     Text="{x:Bind ViewModel.ItemName, Mode=OneWay}"
-                    x:Name="itemName"
-                    TextWrapping="Wrap"/>
+                    x:Name="itemName" />
                 <!--  Item Description  -->
                 <TextBlock
                     FontSize="20"
@@ -339,8 +341,8 @@
             </ScrollViewer>
 
             <!--  Categories  -->
-
-            <!--  1 Plastic waste category  -->
+            <Grid Grid.Row="4">
+                <!--  1 Plastic waste category  -->
             <StackPanel Style="{StaticResource CatStack}" Visibility="{x:Bind ViewModel.PlasticToggle, Mode=OneWay}">
 
                 <!--  Plastic Category Heading  -->
@@ -350,6 +352,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
+<<<<<<< Updated upstream
 
                     <Image
                         Grid.Column="0"
@@ -357,6 +360,9 @@
                         Source="/Assets/Images/bin_icons/plastic_bin.png"
                         Style="{StaticResource CatImage}"
                         Width="100" />
+=======
+                    <Image Style="{StaticResource CatImage}" Width="100" Margin="0,0,20,30" Grid.Column="0" Source="/Assets/Images/bin_icons/plastic_bin.png"/>
+>>>>>>> Stashed changes
                     <StackPanel Grid.Column="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -1438,7 +1444,89 @@
                 </Grid>
 
             </StackPanel>
+            </Grid>
+            
+            
+            <!-- Comments-->
+            <Grid Grid.Row="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <!--TextBox for writing a comment-->
+                <TextBlock Grid.Row="0" Style="{StaticResource TextStyle}" Foreground="White" FontSize="35" Margin="20,0,0,0" Text="Comments"/>
+                <TextBox Grid.Row="1"
+                         TextWrapping="Wrap" 
+                         PlaceholderText="Enter your thoughts about this Item if you want"
+                         Text="{x:Bind ViewModel.CommentText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </TextBox>
+                <Button Grid.Row="2"
+                        Click="Submit_Click"
+                        HorizontalAlignment="Center">
+                    Submit</Button>
+                <ListView ItemsSource="{x:Bind ViewModel.Comments, Mode=OneWay}"
+                       Grid.Row="3"
+                       x:Name="CommentsView"
+                       SelectionMode="None">
+                    <ListView.ItemContainerTransitions>
+                        <TransitionCollection/>
+                    </ListView.ItemContainerTransitions>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="datamodels:Comment">
+                            <Grid
+                                Background="#2A2A2A"
+                                Padding="10"
+                                Margin="10"
+                                CornerRadius="10"
+                                >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{x:Bind Date, Mode=OneWay}" Grid.Column="0"></TextBlock>
+                                    <Button
+                                    Visibility="{x:Bind isUsersComment, Mode=OneWay}"
+                                    Click="Delete_Comment"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Right">Delete</Button>
+                                </Grid>
+                                <TextBlock Text="{x:Bind content, Mode=OneWay}" Grid.Row="1"></TextBlock>
+                                <Grid Grid.Row="2"
+                                      Margin="0 10 0 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="0"
+                                            Background="#00FF"
+                                            Click="Like_Comment">
+                                        <StackPanel>
+                                            <TextBlock>Likes</TextBlock>
+                                            <TextBlock Text="{x:Bind likes, Mode=OneWay}" Grid.Row="1"></TextBlock>
+                                         </StackPanel>
+                                    </Button>
+                                    <Button Grid.Column="1"
+                                            Margin="20 0 0 0"
+                                            Click="Dislike_Comment">
+                                        <StackPanel>
+                                            <TextBlock>Dislikes</TextBlock>
+                                            <TextBlock Text="{x:Bind dislikes, Mode=OneWay}" Grid.Row="1"></TextBlock>
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                           </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </Grid>
     </ScrollViewer>
-
 </Page>

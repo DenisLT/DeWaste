@@ -1,6 +1,8 @@
 ﻿using DeWaste.Models.DataModels;
+using DeWaste.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace DeWaste.Models.ViewModels
@@ -8,9 +10,24 @@ namespace DeWaste.Models.ViewModels
     class ItemViewModel : BindableBase
     {
         private Item item;
+        public TrulyObservableCollection<Comment> _comments;
+
+        public TrulyObservableCollection<Comment> Comments
+        {
+            get => _comments;
+            set => SetProperty(ref _comments, value);
+        }
 
         private bool[] categories = new bool[13];
         private bool[] toggles = new bool[13];
+
+        private string comment = "";
+
+        public string CommentText
+        {
+            get => comment;
+            set => SetProperty(ref comment, value);
+        }
 
         EventHandler toggleChanged;
         
@@ -19,9 +36,13 @@ namespace DeWaste.Models.ViewModels
         //Action itemChanged;
         UIEvent itemChanged;
 
-        
-        public ItemViewModel()
+        IServiceProvider container;
+        IDataHandler dataHandler;
+
+        public ItemViewModel(IServiceProvider container)
         {
+            this.container = container;
+            dataHandler = container.GetService(typeof(IDataHandler)) as IDataHandler;
             toggleChanged += updateTogglesUI;
             itemChanged += () => updateItemUI();
             item = new Item
@@ -31,6 +52,67 @@ namespace DeWaste.Models.ViewModels
                 name = "Example item"
             };
         }
+
+        public async void SubmitComment()
+        {
+            IDataHandler datahandler = container.GetService(typeof(IDataHandler)) as IDataHandler;
+            Comment comment = await datahandler.SubmitComment(item.id, CommentText);
+            CommentText = "";
+            if (comment != null)
+            {
+                Comments.Insert(0, comment);
+            }
+        }
+
+        public async void DeleteComment(Comment comment)
+        {
+            IDataHandler datahandler = container.GetService(typeof(IDataHandler)) as IDataHandler;
+            bool success = await datahandler.DeleteComment(comment.id) != null;
+            if (success)
+            {
+                Comments.Remove(comment);
+            }
+            
+        }
+
+        public async void LikeComment(Comment comment)
+        {
+            IDataHandler datahandler = container.GetService(typeof(IDataHandler)) as IDataHandler;
+            Comment newComment = await datahandler.LikeComment(comment);
+            TrulyObservableCollection<Comment> newComments = new TrulyObservableCollection<Comment>();
+            foreach (Comment c in Comments)
+            {
+                if (c.id == comment.id)
+                {
+                    newComments.Add(newComment);
+                }
+                else
+                {
+                    newComments.Add(c);
+                }
+            }
+            Comments = newComments;
+        }
+
+        public async void DislikeComment(Comment comment)
+        {
+            IDataHandler datahandler = container.GetService(typeof(IDataHandler)) as IDataHandler;
+            Comment newComment = await datahandler.DislikeComment(comment);
+            TrulyObservableCollection<Comment> newComments = new TrulyObservableCollection<Comment>();
+            foreach (Comment c in Comments)
+            {
+                if (c.id == comment.id)
+                {
+                    newComments.Add(newComment);
+                }
+                else
+                {
+                    newComments.Add(c);
+                }
+            }
+            Comments = newComments;
+        }
+
 
         private void updateItemUI()
         {
@@ -207,7 +289,7 @@ namespace DeWaste.Models.ViewModels
 
         
 
-        public void SetItem(Item item)
+        public async void SetItem(Item item)
         {
             this.item = item;
             item.img = "/Assets/Images/Items/" + item.img; 
@@ -215,6 +297,9 @@ namespace DeWaste.Models.ViewModels
             clearToggles();
             itemChanged?.Invoke();
             toggleChanged?.Invoke(this, EventArgs.Empty);
+
+            var comments = await dataHandler.GetCommentsByItemID(item.id);
+            Comments = comments;
         }
 
         public bool PlasticVisibility

@@ -17,7 +17,7 @@ namespace DeWaste.Models.ViewModels
         private bool _isBusy;
         private string _searchTerm = "";
         private ObservableCollection<Suggestion> _searchResults = new ObservableCollection<Suggestion>();
-        private IDataProvider dataProvider;
+        private IDataHandler dataProvider;
         IServiceProvider container = App.Container;
 
 
@@ -46,7 +46,7 @@ namespace DeWaste.Models.ViewModels
         public SearchViewModel(IServiceProvider container)
         {
             this.container = container;
-            dataProvider = container.GetService(typeof(IDataProvider)) as IDataProvider;
+            dataProvider = container.GetService(typeof(IDataHandler)) as IDataHandler;
         }
         
         public async Task SearchItem()

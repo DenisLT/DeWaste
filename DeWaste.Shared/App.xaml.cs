@@ -44,7 +44,7 @@ namespace DeWaste
             var serviceCollection = new ServiceCollection();
 
             serviceCollection.AddSingleton<IFileHandler, FileHandler>();
-            serviceCollection.AddSingleton<IDataProvider>((a) => new DataProvider(a));
+            serviceCollection.AddSingleton<IDataHandler>((a) => new DataHandler(a));
             serviceCollection.AddSingleton<Logging.ILogger, FileLogger>((a) => new FileLogger(a));
 
             serviceCollection.AddSingleton<NavigationViewModel>((a) => new NavigationViewModel(a));

@@ -77,7 +77,7 @@ namespace DeWaste.WebServices
             return null;
         }
 
-        public async Task<List<Category>> GetCategories(int id)
+        public async Task<ObservableCollection<Category>> GetCategories(int id)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace DeWaste.WebServices
                 if (result != null)
                 {
                     Guid.NewGuid();
-                    return JsonSerializer.Deserialize<List<Category>>(result);
+                    return JsonSerializer.Deserialize<ObservableCollection<Category>>(result);
                 }
             }
             catch (Exception ex)
@@ -94,7 +94,157 @@ namespace DeWaste.WebServices
                 logger.Log(ex.Message);
             }
 
-            return new List<Category>();
+            return new ObservableCollection<Category>();
+        }
+
+        public async Task<TrulyObservableCollection<Comment>> GetComments(int id)
+        {
+            try
+            {
+                var result = await GetAsync(url + "Comments/" + id);
+
+                if (result != null)
+                {
+                    return JsonSerializer.Deserialize<TrulyObservableCollection<Comment>>(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+            }
+
+            return new TrulyObservableCollection<Comment>();
+        }
+        
+        public async Task<Rating> GetRating(int comment_id, string user_id)
+        {
+            try
+            {
+                var result = await GetAsync(url + "Ratings/" + comment_id + "/" + user_id);
+
+                if (result != null)
+                {
+                    return JsonSerializer.Deserialize<Rating>(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+            }
+
+            return null;
+        }
+
+        public async Task<Rating> DeleteRating(int comment_id, string user_id)
+        {
+            try
+            {
+                var result = await DeleteAsync(url + "Ratings/" + comment_id + "/" + user_id);
+
+                if (result != null)
+                {
+                    return JsonSerializer.Deserialize<Rating>(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+            }
+
+            return null;
+        }
+
+        public async Task<Rating> PostRating(Rating rating)
+        {
+            try
+            {
+                var result = await PostAsync(url + "Ratings", JsonSerializer.Serialize(rating));
+
+                if (result != null)
+                {
+                    return JsonSerializer.Deserialize<Rating>(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+            }
+
+            return null;
+        }
+
+        public async Task<Rating> PutRating(Rating rating)
+        {
+            try
+            {
+                var result = await PutAsync(url + "Ratings", JsonSerializer.Serialize(rating));
+
+                if (result != null)
+                {
+                    return JsonSerializer.Deserialize<Rating>(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+            }
+
+            return null;
+        }
+        
+        public async Task<Comment> UpdateComment(Comment comment)
+        {
+            try
+            {
+                var result = await PutAsync(url + "Comments", JsonSerializer.Serialize(comment));
+
+                if (result != null)
+                {
+                    return JsonSerializer.Deserialize<Comment>(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+            }
+
+            return null;
+        }
+
+        public async Task<Comment> PostComment(Comment comment)
+        {
+            try
+            {
+                var result = await PostAsync(url + "Comments", JsonSerializer.Serialize(comment));
+
+                if (result != null)
+                {
+                    return JsonSerializer.Deserialize<Comment>(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+            }
+            return null;
+        }
+
+        public async Task<Comment> DeleteComment(int id)
+        {
+            try
+            {
+                var result = await DeleteAsync(url + "Comments/" + id);
+
+                if (result != null)
+                {
+                    return JsonSerializer.Deserialize<Comment>(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Log(ex.Message);
+            }
+            return null;
         }
     }
 }

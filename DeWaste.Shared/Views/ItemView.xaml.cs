@@ -52,5 +52,31 @@ namespace DeWaste.Views
             string link = (sender as Button).Tag.ToString();
             Launcher.LaunchUriAsync(new Uri(link));
         }
+
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.SubmitComment();
+        }
+
+        private void Delete_Comment(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            Comment comment = (Comment)button.DataContext;
+            ViewModel.DeleteComment(comment);
+        }
+
+        private void Dislike_Comment(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            Comment comment = (Comment)button.DataContext;
+            ViewModel.DislikeComment(comment);
+        }
+        
+        private void Like_Comment(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            Comment comment = (Comment)button.DataContext;
+            ViewModel.LikeComment(comment);
+        }
     }
 }

@@ -7,13 +7,13 @@ namespace Testing
     public class Tests
     {
         IServiceProvider container;
-        IDataProvider dataProvider;
+        IDataHandler dataProvider;
         [SetUp]
         public void Setup()
         {
 
             container = App.ConfigureDependencyInjection();
-            dataProvider = (IDataProvider)container.GetService(typeof(IDataProvider));
+            dataProvider = (IDataHandler)container.GetService(typeof(IDataHandler));
         }
 
         [Test]
