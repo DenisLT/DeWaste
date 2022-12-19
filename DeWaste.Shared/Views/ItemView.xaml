@@ -1496,7 +1496,6 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Button Grid.Column="0"
-                                            Background="#00FF"
                                             Click="Like_Comment">
                                         <StackPanel>
                                             <TextBlock>Likes</TextBlock>
