@@ -94,12 +94,7 @@
                 Grid.Row="0"
                 Source="{x:Bind ViewModel.ItemImage, Mode=OneWay}"
                 Stretch="Fill"
-<<<<<<< Updated upstream
                 MaxWidth="350"
-=======
-                Width="350"
-
->>>>>>> Stashed changes
                 x:Name="itemImage" />
             <StackPanel Grid.Row="1" Padding="20">
 
@@ -352,18 +347,13 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-<<<<<<< Updated upstream
-
                     <Image
                         Grid.Column="0"
                         Margin="0,0,20,30"
                         Source="/Assets/Images/bin_icons/plastic_bin.png"
                         Style="{StaticResource CatImage}"
                         Width="100" />
-=======
-                    <Image Style="{StaticResource CatImage}" Width="100" Margin="0,0,20,30" Grid.Column="0" Source="/Assets/Images/bin_icons/plastic_bin.png"/>
->>>>>>> Stashed changes
-                    <StackPanel Grid.Column="1">
+                            <StackPanel Grid.Column="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
