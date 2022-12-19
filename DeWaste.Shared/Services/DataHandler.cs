@@ -175,7 +175,7 @@ namespace DeWaste.Services
             {
                 comment.Date = DateTimeOffset.FromUnixTimeSeconds(comment.timestamp).ToLocalTime().ToString();
                 comment.isUsersComment = comment.user_id == UID;
-                Rating rating = await databaseApi.GetRating(id, UID);
+                Rating rating = await databaseApi.GetRating(comment.id, UID);
                 if (rating != null)
                 {
                     if (rating.is_liked)
