@@ -18,7 +18,7 @@ namespace DeWaste.Models.ViewModels
         private string _searchTerm = "";
         private ObservableCollection<Suggestion> _searchResults = new ObservableCollection<Suggestion>();
         private IDataHandler dataProvider;
-        IServiceProvider container = App.Container;
+        IServiceProvider container;
 
 
         public bool IsBusy

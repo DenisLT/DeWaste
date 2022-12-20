@@ -36,10 +36,6 @@ namespace DeWasteApi.Controllers
 
             var rating = _context.ratings
                 .FirstOrDefault(m => m.comment_id == comment_id && m.user_id == user_id);
-            if (rating == null)
-            {
-                return NotFound();
-            }
 
             return Json(rating);
         }

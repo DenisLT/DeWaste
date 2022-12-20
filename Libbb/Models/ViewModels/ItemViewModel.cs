@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DeWaste.Models.ViewModels
 {
-    class ItemViewModel : BindableBase
+    public class ItemViewModel : BindableBase
     {
         private Item item;
         public ObservableCollection<Comment> _comments;
@@ -53,7 +53,7 @@ namespace DeWaste.Models.ViewModels
             };
         }
 
-        public async void SubmitComment()
+        public async Task SubmitComment()
         {
             IDataHandler datahandler = container.GetService(typeof(IDataHandler)) as IDataHandler;
             Comment comment = await datahandler.SubmitComment(item.id, CommentText);
@@ -64,7 +64,7 @@ namespace DeWaste.Models.ViewModels
             }
         }
 
-        public async void DeleteComment(Comment comment)
+        public async Task DeleteComment(Comment comment)
         {
             IDataHandler datahandler = container.GetService(typeof(IDataHandler)) as IDataHandler;
             bool success = await datahandler.DeleteComment(comment.id) != null;
@@ -75,7 +75,7 @@ namespace DeWaste.Models.ViewModels
             
         }
 
-        public async void LikeComment(Comment comment)
+        public async Task LikeComment(Comment comment)
         {
             IDataHandler datahandler = container.GetService(typeof(IDataHandler)) as IDataHandler;
             Comment newComment = await datahandler.LikeComment(comment);
@@ -94,7 +94,7 @@ namespace DeWaste.Models.ViewModels
             Comments = newComments;
         }
 
-        public async void DislikeComment(Comment comment)
+        public async Task DislikeComment(Comment comment)
         {
             IDataHandler datahandler = container.GetService(typeof(IDataHandler)) as IDataHandler;
             Comment newComment = await datahandler.DislikeComment(comment);
@@ -289,7 +289,7 @@ namespace DeWaste.Models.ViewModels
 
         
 
-        public async void SetItem(Item item)
+        public async Task SetItem(Item item)
         {
             this.item = item;
             item.img = "/Assets/Images/Items/" + item.img; 

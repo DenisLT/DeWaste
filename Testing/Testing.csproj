@@ -24,4 +24,8 @@
     <PackageReference Include="Uno.WinUI.WebAssembly" Version="4.6.19" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Libbb\DeWasteDependencies.csproj" />
+  </ItemGroup>
+
 </Project>
