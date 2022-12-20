@@ -1,0 +1,12 @@
+C:\Users\denis\DeWaste\Libbb\obj\Debug\net7.0\Libbb.csproj.AssemblyReference.cache
+C:\Users\denis\DeWaste\Libbb\obj\Debug\net7.0\Libbb.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\denis\DeWaste\Libbb\obj\Debug\net7.0\Libbb.AssemblyInfoInputs.cache
+C:\Users\denis\DeWaste\Libbb\obj\Debug\net7.0\Libbb.AssemblyInfo.cs
+C:\Users\denis\DeWaste\Libbb\obj\Debug\net7.0\Libbb.csproj.CoreCompileInputs.cache
+C:\Users\denis\DeWaste\Libbb\bin\Debug\net7.0\Libbb.deps.json
+C:\Users\denis\DeWaste\Libbb\bin\Debug\net7.0\Libbb.dll
+C:\Users\denis\DeWaste\Libbb\bin\Debug\net7.0\Libbb.pdb
+C:\Users\denis\DeWaste\Libbb\obj\Debug\net7.0\Libbb.dll
+C:\Users\denis\DeWaste\Libbb\obj\Debug\net7.0\refint\Libbb.dll
+C:\Users\denis\DeWaste\Libbb\obj\Debug\net7.0\Libbb.pdb
+C:\Users\denis\DeWaste\Libbb\obj\Debug\net7.0\ref\Libbb.dll

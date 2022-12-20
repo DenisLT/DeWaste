@@ -1,8 +1,12 @@
 using DeWasteApi.Data;
+using DeWasteApi.Interceptors;
+using DeWasteApi.Middleware;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.AddConsole();
 
 // Add services to the container.
 
@@ -12,7 +16,9 @@ builder.Services.AddMvc(c => c.Conventions.Add(new ApiExplorerIgnores()));
 //builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DeWasteDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DeWasteApiContext")));
+builder.Services.AddTransient<ErrorHandlingMiddleware>();
+builder.Services.AddDbContext<DeWasteDbContext>();
+
 
 
 var app = builder.Build();
@@ -27,22 +33,15 @@ var app = builder.Build();
 
 app.UseAuthorization();
 
-//custom middleware for error handling
-app.Use(async (context, next) =>
-{
-    try
-    {
-        await next();
-    }
-    catch (Exception ex)
-    {
-        await context.Response.WriteAsync(ex.Message);
-    }
-});
 
 app.MapControllers();
 
 app.Run();
+
+
+//try to get intercepted
+var db = app.Services.GetService<DeWasteDbContext>();
+var items = db.items.ToList();
 
 
 public class ApiExplorerIgnores : IActionModelConvention

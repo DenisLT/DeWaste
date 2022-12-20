@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DeWasteApi.Controllers
 {
+    
     [ApiController]
     [Route("[controller]")]
     public class CategoriesController : Controller

@@ -167,9 +167,9 @@ namespace DeWaste.Services
             }
         }
 
-        public async Task<TrulyObservableCollection<Comment>> GetCommentsByItemID(int id)
+        public async Task<ObservableCollection<Comment>> GetCommentsByItemID(int id)
         {
-            TrulyObservableCollection<Comment> comments = await databaseApi.GetComments(id);
+            ObservableCollection<Comment> comments = await databaseApi.GetComments(id);
 
             foreach (Comment comment in comments)
             {

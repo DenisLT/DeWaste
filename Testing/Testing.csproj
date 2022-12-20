@@ -24,6 +24,4 @@
     <PackageReference Include="Uno.WinUI.WebAssembly" Version="4.6.19" />
   </ItemGroup>
 
-  <Import Project="..\DeWaste.Shared\DeWaste.Shared.projitems" Label="Shared" />
-
 </Project>

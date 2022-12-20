@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DeWasteApi.Data;
 using DeWasteApi.Models;
+using Autofac.Extras.DynamicProxy;
 
 namespace DeWasteApi.Controllers
 {
+    
     [ApiController]
     [Route("[controller]")]
     public class CommentsController : Controller
     {
         private readonly DeWasteDbContext _context;
 
+        
         public CommentsController(DeWasteDbContext context)
         {
             _context = context;
@@ -23,11 +21,14 @@ namespace DeWasteApi.Controllers
 
         // GET: Comments
         [HttpGet] 
-        public async Task<IActionResult> Index()
+        public async virtual Task<IActionResult> Index()
         {
-              return _context.comments != null ? 
-                          Json(await _context.comments.ToListAsync()) :
-                          Problem("Entity set 'DeWasteDbContext.Comment'  is null.");
+            using (_context)
+            {
+                return _context.comments != null ?
+                            Json(await _context.comments.ToListAsync()) :
+                            Problem("Entity set 'DeWasteDbContext.Comments'  is null.");
+            }
         }
 
         
